@@ -1,0 +1,197 @@
+html, body, #container { height: 100%; }
+body > #container { height: auto; min-height: 100%; }
+
+body
+{	
+	/*	Background and spacing	*/
+	background: 	url("images/background.png") repeat-x white ;
+	margin-top:		80px                                        ;
+	margin-bottom:	25px                                        ;
+	
+	/*	Text properties	*/
+	font-family: 	helvetica, arial, sans-serif ;
+	font-size: 		10pt                         ;
+	color: 			black                        ;
+	
+}
+
+div.title	/*	appearance and size of the little branding area in the darkblue to blue block gradient.	*/
+{	
+	/*	Font properties	*/
+	letter-spacing:	2px      ;
+	font-weight:	bold     ;
+	position:		absolute ;
+	top:			10px     ;
+	//left:			100px    ;
+	left:			5%       ;
+	width:			500px    ;
+	color:			#CFCFCF  ;
+
+}
+
+div.menu	/*	appearance of the site navigation menu.	*/
+{
+	/*	Background and spacing	*/
+	margin-top:		10px ;
+	margin-bottom:	10px ;
+	margin-left:	20px ;
+	margin-right:	20px ;
+	
+	/*	Text properties	*/
+	font-family:	Arial, sans-serif ;
+	letter-spacing:	2px               ;
+
+}
+
+div.metaMenu	/*	appearance of the metaMenu.	*/
+{
+	/*	Background and spacing	*/
+	margin-top:		10px   ;
+	margin-bottom:	10px   ;
+	margin-left:	20px   ;
+	margin-right:	20px   ;
+	text-align: 	center ;
+	font-size:  	15     ;
+	
+	/*	Text properties	*/
+	font-family:	Arial, sans-serif ;
+	letter-spacing:	2px               ;
+
+}
+
+div.main 	/*	Primary div.	*/
+{
+	/*	Background and spacing	*/
+	width: 			80%  	  ;
+	margin-left:  	auto 	  ;
+	margin-right: 	auto 	  ;
+	padding-top:	25px 	  ;
+	padding-bottom:	25px 	  ;
+	padding-right:	50px 	  ;
+	padding-left:	50px 	  ;
+	border:			0px solid ;
+	border-color:	#CFCFCF   ;
+	
+	/* Text properties	*/
+	font-size: 		12pt ;
+
+}
+
+div.surround	/*	Contains the menu and the main divs.	*/
+{
+	/*	Background and spacing	*/
+	border:				2px solid       ;
+	border-color:		#CFCFCF         ;
+	box-shadow: 		0 .3em 1em #000 ;
+	background-color:	#ffffff         ; 
+	width: 				85%             ;
+	margin-left: 		auto            ;   /* Centers the div */
+	margin-right: 		auto            ;	/* Centers the div */
+	min-height: 600px;
+	
+}
+
+div.alert	/*	this defines the appearance of alert bubbles. To be used to catch the user's eye.	*/
+{
+	/*	Background and spacing	*/
+	background-color:	#C1D2E7   ;
+	border:				0px solid ;
+	border-color:		#C1D2E7   ;
+	border-radius:		25px      ;
+	-moz-border-radius:	25px      ; /* Firefox 3.6 and earlier */
+	padding-top:		10px      ;
+	padding-bottom:		10px      ;
+	padding-right:		10px      ;
+	padding-left:		10px      ;
+
+	/*	Text properties	*/
+	text-align:	center;
+
+}
+
+div.caption	/* Used to contain iframe & caption or image & caption. */
+{	
+	/*	Background and spacing	*/
+	display: 			table     ;
+	border:				2px solid ;
+	border-color:		#CFCFCF   ;
+	background-color:	#CFCFCF   ;
+	margin-left:        auto      ;
+	margin-right:       auto      ;
+	
+	/*	Text properties	*/
+	text-align:	center ;
+	font-size: 	12pt   ;
+
+}
+
+div.captionOld	/*	This is an artifact and its continued existence betrays my bad coding habits	*/
+{	
+	/*	Background and spacing	*/
+	float:				left      ;
+	border:				2px solid ;
+	border-color:		#CFCFCF   ;
+	background-color:	#CFCFCF   ;
+	
+	/*	Text properties	*/
+	text-align:	center ;
+	font-size: 	12pt   ;
+
+
+}
+
+div.minimumWidth /*	Because of a lack of a minimum width property, this exists. Its function is to enforce a minimum width for the main area; so all pages have a width in common regardless of their content.	*/
+{
+	width: 200px;
+	
+}
+
+div.footer	/*	the small space at the bottom of the page, below everything else.	*/
+{	
+	/*	Background and spacing	*/
+	border:						 0px solid ;
+	border-color:				 #C1D2E7   ;
+	border-top-left-radius:  	 21px	   ;
+	border-top-right-radius: 	 21px	   ;
+	-moz-border-radius-topleft:  21px	   ; /* Firefox 3.6 and earlier */
+	-moz-border-radius-topright: 21px	   ;
+	padding-top:    			 0.5%	   ;
+	padding-bottom: 			 0.5%	   ;
+	padding-left:   			 2%        ;
+	padding-right:  			 2%        ;
+	clear: 	    				 both      ;
+	z-index:    				 10        ;
+	margin-top: 				 4em       ;
+	background-color:			 #C1D2E7   ;
+	position: 					 relative  ;
+	bottom: 					 0px       ;
+	width:  					 96%       ;
+	height: 					 10%       ;
+	overflow:					 hidden    ;
+	
+	/*	Text properties	*/
+	letter-spacing:	2px;
+	font-weight:	bold;
+	
+}
+
+div.social
+{
+	position: absolute;
+    right: 1.5%;
+
+}
+
+h1	/*	properties of the h1 tag. I use h1 for topic headers.	*/
+{
+	/*	Text properties	*/
+	font-family:	Verdana, Arial, Helvetica, sans-serif;
+	font-size:		large;
+	
+}
+
+/*	Link styling	*/
+a:link {text-decoration:none;}    /* unvisited link */
+a:visited {text-decoration:none;} /* visited link */
+a:hover {text-decoration:underline;}   /* mouse over link */
+a:active {text-decoration:underline;}  /* selected link */
