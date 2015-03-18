@@ -1,12 +1,239 @@
-<html>
-	<body>
-		This page requires javascript to be enabled.
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+        <meta content="utf-8" http-equiv="encoding">
+        
+    </head>
 
-		<script>
-			window.location.href = "./home.html";
-				
-		</script>
+    <!--**************-->
+    <!-- CSS includes -->
+    <!--**************-->
+    <link rel="stylesheet" href="CSS/Main.css" type="text/css"/>
+    
+    <!--*************************-->
+    <!-- Shader program includes -->
+    <!--*************************-->
+    <iframe id="GLSLLibrary" src="Shaders/GLSLLibrary.html"></iframe>
+    <iframe id="AlphaCutOff" src="Shaders/AlphaCutOff.html"></iframe>
+    <iframe id="Opaque"      src="Shaders/Opaque.html"     ></iframe>
+    
+    <!--*************-->
+    <!-- JS includes -->
+    <!--*************-->
+    <!--This is a custom JS, WebGL game engine I wrote for my portfolio banner.-->
+    <!--The project is available for download from my github account here:     -->
+    <!--https://github.com/jfcameron/WebGLGameEngine                           -->
+    <!--Engine-->
+    <script type="text/javascript" src="JS/Engine/FunctionExtensions.js"></script>
+    <script type="text/javascript" src="JS/Engine/Input/Input.js"></script>
+    <script type="text/javascript" src="JS/Engine/Time/Time.js"></script>
+    <script type="text/javascript" src="JS/Engine/Graphics/glMatrix-0.9.5.min.js"></script>
+    <script type="text/javascript" src="JS/Engine/Graphics/Graphics.js"></script>
+    <script type="text/javascript" src="JS/Engine/Graphics/Material.js"></script>
+    <script type="text/javascript" src="JS/Engine/Physics/cannon.js"></script>
+    <script type="text/javascript" src="JS/Engine/Physics/Physics.js"></script>
+    <!--src="JS/Engine/Sound/Sound.js"-->
+    <script type="text/javascript" src="JS/Engine/Application.js"></script>
+    <script type="text/javascript" src="JS/Engine/GameBase.js"></script>
+    <script type="text/javascript" src="JS/Engine/ECS/Component.js"></script>
+    <script type="text/javascript" src="JS/Engine/ECS/Mesh.js"></script>
+    <script type="text/javascript" src="JS/Engine/ECS/Rigidbody.js"></script>
+    <script type="text/javascript" src="JS/Engine/ECS/Transform.js"></script>
+    <script type="text/javascript" src="JS/Engine/ECS/Camera.js"></script>
+    <script type="text/javascript" src="JS/Engine/ECS/GameObject.js"></script>
+    <!--Game-->
+    <script type="text/javascript" src="JS/Game/Game.js"></script>
+    <!--Game Components-->
+    <script type="text/javascript" src="JS/Game/Behaviors/Rotator.js"></script>
+    <script type="text/javascript" src="JS/Game/Behaviors/CameraController.js"></script>
+    <!--Prefabs-->
+    <script type="text/javascript" src="JS/Game/Prefabs/Ground.js"></script>
+    <script type="text/javascript" src="JS/Game/Prefabs/RotatorTest.js"></script>
+    
+    <!--***************-->
+    <!-- HTML Document -->
+    <!--***************-->
+    <title>Joseph Cameron - Game Programmer Portfolio</title>
+    
+    <body onload="Start();">
+    
+        <div id = "wrapper">
+            <canvas id="canvas" width="640" height="214"></canvas>
+        
+            <div id = "header">
+                
+                Joseph Cameron | <a href="mailto:jf.cameron@gmail.com">jf.cameron@gmail.com</a>
+            
+            </div>
+        
+            <div id = "main">   
+                <small><a href="#GAME">Games</a> | <a href="#SHADERS">Shaders</a></small>            
+                <h1>Joseph Cameron - Game Programmer Portfolio</h1>
+                <p>
+                    Hello! I'm a recent graduate of the Game Development program at Algonquin College. Blah blah etc. etc. yeah, yeah, yeah, yeah.
+                    
+                    <br><br><br>
+                    Here's some work that im proud of, take a look:
+                    <br><br><br><br><br>
+                    <h2><a name="GAME"></a>Games</h2>
+                
+                </p>
+                
+                <h1>Sushi Joint Rumble, 2014-2015</h1>
+                <p>
+                    A beat 'em up game with RPG leveling, skill unlocking, item purchasing.
+                    This was the 3 semester long "capstone" project that is the final part of the Algonquin College Game Development program. I worked as the lead programmer on 5 man team.
+                    It was a lot of work, a lot of documentation and a lot of fun. If you want to read about the project in more detail, <a href = "">click here</a>, however the following media will give
+                    you a good overview.
+                    
+                    <div id = "caption">
+                        <a href="Textures/testtext.png" target="_blank"><img src="Textures/testtext.png" target="_blank"></img></a>
+                        <a href="Textures/testtext.png" target="_blank"><img src="Textures/testtext.png" target="_blank"></img></a>
+                        <a href="Textures/testtext.png" target="_blank"><img src="Textures/testtext.png" target="_blank"></img></a>
+                        <a href="Textures/testtext.png" target="_blank"><img src="Textures/testtext.png" target="_blank"></img></a>
+                        <a href="Textures/testtext.png" target="_blank"><img src="Textures/testtext.png" target="_blank"></img></a>
+                        <a href="Textures/testtext.png" target="_blank"><img src="Textures/testtext.png" target="_blank"></img></a>
 
-	</body>
-		
+                    </div>
+                    
+                    
+                    <br><br>
+                    Languages: C#, Cg. Engine: Unity. Platform: PC.
+                
+                </p>
+                
+                <br>
+                
+                <h1>WebGL Game Engine, 2015</h1>
+                <p>
+                    Making something in WebGL seemed like a good idea for this portfolio. It's on the web, afterall. It was also a chance to use OpenGL in a new environment, and learn something about
+                    Javascript along the way.<br><br>The project files are available <a href = "https://github.com/jfcameron/WebGLGameEngine">here</a>.
+                    The project makes use of glMatrix, a useful graphics math library and Cannon a javascript based physics engine.
+                    
+                    <br><br>
+                    <a href="Textures/WebGLGameEngine_Rigidbodies.png" target="_blank"><img src="Textures/WebGLGameEngine_Rigidbodies.png" target="_blank" id = "previewImage"></img></a>
+                    <br>
+                    
+                    <br><br>
+                    Languages: Javascript, GLSL. Engine: Custom WebGL based. Platform: Web.
+                
+                </p>
+                
+                <br>
+                
+                <h1>Speed King, 2015</h1>
+                <p>
+                    This was a short game I worked on for the global game jam 2015. Team size was 2 people. I didnt end up submitting the game unfortunately,
+                    due to an untimely 10 hour power outage on the final day.
+                    
+                    <div id = "caption">
+                        <a href="Textures/SpeedKing_SplashScreen.png" target="_blank"><img src="Textures/SpeedKing_SplashScreen.png" target="_blank"></img></a>
+
+                    </div>
+                    
+                    <br><br>
+                    Languages: C#, Cg. Engine: Unity. Platform: Android, PC.
+                
+                </p>
+                
+                <br>
+                
+                <h1>Railshooter, 2014</h1>
+                <p>
+                    A 3D railshooter in the vein of StarFox.
+                    
+                    <div id = "caption">
+                        <iframe id = "video" src="https://docs.google.com/file/d/0ByMgjmjcPctfS2lUWmY2OVFXVzQ/preview" allowfullscreen="1"></iframe><br>
+                        testasdf
+                    
+                    </div>
+                    
+                    <br><br>
+                    Languages: C#, Cg. Engine: Unity. Platform: PC.
+                
+                </p>
+                
+                <br>
+                
+                <h1>Tower defense, 2014</h1>
+                <p>
+                    2D game written from scratch for windows. Featured a directx based renderer, xml file reading/writing, an implementation of A* pathfinding.
+                    
+                    <br><br>
+                    Language: C++. Engine: Custom Direct3D based. Platform: Windows PC.
+                
+                </p>
+                
+                <br>
+                
+                <h1>2D game collection, 2013</h1>
+                <p>
+                    The project itself served as a context for games. Games would be compiled as .libs and then included in the application project, which
+                    linked the engine and the game together. Games ran on a separate thread from the engine to prevent bad game code from freezing the application.
+                    The project contained two games: a space shooter and a minesweeper clone.
+                    
+                    <br><br>
+                    Language: C#. Engine: Custom XNA based. Platform: Windows PC.
+                
+                </p>
+                
+                <br>
+                
+                <h1>CSnake, 2014</h1>
+                <p>
+                    A snake clone written in C using the C89 standard.
+                    
+                    <br><br>
+                    
+                    <center>
+                        <a href="Textures/Snake_Intro.png" target="_blank" ><img src="Textures/Snake_Intro.png" id = "previewImage"></img></a>
+                        <a href="Textures/Snake_MidGame.png" target="_blank"><img src="Textures/Snake_MidGame.png" id = "previewImage"></img></a>
+                        <a href="Textures/Snake_Died.png" target="_blank"><img src="Textures/Snake_Died.png" id = "previewImage"></img></a>
+                    
+                    </center>
+                    
+                    <br><br>
+                    Language: C. Platform: Windows Console.
+                
+                </p>
+                
+                <br><br><br>
+                <h2><a name="SHADERS"></a>Shaders</h2>
+                
+                <h1>Voxel experiments, 2014-2015</h1>
+                <p>
+                    Here are a couple of different demos I made while learning about procedural terrain. The first one here is not very fast, it was written entirely on the cpu.
+                    Here I wrote a hardware accellerated voxel renderer which was much, much better. By encoding voxel data into textures, I could build voxel shapes in a
+                    geometry shader at extremely high speeds.
+                    
+                    <center>
+                        <a href="Textures/GPU_Voxel_Rendering.png" target="_blank" ><img src="Textures/GPU_Voxel_Rendering.png" id = "previewImage"></img></a>
+                    
+                    </center>
+                    
+                    <br><br>
+                    Language: C# and Cg. Platform: Unity.
+                
+                </p>
+                
+                
+                 
+            </div>
+            
+            <div id = "footer">
+                Joseph Cameron | <a href="">jf.cameron@gmail.com</a>
+            
+            </div>
+            
+        </div>
+       
+    </body>
+    
 </html>
+
+
+
+
+
+
