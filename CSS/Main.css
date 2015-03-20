@@ -159,7 +159,7 @@
 body
 {
     /* Background */
-    background-image: url("../textures/bgtest.png");
+    background-image: url("../Textures/bgtest.png");
     background-color: #101A1A;
     background-size: 256px;
     background-position: center top;
