@@ -13,8 +13,15 @@ function CameraController(aGameObject)
     var cameraRotation  = m_GameObject.getTransform().getRotation();
     var cameraDeltaSize = 0.05;
     
+    var spawnsomeboxes = 10;
+    
     this.update = function()
     {
+        if (spawnsomeboxes-- > 0)
+            for(var i = 0; i < 1; i++)
+                this.testGenCube();
+            
+    
         //************
         // Buffer data
         //************

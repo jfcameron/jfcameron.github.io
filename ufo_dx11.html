@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+        <meta content="utf-8" http-equiv="encoding">
+
+	</head>
+    
+    <!--**************-->
+    <!-- CSS includes -->
+    <!--**************-->
+    <link rel="stylesheet" href="CSS/Main.css" type="text/css"/>
+    <link rel="stylesheet" href="CSS/UFO_Demo_Overrides.css" type="text/css"/>
+    
+    <!--*************-->
+    <!-- JS includes -->
+    <!--*************-->
+    <script type="text/javascript" src="http://webplayer.unity3d.com/download_webplayer-3.x/3.0/uo/UnityObject2.js"></script>
+    <script type='text/javascript' src='https://ssl-webplayer.unity3d.com/download_webplayer-3.x/3.0/uo/jquery.min.js'></script>
+    <script type="text/javascript" src="JS/UnityPlayerLoader.js"></script>
+    
+    <!--***************-->
+    <!-- HTML Document -->
+    <!--***************-->
+    <title>Joseph Cameron - Game Programmer Portfolio</title>
+    
+	<body>
+        <div id="wrapper">
+            <div id="main">
+                <!--Unity player-->
+                <center>
+                    <p>UFO dx11<br><a href="#DEMO">Demo</a> | <a href="#DESCRIPTION">Description</a> | <a href="index.html">Home</a></p>
+                    <div class="content">
+                        <a name = "DEMO"></a>
+                        <div id="unityPlayer">
+                            <div class="missing">
+                                <a href="http://unity3d.com/webplayer/" title="Unity Web Player. Install now!"><img alt="Unity Web Player. Install now!" src="http://webplayer.unity3d.com/installation/getunity.png" width="193" height="63" /></a>
+                            
+                            </div>
+                            
+                            <div class="broken">
+                                <a href="http://unity3d.com/webplayer/" title="Unity Web Player. Install now! Restart your browser after install."><img alt="Unity Web Player. Install now! Restart your browser after install." src="http://webplayer.unity3d.com/installation/getunityrestart.png" width="193" height="63" /></a>
+                            
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                    
+                    <p class="footer">&laquo; created with <a href="http://unity3d.com/unity/" title="Go to unity3d.com">Unity</a> &raquo;</p>
+                    
+                </center>
+                
+                <!--Text document-->
+                <p>Controls: WASD to move, QE to rotate</p>
+                
+                <br>
+                
+                <h1><a name = "DESCRIPTION"></a> Description</h1>
+                <p>
+                    The Shader Model 5.0 program consists of a vertex shader, geometry and a fragment shader. The Shader Model 3.0 fallback program lacks the geometry shader.
+                    Unfortunately 3 is the lowest model possible, being the first standard that introduced texture lookups in the vertex shader, without which displacement maps cannot
+                    be used.
+                
+                </p>
+                
+                <p>
+                    Vertex shader:
+                
+                </p>
+                
+                <p>
+                    Geometry shader:
+                
+                </p>
+                
+                <p>
+                    Fragment shader:
+                
+                </p>
+                
+                <p>
+                    ROUGH-ROUGH-ROUGH-ROUGH-ROUGH-ROUGH-ROUGH-
+                    The red channel is used by the vertex shader to displace the vertex height. 
+                    The vertex shader then recalculates the vertex normal before releasing the vertex for primitive assembly. 
+                    The geometry shader pulls in primitives as triangles. The first thing it does is pass through the incoming triangle to the primitive output stream. 
+                    Then it uses the primitive’s mesh coordinates x and z components (its position within the input plane mesh), converts those to uvs (mesh size is 100x100, 
+                    so divide the coord by this, giving you the equivalent position in uv space) and look at the value of the green channel in the texel at that position. 
+                    Depending on the value in the green channel, a different kind of foliage will be generated, which means additional geometry has to be added to the output stream. 
+                    Two intersecting, orthogonal quads are generated and placed at the height of the current triangle. Depending on the primitive’s height, the uvs for these quads are 
+                    offset, so that during coloring in the fragment shader, the demo will render snow covered trees at high elevations, green trees at low elevations. A slight time variant 
+                    horizontal offset is added to the top of the quads too to represent the breeze.
+                
+                </p>
+                
+                <p>
+                    ROUGH-ROUGH-ROUGH-ROUGH-ROUGH-ROUGH-ROUGH-ROUGH-ROUGH-
+                    Part of the fragment format is an int that stores type. These types are Terrain, Foliage1, Foliage2, etc. Type is used to determine which diffuse texture to use. 
+                    Diffuse texture used for the terrain holds coloring for grass, which is used when the normal is pointing up, and rocks, when the normal is pointing to the side. 
+                    As the frag’s height increases, the color is increasingly blended white to represent mountain peak snow covering. If the height is sufficiently low, there is it is 
+                    blended blue to represent water. The demo camera is setup at a perspective where the water coloring trick works quite well.
+                
+                </p>
+                
+            </div>
+            
+        </div>
+        
+	</body>
+    
+</html>
+
+
+

@@ -191,7 +191,7 @@ function Game()
             gameObject.getMesh().draw = drawTest;
             gameObject.getMesh().setVertexBuffer(GRAPHICS.getQuadVertexArray());
             gameObject.getMesh().setMainTexture(GRAPHICS.getTextures()[0]);
-            gameObject.getTransform().setPosition([0,0,-10]);
+            gameObject.getTransform().setPosition([0,10,-10]);
             
         }
         this.m_RootGameObject.addChild(gameObject);
@@ -248,7 +248,7 @@ function Game()
         var someCamera = new GameObject();
         {
             someCamera.setName("TheTestCamera");    
-            someCamera.getTransform().setPosition([0,0,0]);
+            someCamera.getTransform().setPosition([0,6,-11]);
             someCamera.getTransform().setScale([1,1,1]);
             
             //Add camera
@@ -281,8 +281,9 @@ function Game()
             gameObject123.setName("Huddude");    
             gameObject123.getMesh().draw = drawTest;
             gameObject123.getMesh().setVertexBuffer(GRAPHICS.getQuadVertexArray());
-            gameObject123.getMesh().setMainTexture(GRAPHICS.getTextures()[0]);
-            gameObject123.getTransform().setPosition([1,1000 +1,-5]);
+            gameObject123.getMesh().setMainTexture(GRAPHICS.getTexture("name.png"));
+            gameObject123.getTransform().setPosition([0,2,-30]);
+            gameObject123.getTransform().setScale([80,80,0]);
             
         }
         this.m_RootGameObject.addChild(gameObject123);

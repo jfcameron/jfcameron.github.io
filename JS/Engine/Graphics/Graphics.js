@@ -390,7 +390,7 @@ function Graphics()
         this.loadTexture("awesome.png");
         this.loadTexture("brick.png");
         this.loadTexture("grass.png");
-        
+        this.loadTexture("name.png");
     
     };
     
