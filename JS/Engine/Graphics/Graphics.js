@@ -376,7 +376,7 @@ function Graphics()
         {
             var image = new Image();
             image.onload = function() { handleTextureLoaded(image, texture); }
-            image.src = "textures/"+aTexturePath;
+            image.src = "Textures/"+aTexturePath;
             texture.getName = function(){return aTexturePath.toString();};
             
         }
