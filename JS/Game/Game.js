@@ -248,7 +248,7 @@ function Game()
         var someCamera = new GameObject();
         {
             someCamera.setName("TheTestCamera");    
-            someCamera.getTransform().setPosition([0,6,-11]);
+            someCamera.getTransform().setPosition([0,6,-10]);
             someCamera.getTransform().setScale([1,1,1]);
             
             //Add camera
