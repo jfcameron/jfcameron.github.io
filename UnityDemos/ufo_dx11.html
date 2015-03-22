@@ -65,22 +65,6 @@
                 </p>
                 
                 <p>
-                    Vertex shader:
-                
-                </p>
-                
-                <p>
-                    Geometry shader:
-                
-                </p>
-                
-                <p>
-                    Fragment shader:
-                
-                </p>
-                
-                <p>
-                    ROUGH-ROUGH-ROUGH-ROUGH-ROUGH-ROUGH-ROUGH-
                     The red channel is used by the vertex shader to displace the vertex height. 
                     The vertex shader then recalculates the vertex normal before releasing the vertex for primitive assembly. 
                     The geometry shader pulls in primitives as triangles. The first thing it does is pass through the incoming triangle to the primitive output stream. 
@@ -94,7 +78,6 @@
                 </p>
                 
                 <p>
-                    ROUGH-ROUGH-ROUGH-ROUGH-ROUGH-ROUGH-ROUGH-ROUGH-ROUGH-
                     Part of the fragment format is an int that stores type. These types are Terrain, Foliage1, Foliage2, etc. Type is used to determine which diffuse texture to use. 
                     Diffuse texture used for the terrain holds coloring for grass, which is used when the normal is pointing up, and rocks, when the normal is pointing to the side. 
                     As the frag’s height increases, the color is increasingly blended white to represent mountain peak snow covering. If the height is sufficiently low, there is it is 
