@@ -186,6 +186,8 @@ h1
 {
     font-size:  15pt;
     background: #2f2f2f;
+	padding-left: 10px;
+	color: #BBBBBB;
 
 }
 
@@ -194,6 +196,7 @@ h2
     font-size:  26pt;
     text-align: center ;
     //background: #2f2f2f;
+	
 }
 
 p
