@@ -6,19 +6,12 @@
         
     </head>
 
-
     <!--**************-->
     <!-- CSS includes -->
     <!--**************-->
     <link rel="stylesheet" href="CSS/Main.css" type="text/css"/>
     
-    <!--*************************-->
-    <!-- Shader program includes -->
-    <!--*************************-->
-    <iframe id="GLSLLibrary" src="Shaders/GLSLLibrary.html"></iframe>
-    <iframe id="AlphaCutOff" src="Shaders/AlphaCutOff.html"></iframe>
-    <iframe id="Opaque"      src="Shaders/Opaque.html"     ></iframe>
-    
+
     
     <!--*************-->
     <!-- JS includes -->
@@ -52,16 +45,30 @@
     <!--Prefabs-->
     <script type="text/javascript" src="JS/Game/Prefabs/Ground.js"></script>
     <script type="text/javascript" src="JS/Game/Prefabs/RotatorTest.js"></script>
+    <!--Nonstandard scripts-->
+    <script type="text/javascript" src="JS/Engine/BootLoader.js"></script><!--Forces engine to load before document is ready. May move into engine repo at some point.-->
     
+    
+    <!--*************************-->
+    <!-- Shader program includes -->
+    <!--*************************-->
+    <iframe id="GLSLLibrary" src="Shaders/GLSLLibrary.html" class = "ShaderProgram" onload="tryBoot();"></iframe>
+    <iframe id="AlphaCutOff" src="Shaders/AlphaCutOff.html" class = "ShaderProgram" onload="tryBoot();"></iframe>
+    <iframe id="Opaque"      src="Shaders/Opaque.html"      class = "ShaderProgram" onload="tryBoot();"></iframe>
+
     <!--***************-->
     <!-- HTML Document -->
     <!--***************-->
     <title>Joseph Cameron - Game Programmer Portfolio</title>
     
-    <body onload="Start();">
-    
+    <body>    
+        <script type="text/javascript" src="JS/Presentation/BackgroundScroller.js"></script>
+        
         <div id = "wrapper">
-            <canvas id="canvas" width="640" height="214"></canvas>
+            <canvas id="canvas" width="640" height="214">
+                Loading...
+            
+            </canvas>
         
             <div id = "header">
                 
@@ -79,8 +86,8 @@
                     <br><br>
                     
                     Briefly, I'm comfortable programming in C, C++, C#. I have worked with Java and Objective-C in order
-                    to setup an OpenGL, C++ environment for IOS and Android applications. I'm comfortable with various APIs including WebGL, OpenGL ES 2.0, OpenAL.
-                    In terms of web development, I'm comfortable with WebGL and Javascript.
+                    to setup an OpenGL, C++ environment for IOS and Android applications. I'm comfortable with various APIs including OpenGL, OpenAL.
+                    In terms of web development, I'm comfortable with WebGL and Javascript. I have also worked with CakePHP and Wordpress.
                     
                     <br><br>
                     
@@ -96,19 +103,84 @@
                 <p>
                     A beat 'em up game with RPG leveling, skill unlocking, item purchasing.
                     This was the 3 semester long "capstone" project that is the final part of the Algonquin College Game Development program. I worked as the lead programmer on 5 man team.
-                    It was a lot of work, a lot of documentation and a lot of fun. If you want to read about the project in more detail, <a href = "">click here</a>(available soon), however the following media will give
-                    you a good overview.
+                    It was a lot of work, documentation and a lot of fun. 
+                    
+                    <a href ="Articles/SushiJointRumble/content.html" target="_blank">Read more</a>
                     
                     <br><br>
                     
                     <center>
-                        <a href="Textures/SushiJointRumble_TitleScreen.png" target="_blank"><img src="Textures/SushiJointRumble_TitleScreen.png" target="_blank" id = "previewImage"></img></a>
-                        <a href="Textures/SushiJointRumbe_Worldmap.png" target="_blank"><img src="Textures/SushiJointRumbe_Worldmap.png" target="_blank" id = "previewImage"></img></a>
+                        <table>
+                            <tr>
+                                <td id = "contenttd"><a href="Images/SushiJointRumble_TitleScreen/Big.png" target="_blank"><img src="Images/SushiJointRumble_TitleScreen/Small.png" target="_blank" id = "previewImageWide"></img></a></td>
+                                <td id = "contenttd"><a href="Images/SushiJointRumble_Worldmap/Big.png" target="_blank"><img src="Images/SushiJointRumble_Worldmap/Small.png" target="_blank" id = "previewImageWide"></img></a></td>
+                                <td></td>
+                                
+                            </tr>
+                        
+                        </table>
                     
                     </center>
                     
                     <br><br>
-                    Languages: C#, Cg. Engine: Unity. Platform: PC.
+                    C#, Cg, Unity, Unity plugin programming.
+                
+                </p>
+                
+                <h1>Tower Defense, 2014</h1>
+                <p>
+                    A 2D tower defense game I wrote from scratch. Renderer uses Direct X 9. Written in C++. I'm very happy with the technical design of this project.
+                    The code is separated into a number separate projects and compiled together.
+                    
+                    <br><br>
+                    
+                    The purpose was to separate game code from the engine, separate the implementation of the graphics renderer from the graphics interface and
+                    to seperate the entire program from the specifics of initializing itself on the Windows platform.
+                    
+                    <a href ="Articles/TowerDefense/content.html" target="_blank">Read more</a>
+                        
+                    <br><br>
+                    
+                    <center>
+                        <table>
+                            <tr>
+                                <td id = "contenttd"><a href="Images/TowerDefense_Level3/Big.png"         target="_blank"><img src="Images/TowerDefense_Level1/Small.png"         target="_blank" id = "previewImage"></img></a></td>
+                                <td id = "contenttd"><a href="Images/TowerDefense_Level3/Big.png"         target="_blank"><img src="Images/TowerDefense_Level3/Small.png"         target="_blank" id = "previewImage"></img></a></td>
+                                <td id = "contenttd"><a href="Images/TowerDefense_Level1_WithGUI/Big.png" target="_blank"><img src="Images/TowerDefense_Level1_WithGUI/Small.png" target="_blank" id = "previewImage"></img></a></td>
+                        
+                            </tr>
+                    
+                        </table>
+                    
+                    </center>
+                    
+                    <br><br>
+                    C++, DirectX9, A* pathfinding, XML serialization.
+                
+                </p>
+                
+                <br>
+                
+                <h1>RPG creator - Level editor & NPC scripting editor, 2015</h1>
+                <p>
+                    Hardware accelerated 2D tile renderer, etc. etc.
+                    
+                    <a href ="Articles/RPGCreator/content.html" target="_blank">Read more</a>.
+                    
+                    <br><br>
+                    
+                    <table>
+                        <tr>
+                            <td></td>
+                            <td><iframe id = "video" src="https://drive.google.com/file/d/0ByMgjmjcPctfZ0xrdWprVGVseXM/preview" allowfullscreen="1"></iframe></td>   
+                            <td></td>
+                    
+                        </tr>
+                    
+                    </table>
+                    
+                    <br><br>
+                    C#, Cg, XML, Lua dynamic language interpretation, custom scripting API, cross-platform development
                 
                 </p>
                 
@@ -120,15 +192,25 @@
                     Javascript along the way.<br><br>The project files are available <a href = "https://github.com/jfcameron/WebGLGameEngine">here</a>.
                     The project makes use of glMatrix, a useful graphics math library and Cannon a javascript based physics engine.
                     
+                    <a href ="Articles/WebGLGameEngine/content.html" target="_blank">Read more</a>
+                    
                     <br><br>
                     
                     <center>
-                        <a href="Textures/WebGLGameEngine_Rigidbodies.png" target="_blank"><img src="Textures/WebGLGameEngine_Rigidbodies.png" target="_blank" id = "previewImage"></img></a>
-                    
+                        <table>
+                            <tr>
+                                <td></td>
+                                <td id = "contenttd"><a href="Images/WebGLGameEngine_Rigidbodies/Big.png" target="_blank"><img src="Images/WebGLGameEngine_Rigidbodies/Small.png" target="_blank" id = "previewImage"></img></a></td>
+                                <td></td>
+                                
+                            </tr>
+                            
+                        </table>
+                                
                     </center>
                     
                     <br><br>
-                    Languages: Javascript, GLSL. Engine: Custom WebGL based. Platform: Web.
+                    Javascript, GLSL, WebGL, HTML, CSS.
                 
                 </p>
                 
@@ -139,13 +221,22 @@
                     This was a short game I worked on for the global game jam 2015. Team size was 2 people. I didnt end up submitting the game unfortunately,
                     due to an untimely 10 hour power outage on the final day.
                     
-                    <div id = "caption">
-                        <a href="Textures/SpeedKing_SplashScreen.png" target="_blank"><img src="Textures/SpeedKing_SplashScreen.png" target="_blank"></img></a>
-
-                    </div>
+                    <a href ="Articles/SpeedKing/content.html" target="_blank">Read more</a>
                     
                     <br><br>
-                    Languages: C#, Cg. Engine: Unity. Platform: Android, PC.
+                 
+                    <table>
+                        <tr>
+                            <td></td>
+                            <td id = "contenttd"><a href="Images/SpeedKing_SplashScreen/Big.png" target="_blank"><img src="Images/SpeedKing_SplashScreen/Small.png" target="_blank" id = "previewImageWide"></img></a></td>
+                            <td></td>
+                            
+                        </tr>
+                    
+                    </table>
+                    
+                    <br><br>
+                    C#, Cg, Unity, Android development.
                 
                 </p>
                 
@@ -153,27 +244,24 @@
                 
                 <h1>Railshooter, 2014</h1>
                 <p>
-                    A 3D railshooter in the vein of StarFox.
+                    A 3D railshooter in the vein of StarFox. The player is constrained to a 2D coordinate within a 3D plane that moves from node to node. 
                     
-                    <div id = "caption">
-                        <iframe id = "video" src="https://docs.google.com/file/d/0ByMgjmjcPctfS2lUWmY2OVFXVzQ/preview" allowfullscreen="1"></iframe><br>
-                        testasdf
-                    
-                    </div>
+                    <a href ="Articles/Railshooter/content.html" target="_blank">Read more</a>.
                     
                     <br><br>
-                    Languages: C#, Cg. Engine: Unity. Platform: PC.
-                
-                </p>
-                
-                <br>
-                
-                <h1>Tower defense, 2014</h1>
-                <p>
-                    2D game written from scratch for windows. Featured a directx based renderer, xml file reading/writing, an implementation of A* pathfinding.
+                    
+                    <table>
+                        <tr>
+                            <td></td>
+                            <td><iframe id = "video" src="https://drive.google.com/file/d/0ByMgjmjcPctfZ0xrdWprVGVseXM/preview" allowfullscreen="1"></iframe></td>   
+                            <td></td>
+                    
+                        </tr>
+                    
+                    </table>
                     
                     <br><br>
-                    Language: C++. Engine: Custom Direct3D based. Platform: Windows PC.
+                    C#, Cg, Unity.
                 
                 </p>
                 
@@ -185,8 +273,24 @@
                     linked the engine and the game together. Games ran on a separate thread from the engine to prevent bad game code from freezing the application.
                     The project contained two games: a space shooter and a minesweeper clone.
                     
+                    <a href ="Articles/2DGameCollection/content.html" target="_blank">Read more</a>
+                    
+                    <center>
+                        <table>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                
+                            </tr>
+                        
+                        </table>
+                    
+                    </center>
+                    
                     <br><br>
-                    Language: C#. Engine: Custom XNA based. Platform: Windows PC.
+                    
+                    C#, XNA, Multithreading.
                 
                 </p>
                 
@@ -196,51 +300,81 @@
                 <p>
                     A snake clone written in C using the C89 standard.
                     
+                    <a href ="Articles/CSnake/content.html" target="_blank">Read more</a>
+                    
                     <br><br>
                     
                     <center>
-                        <a href="Textures/Snake_Intro.png" target="_blank" ><img src="Textures/Snake_Intro.png" id = "previewImage"></img></a>
-                        <a href="Textures/Snake_MidGame.png" target="_blank"><img src="Textures/Snake_MidGame.png" id = "previewImage"></img></a>
-                        <a href="Textures/Snake_Died.png" target="_blank"><img src="Textures/Snake_Died.png" id = "previewImage"></img></a>
                     
+                        <table>
+                            <tr>
+                                <td id = "contenttd"><a href="Images/Snake_Intro/Big.png" target="_blank" ><img src="Images/Snake_Intro/Small.png" id = "previewImageWide"></img></a></td>
+                                <td id = "contenttd"><a href="Images/Snake_MidGame/Big.png" target="_blank"><img src="Images/Snake_MidGame/Small.png" id = "previewImageWide"></img></a></td>
+                                <td id = "contenttd"><a href="Images/Snake_Died/Big.png" target="_blank"><img src="Images/Snake_Died/Small.png" id = "previewImageWide"></img></a></td>
+                                
+                            </tr>
+                            
+                        </table>
+
                     </center>
                     
                     <br><br>
-                    Language: C. Platform: Windows Console.
+                    C programming.
                 
                 </p>
                 
-                <br><br><br>
                 <h2><a name="SHADERS"></a>Shaders</h2>
                 
                 <h1>Terrain maps on the GPU, 2015</h1>
                 <p>
                     Demonstrates the power of shader programs to create realtime interactive terrain environments. Takes advantage of Shader model 5.0, using a geometry shader
-                    to add foliage to the scene. Height displacement, texturing, additional geometry are all done according to a single texture map input, and all within a single shader program. <a href ="UnityDemos/ufo_dx11.html">Click for more information & interactive demo</a>.
+                    to add foliage to the scene. Height displacement, texturing, additional geometry are all generated in the shader according to a single texture map input. 
+                    
+                    <a href ="Articles/TerrainMaps/content.html" target="_blank">Read more</a>
+                    
+                    <br><br>
                     
                     <center>
-                        <a href="Textures/GPU_Terrain.png" target="_blank" ><img src="Textures/GPU_Terrain.png" id = "previewImage"></img></a>
                     
+                        <table>
+                            <tr>
+                                <td></td>
+                                <td id = "contenttd"><a href="Images/GPU_Terrain/Big.png" target="_blank" ><img src="Images/GPU_Terrain/Small.png" id = "previewImageWide"></img></a></td>
+                                <td></td>
+                                
+                            </tr>
+                            
+                        </table>
+                        
                     </center>
                     
                     <br><br>
-                    Language: C# and Cg. Platform: Unity.
+                    C#, Cg, Unity.
                 
                 </p>
                 
 
                 <h1>Conway's Game of Life in a compute shader, 2015</h1>
                 <p>
-                    asfdasfd
+                    Implementation of Conway's Game of Life in a Direct X compute shader. Demonstrates how a shader program can be used to solve highly iterative but non-graphical
+                    problems. The rules of Game of Life are quite simple. Given the way that shader programming makes you pose the problem makes the source code very legible.
                     
-                    <div id = "caption">
-                        <iframe id = "video" src="https://drive.google.com/file/d/0ByMgjmjcPctfRG5NQmZfY3I1QlU/preview" allowfullscreen="1"></iframe><br>
-                        testasdf
-                    
-                    </div>
+                    <a href ="Articles/ConwaysGameOfLifeInAComputeShader/content.html" target="_blank">Read more</a>
                     
                     <br><br>
-                    Language: C# and HLSL. Platform: Unity.
+                    
+                    <table>
+                        <tr>
+                            <td></td>
+                            <td><iframe id = "video" src="https://drive.google.com/file/d/0ByMgjmjcPctfRG5NQmZfY3I1QlU/preview" allowfullscreen="1"></iframe></td>
+                            <td></td>
+                            
+                        </tr>
+                        
+                    </table>
+                    
+                    <br><br>
+                    C#, HLSL, Unity.
                 
                 </p>
                 
@@ -251,13 +385,25 @@
                     Here I wrote a hardware accellerated voxel renderer which was much, much better. By encoding voxel data into textures, I could build voxel shapes in a
                     geometry shader at extremely high speeds.
                     
+                    <a href ="Articles/VoxelRenderingOnTheGPU/content.html" target="_blank">Read more</a>
+                    
+                    <br><br>
+                    
                     <center>
-                        <a href="Textures/GPU_Voxel_Rendering.png" target="_blank" ><img src="Textures/GPU_Voxel_Rendering.png" id = "previewImage"></img></a>
+                        <table>
+                            <tr>
+                                <td></td>
+                                <td id = "contenttd"><a href="Images/GPU_Voxel_Rendering/Big.png" target="_blank" ><img src="Images/GPU_Voxel_Rendering/Small.png" id = "previewImageWide"></img></a></td>
+                                <td></td>
+                                
+                            </tr>
+                        
+                        </table>
                     
                     </center>
                     
                     <br><br>
-                    Language: C# and Cg. Platform: Unity.
+                    C#, Cg, Unity.
                 
                 </p>
 
@@ -269,7 +415,9 @@
             </div>
             
         </div>
-       
+     
+        <script type="text/javascript" src="JS/Presentation/StagingLabel.js"></script>
+     
     </body>
     
 </html>

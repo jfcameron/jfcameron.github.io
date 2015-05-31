@@ -20,7 +20,7 @@ Author: Joseph Cameron
 <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
 <meta content="utf-8" http-equiv="encoding">
 
-<script id="Vertex" type = "GLSL">
+<script id="Vertex">
     //***************
     // Vertex Formats
     //***************
@@ -59,7 +59,7 @@ Author: Joseph Cameron
             //Model space operations     
             position *= _ModelScaleMatrix;
             
-            //position = rotateAroundY(position, _Time);
+            position = rotateAroundY(position, _Time);
             
             position *= _ModelRotationMatrix;
             
@@ -91,7 +91,7 @@ Author: Joseph Cameron
   
  </script>
 
-<script id="Fragment" type = "GLSL">
+<script id="Fragment">
     //Indicate byte size for float type
     precision mediump float;
     

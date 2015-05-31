@@ -1,0 +1,18 @@
+/* 
+    Filename: overrides.css
+    Description: redefines style where necessary for the specific article
+    
+*/
+
+#wrapper
+{
+    height:2500px; 
+    
+}
+
+#main
+{
+    height:2000px;
+    
+}
+

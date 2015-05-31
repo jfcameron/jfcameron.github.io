@@ -9,8 +9,9 @@
     <!--**************-->
     <!-- CSS includes -->
     <!--**************-->
-    <link rel="stylesheet" href="../CSS/Main.css" type="text/css"/>
-    <link rel="stylesheet" href="../CSS/UFO_Demo_Overrides.css" type="text/css"/>
+    <link rel="stylesheet" href="../../CSS/Main.css" type="text/css"/>
+    <link rel="stylesheet" href="../../CSS/Article.css" type="text/css"/>
+    <link rel="stylesheet" href="overrides.css" type="text/css"/>
     
     <!--*************-->
     <!-- JS includes -->
@@ -25,11 +26,20 @@
     <title>Joseph Cameron - Game Programmer Portfolio</title>
     
 	<body>
+        <script type="text/javascript" src="../../JS/Presentation/BackgroundScroller.js"></script>
+    
         <div id="wrapper">
             <div id="main">
-                <!--Unity player-->
+                <!--Document head-->
                 <center>
-                    <p>UFO dx11<br><a href="#DEMO">Demo</a> | <a href="#DESCRIPTION">Description</a> | <a href="../index.html">Home</a></p>
+                    <p>
+                        GPU Terrain Maps
+                        <br>
+                        <a href="#DEMO">Demo</a> | <a href="#DESCRIPTION">Description</a> | <a href="../../index.html">Home</a>
+                        
+                    </p>
+                                        
+                    <!--Document head content-->
                     <div class="content">
                         <a name = "DEMO"></a>
                         <div id="unityPlayer">
@@ -51,11 +61,12 @@
                     
                 </center>
                 
-                <!--Text document-->
                 <p>Controls: WASD to move, QE to rotate</p>
                 
                 <br>
                 
+                <!--Text document-->
+
                 <h1><a name = "DESCRIPTION"></a> Description</h1>
                 <p>
                     The Shader Model 5.0 program consists of a vertex shader, geometry and a fragment shader. The Shader Model 3.0 fallback program lacks the geometry shader.

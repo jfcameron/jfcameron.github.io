@@ -1,6 +1,6 @@
 /* 
-    Filename: UFO_Demo_Overrides.css
-    Description: redefines style where necessary for the UFO demo
+    Filename: overrides.css
+    Description: article overrides
     
 */
 
@@ -19,6 +19,34 @@
 
 }
 
+#video
+{
+    /* Position and size */
+    display: block;
+    width:622px;
+    height:350px;
+    
+    /* Border style */
+    border: 15px;
+    padding: 10px 10px; 
+    background: #2f2f2f;
+    
+}
+
+#canvas
+{
+    /* Position and size */
+    display: block;
+    width:622px;
+    height:350px;
+    
+    /* Border style */
+    border: 15px;
+    padding: 10px 10px; 
+    background: #000000;
+    
+}
+
 #main
 {
     /* Display */
@@ -31,6 +59,8 @@
     top:30px;
     height:2000px;
     
+    height:100%;
+    
     /* Padding */
     margin-left: auto;
     margin-right: auto;
@@ -40,4 +70,3 @@
     padding-left: 10px;
     
 }
-

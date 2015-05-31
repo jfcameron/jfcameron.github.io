@@ -1,0 +1,66 @@
+----------------
+Short term
+---------------
+children gameobjects should inherit parent rotation, position
+
+Refactor hardcoded light dir, color, replace with uniforms. Add ambient light, add specular lighting.
+
+Add parent translation, rotation, scaling to model matrix retrieval before drawing.
+
+Fix rigidbody->mesh rotation data
+
+Add ambient light, 
+
+add point lights
+    Check frag instruction limit for webgl standards.
+    Write point light component, manages point light uniform blocks.
+
+add shadowmaps
+
+add post processing effects
+
+Opaque.glsl: Move light pos to uniform
+
+-----------
+Long term
+---------
+Lighting system
+
+Add additional sets of uv attributes, incase custom vertex data is required.
+
+Default uniforms like _Time, _MVP, _Model, _VP
+
+Create VBOs for basic shapes: circle, sphere, pyramid.
+
+---------
+DONE
+---------
+Decouple primary camera from Graphics.js
+    Add activeCamera reference in graphics,
+    Write camera component: sets up viewport info, view, perspective mats.
+
+Incorporate a physics engine
+Camera controls in demo scene
+Added normal to vertex attributes
+Fixed viewmatrix. Currently rotate and translate is backwards (translate -> rotate), meaning camera always orbits zero.
+Decoupled demo scene from Game.js.
+Wrote "opaque" shader
+hardcoded 1 camera translation
+hardcoded 1 camera perspective
+viewport view
+model scale
+model rotation
+model translation
+VBO for cube
+programmable draw call for gameobjects
+shaderprogram collection
+texture collection
+lambda find for arrays
+Vertex data for Tri
+Vertex data for Quad
+Library definitions for x,y,z rotations
+Fix GLSL function library not loading issue
+Add model matrix
+Add orthographic projection matrix
+Render textured quad
+Render NVPC triangle
