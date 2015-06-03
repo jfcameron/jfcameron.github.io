@@ -3,6 +3,7 @@
     <head>
         <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
         <meta content="utf-8" http-equiv="encoding">
+        <meta name="viewport" content="width=device-width; target-densityDpi=device-dpi;" />
         
     </head>
 
@@ -11,11 +12,10 @@
     <!--**************-->
     <link rel="stylesheet" href="CSS/Main.css" type="text/css"/>
     
-
-    
     <!--*************-->
     <!-- JS includes -->
     <!--*************-->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <!--This is a custom JS, WebGL game engine I wrote for my portfolio banner.-->
     <!--The project is available for download from my github account here:     -->
     <!--https://github.com/jfcameron/WebGLGameEngine                           -->
@@ -48,7 +48,6 @@
     <!--Nonstandard scripts-->
     <script type="text/javascript" src="JS/Engine/BootLoader.js"></script><!--Forces engine to load before document is ready. May move into engine repo at some point.-->
     
-    
     <!--*************************-->
     <!-- Shader program includes -->
     <!--*************************-->
@@ -77,7 +76,8 @@
             </div>
         
             <div id = "main">   
-                <small><a href="#GAME">Games</a> | <a href="#SHADERS">Shaders</a> | <a href="Resume/JosephCameron_Resume.pdf" target="_blank">Resume</a> | <a href="https://github.com/jfcameron" target="_blank">GitHub</a></small>            
+                <small><a href="#PROJECTS">Projects</a> | <a href="Resume/JosephCameron_Resume.pdf" target="_blank">Resume</a> | <a href="https://github.com/jfcameron" target="_blank">GitHub</a></small>            
+                
                 <h1>Joseph Cameron - Game Programmer Portfolio</h1>
                 <p>
                     Hello! I'm a recent graduate of the Game Development program at Algonquin College. Click here to take a look at my
@@ -95,11 +95,35 @@
                     
                     <br><br><br><br><br>
                     
-                    <h2><a name="GAME"></a>Games</h2>
+                    <h2><a name="PROJECTS"></a>Projects</h2>
                 
                 </p>
                 
-                <h1>Sushi Joint Rumble, 2014-2015</h1>
+                <h1>Conway's Game of Life in a compute shader</h1>
+                <p>
+                    Implementation of Conway's Game of Life in a Direct X compute shader. Demonstrates how a shader program can be used to solve highly iterative but non-graphical
+                    problems. The rules of Game of Life are quite simple. Given the way that shader programming makes you pose the problem makes the source code very legible.
+                    
+                    <a href ="Articles/ConwaysGameOfLifeInAComputeShader/content.html" target="_blank">Demo & full article</a>
+                    
+                    <br>
+                    
+                    <table>
+                        <tr>
+                            <td></td>
+                            <td><iframe id = "video" src="https://drive.google.com/file/d/0ByMgjmjcPctfRG5NQmZfY3I1QlU/preview" allowfullscreen="1"></iframe></td>
+                            <td></td>
+                            
+                        </tr>
+                        
+                    </table>
+                    
+                    <br><br>
+                    C#, HLSL, Unity.
+                
+                </p>
+                
+                <h1>Sushi Joint Rumble</h1>
                 <p>
                     A beat 'em up game with RPG leveling, skill unlocking, item purchasing.
                     This was the 3 semester long "capstone" project that is the final part of the Algonquin College Game Development program. I worked as the lead programmer on 5 man team.
@@ -127,7 +151,7 @@
                 
                 </p>
                 
-                <h1>Tower Defense, 2014</h1>
+                <h1>Tower Defense</h1>
                 <p>
                     A 2D tower defense game I wrote from scratch. Renderer uses Direct X 9. Written in C++. I'm very happy with the technical design of this project.
                     The code is separated into a number separate projects and compiled together.
@@ -161,7 +185,7 @@
                 
                 <br>
                 
-                <h1>RPG creator - Level editor & NPC scripting editor, 2015</h1>
+                <h1>RPG creator - Level editor & NPC scripting editor</h1>
                 <p>
                     Hardware accelerated 2D tile renderer, etc. etc.
                     
@@ -186,7 +210,7 @@
                 
                 <br>
                 
-                <h1>WebGL Game Engine, 2015</h1>
+                <h1>WebGL Game Engine</h1>
                 <p>
                     Making something in WebGL seemed like a good idea for this portfolio. It's on the web, afterall. It was also a chance to use OpenGL in a new environment, and learn something about
                     Javascript along the way.<br><br>The project files are available <a href = "https://github.com/jfcameron/WebGLGameEngine">here</a>.
@@ -214,9 +238,7 @@
                 
                 </p>
                 
-                <br>
-                
-                <h1>Speed King, 2015</h1>
+                <h1>Speed King</h1>
                 <p>
                     This was a short game I worked on for the global game jam 2015. Team size was 2 people. I didnt end up submitting the game unfortunately,
                     due to an untimely 10 hour power outage on the final day.
@@ -242,7 +264,7 @@
                 
                 <br>
                 
-                <h1>Railshooter, 2014</h1>
+                <h1>Railshooter</h1>
                 <p>
                     A 3D railshooter in the vein of StarFox. The player is constrained to a 2D coordinate within a 3D plane that moves from node to node. 
                     
@@ -265,9 +287,7 @@
                 
                 </p>
                 
-                <br>
-                
-                <h1>2D game collection, 2013</h1>
+                <h1>2D game collection</h1>
                 <p>
                     The project itself served as a context for games. Games would be compiled as .libs and then included in the application project, which
                     linked the engine and the game together. Games ran on a separate thread from the engine to prevent bad game code from freezing the application.
@@ -323,9 +343,9 @@
                 
                 </p>
                 
-                <h2><a name="SHADERS"></a>Shaders</h2>
+                <br>
                 
-                <h1>Terrain maps on the GPU, 2015</h1>
+                <h1>Terrain maps on the GPU</h1>
                 <p>
                     Demonstrates the power of shader programs to create realtime interactive terrain environments. Takes advantage of Shader model 5.0, using a geometry shader
                     to add foliage to the scene. Height displacement, texturing, additional geometry are all generated in the shader according to a single texture map input. 
@@ -353,32 +373,7 @@
                 
                 </p>
                 
-
-                <h1>Conway's Game of Life in a compute shader, 2015</h1>
-                <p>
-                    Implementation of Conway's Game of Life in a Direct X compute shader. Demonstrates how a shader program can be used to solve highly iterative but non-graphical
-                    problems. The rules of Game of Life are quite simple. Given the way that shader programming makes you pose the problem makes the source code very legible.
-                    
-                    <a href ="Articles/ConwaysGameOfLifeInAComputeShader/content.html" target="_blank">Demo & full article</a>
-                    
-                    <br><br>
-                    
-                    <table>
-                        <tr>
-                            <td></td>
-                            <td><iframe id = "video" src="https://drive.google.com/file/d/0ByMgjmjcPctfRG5NQmZfY3I1QlU/preview" allowfullscreen="1"></iframe></td>
-                            <td></td>
-                            
-                        </tr>
-                        
-                    </table>
-                    
-                    <br><br>
-                    C#, HLSL, Unity.
-                
-                </p>
-                
-                <h1>Voxel renderering on the GPU, 2014</h1>
+                <h1>Voxel renderering on the GPU</h1>
 
                 <p>
                     Here are a couple of different demos I made while learning about procedural terrain. The first one here is not very fast, it was written entirely on the cpu.
@@ -417,7 +412,7 @@
         </div>
      
         <script type="text/javascript" src="JS/Presentation/StagingLabel.js"></script>
-     
+        
     </body>
     
 </html>
