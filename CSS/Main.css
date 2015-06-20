@@ -258,23 +258,7 @@ td
     
 }
 
-#bgTest
-{
-    position: fixed;
-    background-image: url("../Textures/bgtest.png");
-    background-color: #101A1A;
-    background-size: 256px;
-    background-position: center bottom;
-    background-repeat:repeat; 
-    background-attachment: fixed;
-    
-    width: 100%;
-    height: 100%;
-    
-    top: 0px;
-    right: 0px;
-    
-}
+
 
 body
 {
@@ -309,7 +293,37 @@ body
     text-align:     left ;    
     
     font-weight: normal;
+    
+   
 
+}
+
+/* BG scroll animation */
+@keyframes animatedBackground 
+{
+	from { background-position: 0 0; }
+	to { background-position: 256px -256px; }
+
+}
+
+#background
+{
+    animation: animatedBackground 4.5s linear infinite;
+
+    position: fixed;
+    background-image: url("../Textures/bgtest.png");
+    background-color: #101A1A;
+    background-size: 256px;
+    background-position: center bottom;
+    background-repeat:repeat; 
+    background-attachment: fixed;
+    
+    width: 100%;
+    height: 100%;
+    
+    top: 0px;
+    right: 0px;
+    
 }
 
 iframe 
@@ -413,6 +427,9 @@ image
     color: white;
 
 }
+/* End of Div with fixed ratio */
+
+
 
 /*  Link styling    */
 a:link {text-decoration:none;}   

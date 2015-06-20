@@ -25,7 +25,7 @@ function BackgroundScroller()
         bgCanvas = document.createElement('div');
         bgCanvas.id = 'bgTest';
         document.getElementsByTagName('body')[0].appendChild(bgCanvas);
-        setInterval(bgScroll,16);
+        //setInterval(bgScroll,16);
     
     };
     
