@@ -308,7 +308,7 @@ body
 
 #background
 {
-    animation: animatedBackground 4.5s linear infinite;
+    animation: animatedBackground 8.5s linear infinite;
 
     position: fixed;
     background-image: url("../Textures/bgtest.png");

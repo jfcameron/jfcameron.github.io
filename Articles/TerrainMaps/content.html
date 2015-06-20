@@ -8,62 +8,62 @@
     </head>
 
     <script type='text/javascript' src='https://ssl-webplayer.unity3d.com/download_webplayer-3.x/3.0/uo/jquery.min.js'></script>
-		<script type="text/javascript">
-		<!--
-		var unityObjectUrl = "http://webplayer.unity3d.com/download_webplayer-3.x/3.0/uo/UnityObject2.js";
-		if (document.location.protocol == 'https:')
-			unityObjectUrl = unityObjectUrl.replace("http://", "https://ssl-");
-		document.write('<script type="text\/javascript" src="' + unityObjectUrl + '"><\/script>');
-		-->
-		</script>
-		<script type="text/javascript">
-		<!--
-			var config = {
-				width: "100%", 
-				height: "100%",
-				params: { enableDebugging:"0" }
-				
-			};
-			var u = new UnityObject2(config);
+        <script type="text/javascript">
+        <!--
+        var unityObjectUrl = "http://webplayer.unity3d.com/download_webplayer-3.x/3.0/uo/UnityObject2.js";
+        if (document.location.protocol == 'https:')
+            unityObjectUrl = unityObjectUrl.replace("http://", "https://ssl-");
+        document.write('<script type="text\/javascript" src="' + unityObjectUrl + '"><\/script>');
+        -->
+        </script>
+        <script type="text/javascript">
+        <!--
+            var config = {
+                width: "100%", 
+                height: "100%",
+                params: { enableDebugging:"0" }
+                
+            };
+            var u = new UnityObject2(config);
 
-			jQuery(function() {
+            jQuery(function() {
 
-				var $missingScreen = jQuery("#unityPlayer").find(".missing");
-				var $brokenScreen = jQuery("#unityPlayer").find(".broken");
-				$missingScreen.hide();
-				$brokenScreen.hide();
-				
-				u.observeProgress(function (progress) {
-					switch(progress.pluginStatus) {
-						case "broken":
-							$brokenScreen.find("a").click(function (e) {
-								e.stopPropagation();
-								e.preventDefault();
-								u.installPlugin();
-								return false;
-							});
-							$brokenScreen.show();
-						break;
-						case "missing":
-							$missingScreen.find("a").click(function (e) {
-								e.stopPropagation();
-								e.preventDefault();
-								u.installPlugin();
-								return false;
-							});
-							$missingScreen.show();
-						break;
-						case "installed":
-							$missingScreen.remove();
-						break;
-						case "first":
-						break;
-					}
-				});
-				u.initPlugin(jQuery("#unityPlayer")[0], "ufo_dx11.unity3d");
-			});
-		-->
-		</script>
+                var $missingScreen = jQuery("#unityPlayer").find(".missing");
+                var $brokenScreen = jQuery("#unityPlayer").find(".broken");
+                $missingScreen.hide();
+                $brokenScreen.hide();
+                
+                u.observeProgress(function (progress) {
+                    switch(progress.pluginStatus) {
+                        case "broken":
+                            $brokenScreen.find("a").click(function (e) {
+                                e.stopPropagation();
+                                e.preventDefault();
+                                u.installPlugin();
+                                return false;
+                            });
+                            $brokenScreen.show();
+                        break;
+                        case "missing":
+                            $missingScreen.find("a").click(function (e) {
+                                e.stopPropagation();
+                                e.preventDefault();
+                                u.installPlugin();
+                                return false;
+                            });
+                            $missingScreen.show();
+                        break;
+                        case "installed":
+                            $missingScreen.remove();
+                        break;
+                        case "first":
+                        break;
+                    }
+                });
+                u.initPlugin(jQuery("#unityPlayer")[0], "ufo_dx11.unity3d");
+            });
+        -->
+        </script>
     
     <!--**************-->
     <!-- CSS includes -->
@@ -124,72 +124,102 @@
         
             <div id = "main">   
                 <img class="left" src="../../Images/SushiJointRumble_TitleScreen/Small.png" target="_blank"></img>
-            
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-                    sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+                <h1>Overview:</h1>
                 
+                <p>
+                    Terrain maps have been used in video games since the 1990s. They are 2d textures, traditionally 8bit grayscale that represent height 
+                    values in a terrain mesh at a position along its surface. They are an effective way to store topographic data, and an easy way to 
+                    generate and present realistic terrain in real time. They are small, easy to use and intuitive to make. Artists can hand draw them in a 
+                    graphics editor like photoshop, or a noise generating program can be written to output noise data to a height map image.
+                
+                </p>
+                    
+                <p>
+                    The earliest well known games to use the technology were the comanche series. Although the games used a voxel renderer to draw the image, 
+                    the data used was a simple heightmap.
+
+                </p>
+                
+                <p>                    
+                    As shader technology has improved, more complex terrain mapping techniques have become possible. Texture lookups in the vertex shader 
+                    allowed height maps to be read during render time. This allows for highly interactive terrain. An example of this can be seen in the game 
+                    startopia. Startopia is a great example of interactivity between game logic and a shader program. In order to interact with the terrain 
+                    geometry, its a matter of converting player inputs into uv positions within the heightmap texture and then modifying the color channels 
+                    to change the amount of displacement when the texture is processed by the shader program.
+                    
+                </p>
+
+                <p>
+                    The new shader types that have come with Shader Model 5.0 have breathed new life into terrain map techniques. With tesselator, it is 
+                    possible to adjust mesh resolution based on camera distance. This means we can greatly increase mesh complexity up close and decrease it 
+                    far away where the player can't appreciate it. In fact, Nvidia released a demo to siggraph demonstrating this. It can be found here.
+                    
                 </p>
                 
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-                    sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    The geometry shader allows us to add entirely new mesh detail to the input mesh. Unlike the tesselator it isn’t limited to simply 
+                    modifying the input, although it certainly can do that as well. The geometry shader is therefore appropriate for creating detail like 
+                    grass, foliage, etc. Unfortunately, due to the extremely restrictive primitive emission limits, more complicated meshes aren’t presently 
+                    viable for generation through the geometry shader. Complex mesh generation is however possible through instancing. Instancing allows the 
+                    programmer to specify a number of instances of a geometry shader to operate on the same set of primitives. Using the instance ID as an 
+                    offset, its possible for a set of geometry shaders to wind pieces of a complex mesh together and then pass this mesh as normal to the 
+                    fragment shader for coloring. However instancing is expensive.
+
+                </p>
+
+                <h1>Accompanying implementation:</h1>
                 
+                <p>                
+                    The accompanying terrain generator will demonstrate the use of a geometry pass with terrain maps. The shader program will consist of 3 
+                    shaders: vertex, geometry, fragment. The vertex shader is responsible for height displacement and normal recalculation, the geometry 
+                    shader will add foliage to the terrain and the fragment shader will calculate uv offsets and apply diffuse color, lighting, snow cover, 
+                    water and fog coloring. The demo will also take advantage of the dynamic nature of the program. Since the terrain map is being processed 
+                    and rendered in real time, theres no excuse to make the demo dynamic. The shader will demonstrate a terrain rendering system that places 
+                    the player at the center of a fixed plane that is used as a canvas to render the terrain around the player as the player moves throughout 
+                    the world.
+                    
                 </p>
                 
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-                    sunt in culpa qui officia deserunt mollit anim id est laborum.
-                
+                    For input, the shader will use a 100x100 vertex plane mesh, various diffuse color textures for coloring and a texture map. Unlike a 
+                    traditional height map, the terrain map represents more than height data. Height data is stored in the red channel as a 0 - 1 value, an 
+                    accompanying floating point uniform serves as a multiplier to produce the final height. Foliage types are stored in the green channel. 
+                    The shader only demonstrates 1 foliage type, tree at 255, but could easily be extended to display a variety of foliage types.
+
                 </p>
+                    
+                <p>
+                    The red channel is used by the vertex shader to displace the vertex height. The vertex shader then recalculates the vertex normal before 
+                    releasing the vertex for primitive assembly. The geometry shader pulls in primitives as triangles. The first thing it does is pass 
+                    through the incoming triangle to the primitive output stream. Then it uses the primitive’s mesh coordinates x and z components (its 
+                    position within the input plane mesh), converts those to uvs (mesh size is 100x100, so divide the coord by this, giving you the 
+                    equivalent position in uv space) and look at the value of the green channel in the texel at that position. Depending on the value in the 
+                    green channel, a different kind of foliage will be generated, which means additional geometry has to be added to the output stream. Two 
+                    intersecting, orthogonal quads are generated and placed at the height of the current triangle. Depending on the primitive’s height, the 
+                    uvs for these quads are offset, so that during coloring in the fragment shader, the demo will render snow covered trees at high 
+                    elevations, green trees at low elevations. A slight time variant horizontal offset is added to the top of the quads too to represent the 
+                    breeze.
+
+                </p>
+
+                <p>
+                    Part of the fragment format is an int that stores type. These types are Terrain, Foliage1, Foliage2, etc. Type is used to determine which 
+                    diffuse texture to use. Diffuse texture used for the terrain holds coloring for grass, which is used when the normal is pointing up, and 
+                    rocks, when the normal is pointing to the side. As the frag’s height increases, the color is increasingly blended white to represent 
+                    mountain peak snow covering. If the height is sufficiently low, there is it is blended blue to represent water. The demo camera is setup 
+                    at a perspective where the water coloring trick works quite well.
+
+                </p>
+
+                <h1>Closing thoughts:</h1>
                 
                 <p>
-                    <img class="right" src="../../Images/SushiJointRumble_TitleScreen/Small.png" target="_blank"></img>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-                    sunt in culpa qui officia deserunt mollit anim id est laborum.
-                
-                </p>
-                
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-                    sunt in culpa qui officia deserunt mollit anim id est laborum.
-                
-                </p>
-                
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-                    sunt in culpa qui officia deserunt mollit anim id est laborum.
-                
-                </p>
-                
-                <img class="center" src="../../Images/SushiJointRumble_TitleScreen/Small.png" target="_blank"></img>
-                
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-                    sunt in culpa qui officia deserunt mollit anim id est laborum.
-                
-                </p>
-                
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-                    sunt in culpa qui officia deserunt mollit anim id est laborum.
-                
+                    Terrain mapping has always been a great solution for rendering topographies. Using tessellators, its possible to dynamically adjust the 
+                    mesh’s level of detail and using geometry shaders, its possible to encode geometry data such as foliage directly into the terrain map. 
+                    Dynamic tesselation offers an alternative to clipmaps. Geometry shaders offer a GPU based alternative to geometry instancing to quickly 
+                    render surface detail. The new types of shaders has opened up a new GPU based environment for improvement on the initial concept.
+
                 </p>
                
                     
