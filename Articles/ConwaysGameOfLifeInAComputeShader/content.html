@@ -154,40 +154,54 @@
                 
                 <p>
                     The Game of Life simulation is responsible for updating the simulation state and handling user input with the simulation. This is done
-                    with a varying (but large) number of threads on the GPU.
+                    with a varying (but large) number of threads on the GPU. Since the simulation's state
+                    is calculated concurrently, the simulation data is double buffered to prevent collision issues. The program uses one texture as the
+                    input state and another texture as the output state. Whenever the simulation graphics program is dispatched, the two textures are flipped.
+                    Once the simulation has completed updating the data, the texture it wrote to is passed to a traditional fragment shader and used
+                    to color the surface of the various computer screens in the demo scene.
                 
                 </p>
                 
                 <p>
                     By watching the demo video, you may have noticed that the demonstration takes place in a kind of computer lab.
-                    Th
+                    Conceptually, there are 3 spaces in the demo scene. First, there is the 3D space of the computer lab, where the player can move his
+                    character around. Second, there is the 2D screen space of the controller computer. This computer displays a number of buttons that affect
+                    Game of Life simulation parameters (simulation tick rate, state). Third, there is the 2D simulation space, where the game of life simulation takes place.
                 
                 </p>
                 
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-                    sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    Whenever the user clicks the left mouse button, the cursor's corresponding worldspace coordinate is calculated, and a ray is sent from that
+                    position along the users camera direction. If the ray intersects with a computer screen, the worldspace collision coordinate is mulled into
+                    that computer screen's local coordinate system, thereby giving the cursor's position within the virtual display. Depth is discarded, leaving
+                    the program with a 2D display coordinate. If the display was showing the Game of Life simulation, the cursor's position is converted into a
+                    texture coordinate and passed to the simulation's compute shader, to set the corresponding Game of Life cell to alive. If the screen was 
+                    displaying the simulation controls, some AABB to point collisions are calculated, and if the cursor is within a button, some callback 
+                    function is called, resulting in a parameter change in the simulation.
                 
                 </p>
                 
-                <img class="center" src="../../Images/SushiJointRumble_TitleScreen/Small.png" target="_blank"></img>
+                <h1>Implementation of the Game of Life graphics program</h1>
                 
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-                    sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    Here you can take a look at Game of Life simulation compute shader. The program is made up of 3 separate kernels: Main, UserInput, CopyColorBuffer.
+                
+                </p>
+
+                <p>
+                    Main reads the old state from the _Input texture and writes the new state to the _Output texture. Its written from the perspective of a single cell within
+                    the simulation space. The thread group is 3x3, representing the cell that is currently being evaluated and its 8 neighbours.
                 
                 </p>
                 
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-                    sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    UserInput handles user input with the simulation. If _InputDown is true, the cell at _TexelCoordinate is set to alive.
+                    
+                </p>
                 
+                <p>
+                    CopyColorBuffer copies data between the two data buffers.
+                    
                 </p>
                 
                 <!---------SOURCE----------->
