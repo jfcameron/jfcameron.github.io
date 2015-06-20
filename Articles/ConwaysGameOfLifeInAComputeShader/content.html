@@ -12,11 +12,13 @@
     <!--**************-->
     <link rel="stylesheet" href="../../CSS/Main.css" type="text/css"/>
     <link rel="stylesheet" href="../../CSS/Article.css" type="text/css"/>
-        
+	<link rel="stylesheet" href="../../CSS/highlightJS_styles/monokai_sublime.css" type="text/css"/>
+	
     <!--*************-->
     <!-- JS includes -->
     <!--*************-->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script type="text/javascript" src="../../JS/HighlightJS/highlight.pack.js"></script>
 
     <!--***************-->
     <!-- HTML Document -->
@@ -54,6 +56,8 @@
                     sunt in culpa qui officia deserunt mollit anim id est laborum.
                 
                 </p>
+				
+				
                 
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
@@ -113,6 +117,17 @@
                     sunt in culpa qui officia deserunt mollit anim id est laborum.
                 
                 </p>
+				
+				<p>asdf
+					<pre><code class="cpp">
+					<script type="text/javascript">
+					$(".text").load("GameOfLife_ComputeShader_Source.hlsl");
+					
+					</script>
+
+					</code></pre>
+				
+				</p>
                
                     
             </div>
@@ -125,6 +140,7 @@
         </div>
      
         <script type="text/javascript" src="../../JS/Presentation/StagingLabel.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
         
     </body>
     
