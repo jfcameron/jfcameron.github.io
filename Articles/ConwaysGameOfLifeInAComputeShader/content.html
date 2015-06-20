@@ -7,6 +7,21 @@
         
     </head>
 
+		<script>
+		var data;
+		var loadCount = 0;
+		
+		function loadtest()
+		{
+			data[loadCount] = "";
+			data[loadCount] = document.getElementById("GameOfLife_ComputeShader_Source").contentWindow.document.body.innerHTML;
+			alert(data[loadCount].toString());			
+			loadCount++;
+			
+		
+		}
+		</script>
+	
     <!--**************-->
     <!-- CSS includes -->
     <!--**************-->
@@ -19,10 +34,17 @@
     <!--*************-->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script type="text/javascript" src="../../JS/HighlightJS/highlight.pack.js"></script>
+	
+	<!--*************************-->
+    <!-- Source code includes -->
+    <!--*************************-->
+    <iframe id="GameOfLife_ComputeShader_Source" src="GameOfLife_ComputeShader_Source.hlsl" onload=loadtest();></iframe>
 
     <!--***************-->
     <!-- HTML Document -->
     <!--***************-->
+
+	
     <title>Joseph Cameron - Game Programmer Portfolio</title>
     
     <body>    
@@ -119,9 +141,7 @@
                 </p>
 				
 				<p>asdf
-					<pre><code class="cpp">
-					asdf
-
+					<pre><code class="cpp" id = "GameOfLife_ComputeShader_Source_Display">
 					</code></pre>
 				
 				</p>
@@ -139,15 +159,6 @@
         <script type="text/javascript" src="../../JS/Presentation/StagingLabel.js"></script>
 		<script>hljs.initHighlightingOnLoad();</script>
 		
-		<script>
-					$(document).ready(function() 
-					{
-						$(".code").load("GameOfLife_ComputeShader_Source.txt"); 
-						alert("hi");
-					
-					}); 
-		
-		</script>
         
     </body>
     

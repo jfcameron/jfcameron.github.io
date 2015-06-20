@@ -1,3 +1,5 @@
+<html>
+<body>
 //
 // Name: GameOfLife
 // Description: Compute shader implementation of game of life.
@@ -84,3 +86,5 @@ void CopyColorBuffer (uint3 dtid : SV_DispatchThreadID, uint3 Gid : SV_GroupID, 
 	_Input[dtid.xy] = _Output[dtid.xy];
 
 }
+</body>
+</html>
