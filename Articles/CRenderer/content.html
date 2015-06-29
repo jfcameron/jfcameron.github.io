@@ -73,7 +73,7 @@
                 </p>
                 
                 <p>
-                    The project uses OpenGL for portability's sake. Currently, it only requires OpenGL ES 2.0 extensions, which was an API standard I chose because it
+                    The project uses OpenGL for portability's sake. Currently, it only requires OpenGL ES 2.0, which was an API standard I chose because it
                     would be reliably available on all desktop and nearly all mobile platforms.
                 
                 </p>
@@ -89,7 +89,7 @@
                 <h1>Future updates</h1>
                 
                 <p>
-                    I'm happy with the size and performance of the renderer, however there are 2 big things that are missing from it that Id like to take care of before
+                    I'm happy with the size and performance of the renderer, however there are 2 big things that are missing from it that I'd like to take care of before
                     I would consider it ready to use. 
                 
                 </p>
@@ -104,11 +104,12 @@
                     2: Implement deferred rendering path. Currently it is forward rendering only.
                     This is more complicated than the FBX loading, because unfortunately, the deferred rendering implementation will vary depending on the OpenGL extensions
                     available on the device. Ideally, I would implement a deferred path for desktop using a shader program that writes the Gbuffer data all in one pass,
-                    and a separate GLES implementation for mobile devices.
+                    and a separate solution for mobile. Once GL ES 3.0 devices become more widely avaialable (GLES 3 adds support for MRT), mobile deferred can be done in the typical
+                    desktop way, but for devices limited to ES 2, it seems like complex lighting models will have to be implemented some other way, via uber shaders for example.
                 
                 </p>
                 
-                <img class="center" src="../../Images/SushiJointRumble_TitleScreen/Small.png" target="_blank"></img>
+                <img class="center" src="../../Images/CRenderer_Windows_And_Android/Small.png" target="_blank"></img>
                 
                 <h1>Implementation of graphics renderer in C</h1>
                 
