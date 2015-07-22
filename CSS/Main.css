@@ -216,6 +216,14 @@
     
 }
 
+.instructions
+{
+    z-index: 1;
+    position: relative;
+    top: -50px;
+
+}
+
 #previewImageWide
 {
     width:   225px ;
