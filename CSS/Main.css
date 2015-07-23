@@ -208,10 +208,10 @@
 
 #previewImage
 {
-    /*width:   266px ;*/
-    height:  200px ;
-    
-    width: 100%;
+    width:   100% ;
+    height: 100%;
+    /*height:  200px ;*/
+    /*width: 100%;    */
 
     
 }
@@ -227,9 +227,9 @@
 #previewImageWide
 {
     width:   225px ;
-    height:  175px ;
-    
-    width: 100%;
+    /*height:  175px ;*/
+    /*                */
+    /*width: 100%;    */
 
 
 }
@@ -262,6 +262,7 @@ table
 td
 {
     width: 33.333%;
+    height: 100px;
     
     
 }
@@ -394,8 +395,8 @@ p
 
 image
 {
-    width:100px;
-    height:100px;
+    width:100%;
+    height:100%;
     
 }
 
@@ -419,7 +420,7 @@ image
 .RatioWrapper:after 
 {
     padding-top: 35.0%;
-    /* 16:9 ratio */
+    /* ?? ratio */
     display: block;
     content: '';
 
@@ -439,6 +440,41 @@ image
 
 }
 /* End of Div with fixed ratio */
+
+/* fixed ratio Images */
+.PreviewImageRatioWrapper
+{
+    min-width: 30%;
+    width: 30%;
+    /* whatever width you want */
+    display: inline-block;
+    position: relative;
+
+}
+
+.PreviewImageRatioWrapper:after 
+{
+    padding-top: 90.0%;
+    /* ?? ratio */
+    display: block;
+    content: '';
+
+}
+
+.PreviewImageRatioContent
+{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    /* fill parent */
+    background-color: deepskyblue;
+    /* let's see it! */
+    color: white;
+
+}
+/* End of fixed ratio Images */
 
 
 
