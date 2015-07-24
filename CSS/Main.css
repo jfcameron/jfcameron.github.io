@@ -82,7 +82,6 @@
 
 #footer
 {
-
     /* Display */            
     display: block;          
     background: #101010;   
@@ -105,6 +104,32 @@
     font-size:      10pt ;   
     color:          #505050 ;
     
+}
+
+#attributions
+{
+    /* Display */            
+    display: block;          
+    /*background: #101010;   */
+                             
+    /* Position, size */     
+    position:absolute;       
+    bottom:10px;
+    left:80%;
+                             
+    /* Padding */            
+    margin-left: auto;       
+    margin-right: auto;
+    padding-top: 10px;  
+
+    /*width: 96.5%;*/    
+                             
+    /* Font */               
+    letter-spacing: 0px  ;   
+    text-align:     left ; 
+    font-size:      10pt ;   
+    color:          #505050 ;
+
 }
 
 #tech
