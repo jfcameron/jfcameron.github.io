@@ -6,9 +6,10 @@ PREFABS.groundObject = function()
     {
         groundObject.setName("Ground");    
         //init mesh
-        groundObject.getMesh().draw = drawTest;
-        groundObject.getMesh().setShader(GRAPHICS.getShader("Opaque"));
+        //groundObject.getMesh().draw = drawTest;
+        groundObject.getMesh().setShader(GRAPHICS.getShader("Island"));
         groundObject.getMesh().setMainTexture(GRAPHICS.getTextures()[2]);
+        groundObject.getMesh().setVertexBuffer(GRAPHICS.getTessellatedPlaneVertexArray());
         //init transform
         groundObject.getTransform().setPosition([0,-10,0]);
         groundObject.getTransform().setScale([100,1,100]);

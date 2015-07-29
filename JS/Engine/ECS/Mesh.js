@@ -41,7 +41,15 @@ function Mesh(ownerGameObject)
     //*******************
     // Material interface
     //*******************    
-    this.draw; //Function pointer to be invoked on draw
+    this.draw = function()
+    {        
+        if (m_Shader.draw != undefined)
+        {
+            m_Shader.draw(this);
+        
+        }
+        
+    };
     
     this.update = function()
     {    
