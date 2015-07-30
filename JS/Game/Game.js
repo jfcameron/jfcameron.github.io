@@ -55,7 +55,7 @@ function Game()
         this.m_RootGameObject.addChild(PREFABS.waterObject());
         this.m_RootGameObject.addChild(PREFABS.namePlateObject());
         //this.m_RootGameObject.addChild(PREFABS.rotatorTest());
-        //this.m_RootGameObject.addChild(PREFABS.groundObject());
+        this.m_RootGameObject.addChild(PREFABS.groundObject());
         
         ////Create sky space //TODO: add sky camera etc.
         //this.m_RootGameObject.addChild(PREFABS.cloudObject([0,10, 10]));
