@@ -53,7 +53,7 @@ function Game()
         //Create scene space
         this.m_RootGameObject.addChild(PREFABS.playerObject());
         this.m_RootGameObject.addChild(PREFABS.waterObject());
-        //this.m_RootGameObject.addChild(PREFABS.namePlateObject());
+        this.m_RootGameObject.addChild(PREFABS.namePlateObject());
         //this.m_RootGameObject.addChild(PREFABS.rotatorTest());
         //this.m_RootGameObject.addChild(PREFABS.groundObject());
         
