@@ -211,7 +211,7 @@ Author: Joseph Cameron
             
             position = _Object2WorldMatrix * position;
             
-            highp float dis =  sqrt(pow(position[0],2.0) + pow(position[2],2.0));
+            highp float dis =  sqrt((position[0]*position[0]) + (position[2]*position[2]));
             
             if (dis > 20.0)
             {    
