@@ -211,11 +211,11 @@ Author: Joseph Cameron
             
             position = _Object2WorldMatrix * position;
             
-            float dis =  sqrt(pow(position[0],2.0) + pow(position[2],2.0));
+            lowp float dis =  sqrt(pow(position[0],2.0) + pow(position[2],2.0));
             
             if (dis > 20.0)
             {    
-                position[1] += 0.0;// (dis*0.25);
+                position[1] += dis;//0.0;// (dis*0.25);
             
             }
             
