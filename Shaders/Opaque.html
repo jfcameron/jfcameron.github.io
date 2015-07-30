@@ -46,10 +46,11 @@ Author: Joseph Cameron
     //Camera pos
     var cameraPosition = GRAPHICS.getActiveCamera().getGameObject().getTransform().getPosition();
     
-    //setup culling
+    //*****************
+    // Set capabilities
+    //*****************
     glContext.enable  (glContext.DEPTH_TEST);
     glContext.enable  (glContext.CULL_FACE);
-    glContext.disable (glContext.CULL_FACE);
     glContext.cullFace(glContext.BACK);
     
     //********************

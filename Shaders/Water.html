@@ -41,11 +41,16 @@ Author: Joseph Cameron
     //Camera pos
     var cameraPosition = GRAPHICS.getActiveCamera().getGameObject().getTransform().getPosition();
     
-    //setup culling
+    //*****************
+    // Set capabilities
+    //*****************
     glContext.enable  (glContext.DEPTH_TEST);
-    glContext.enable  (glContext.CULL_FACE);
-    glContext.disable (glContext.CULL_FACE);
-    glContext.cullFace(glContext.BACK);
+    glContext.enable (glContext.CULL_FACE);
+    glContext.cullFace(glContext.BACK);    
+    
+    glContext.enable (glContext.BLEND);
+    glContext.blendEquation(glContext.FUNC_ADD);
+    glContext.blendFunc( glContext.SRC_ALPHA, glContext.ONE_MINUS_SRC_ALPHA  );
     
     //********************
     // Prepare vertex data
@@ -148,6 +153,8 @@ Author: Joseph Cameron
     // draw
     //*****
     glContext.drawArrays( glContext.TRIANGLES, 0, VertexArray.numItems );
+    
+    glContext.disable (glContext.BLEND);
     
 </div>
 
@@ -295,6 +302,8 @@ Author: Joseph Cameron
             
 			
 			//rvalue = vec4(v_WorldNormal,1.0);
+            
+            rvalue[3] = 0.9;
             
         }
     

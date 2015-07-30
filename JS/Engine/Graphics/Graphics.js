@@ -89,15 +89,16 @@ function Graphics()
     this.initopenglContext = function ()
     {
         console.log("Init");
-    
-        canvas                   = document.getElementById("canvas");
-        glContext                = canvas.getContext( "webgl" ); //must be webgl
-        glContext.viewportWidth  = canvas.width;
-        glContext.viewportHeight = canvas.height;
         
-        //glContext.viewport(0,0,canvas.width,canvas.height);
+        if (canvas == undefined)
+        {
+            canvas                   = document.getElementById("canvas");
+            glContext                = canvas.getContext( "webgl" ); //must be webgl
+            glContext.viewportWidth  = canvas.width;
+            glContext.viewportHeight = canvas.height;
+            
+        }
         
-    
     };
     
     this.initMatricies = function ()
@@ -423,11 +424,14 @@ function Graphics()
                 ([
                     //               x,   y,                  z,   u,   v,  Nx,  Ny,  Nz,
                     size -(size/2) + x - 10, 0.0, size -(size/2) + y - 10, 1.0, 0.0, 0.0, 0.0, 1.0, // 1--0
-                    0.0  -(size/2) + x - 10, 0.0, size -(size/2) + y - 10, 0.0, 0.0, 0.0, 0.0, 1.0, // | /
                     0.0  -(size/2) + x - 10, 0.0, 0.0  -(size/2) + y - 10, 0.0, 1.0, 0.0, 0.0, 1.0, // 2
+                    0.0  -(size/2) + x - 10, 0.0, size -(size/2) + y - 10, 0.0, 0.0, 0.0, 0.0, 1.0, // | /
+                    
+                    
                     size -(size/2) + x - 10, 0.0, size -(size/2) + y - 10, 1.0, 0.0, 0.0, 0.0, 1.0, //    0
-                    0.0  -(size/2) + x - 10, 0.0, 0.0  -(size/2) + y - 10, 0.0, 1.0, 0.0, 0.0, 1.0, //  / |
                     size -(size/2) + x - 10, 0.0, 0.0  -(size/2) + y - 10, 1.0, 1.0, 0.0, 0.0, 1.0, // 1--2
+                    0.0  -(size/2) + x - 10, 0.0, 0.0  -(size/2) + y - 10, 0.0, 1.0, 0.0, 0.0, 1.0, //  / |
+                    
                     
                 ]);
                 
@@ -448,15 +452,24 @@ function Graphics()
     
     handleTextureLoaded = function (image, texture)  //TODO: simplify. User should specify callback via parameter on loadText call
     {
-    
+        
         glContext.bindTexture(glContext.TEXTURE_2D, texture);
-        glContext.texImage2D(glContext.TEXTURE_2D, 0, glContext.RGBA, glContext.RGBA,glContext.UNSIGNED_BYTE, image);
-        glContext.texParameteri(glContext.TEXTURE_2D, glContext.TEXTURE_MAG_FILTER, glContext.GL_NEAREST);
-        glContext.texParameteri(glContext.TEXTURE_2D, glContext.TEXTURE_MIN_FILTER, glContext.GL_NEAREST);
-        glContext.generateMipmap(glContext.TEXTURE_2D);
+        {
+            //Setup texture format
+            glContext.texImage2D(glContext.TEXTURE_2D, 0, glContext.RGBA, glContext.RGBA,glContext.UNSIGNED_BYTE, image);
+            
+            //Texture parameters
+            //glContext.texParameteri(glContext.TEXTURE_2D, glContext.TEXTURE_MAG_FILTER, glContext.GL_LINEAR);
+            glContext.texParameteri(glContext.TEXTURE_2D, glContext.TEXTURE_MIN_FILTER, glContext.GL_LINEAR);
+            glContext.texParameteri(glContext.TEXTURE_2D, glContext.TEXTURE_WRAP_S, glContext.REPEAT);
+            glContext.texParameteri(glContext.TEXTURE_2D, glContext.TEXTURE_WRAP_T, glContext.REPEAT);
+            
+            glContext.generateMipmap(glContext.TEXTURE_2D);
+        }
+        
         glContext.bindTexture(glContext.TEXTURE_2D, null);
         
-        console.log(texture.getName());
+        console.log(texture.getName() + " texture did load");
     
     };
     
@@ -482,6 +495,7 @@ function Graphics()
         this.loadTexture("grass.png");
         this.loadTexture("name.png");
         this.loadTexture("Water.png");
+        this.loadTexture("Cloud.png");
     
     };
     
@@ -491,6 +505,7 @@ function Graphics()
         this.initShader("Opaque");
         this.initShader("Water");
         this.initShader("Island");
+        this.initShader("Sky");
     
     };
         

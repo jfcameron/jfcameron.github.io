@@ -47,6 +47,20 @@ function Game()
     //***************
     this.start = function()
     {
+        //Tesselated object
+        var test4 = new GameObject();
+        {
+            test4.setName("Water");    
+            //test4.getMesh().draw = drawTest;
+            test4.getMesh().setVertexBuffer(GRAPHICS.getTessellatedPlaneVertexArray());
+            test4.getMesh().setMainTexture(GRAPHICS.getTextures()[4]);
+            test4.getMesh().setShader(GRAPHICS.getShader("Water"));
+            test4.getTransform().setPosition([0,-9,0]);
+            test4.getTransform().setScale([5,1,5]);
+        
+        }
+        this.m_RootGameObject.addChild(test4);
+        
         //this.initializeRootGameObject();
         /*
         //Init test object 1
@@ -72,19 +86,6 @@ function Game()
         }
         this.m_RootGameObject.addChild(test3);*/
         
-        //Tesselated object
-        var test4 = new GameObject();
-        {
-            test4.setName("Water");    
-            //test4.getMesh().draw = drawTest;
-            test4.getMesh().setVertexBuffer(GRAPHICS.getTessellatedPlaneVertexArray());
-            test4.getMesh().setMainTexture(GRAPHICS.getTextures()[4]);
-            test4.getMesh().setShader(GRAPHICS.getShader("Water"));
-            test4.getTransform().setPosition([0,-9,0]);
-            test4.getTransform().setScale([5,1,5]);
-        
-        }
-        this.m_RootGameObject.addChild(test4);
         /*
         //Init test object 2
         var whatIsJavaScript = new GameObject();
@@ -171,7 +172,26 @@ function Game()
         }
         this.m_RootGameObject.addChild(gameObject123);
         
-                
+        ////Make name element
+        //var zxcv = new GameObject();
+        //{
+        //    zxcv.setName("Cloud");    
+        //    //gameObject123.getMesh().draw = drawTest;
+        //    zxcv.getMesh().setVertexBuffer(GRAPHICS.getQuadVertexArray());
+        //    zxcv.getMesh().setMainTexture(GRAPHICS.getTextures()[5]);
+        //    zxcv.getMesh().setShader(GRAPHICS.getShader("Sky"));
+        //    zxcv.getTransform().setPosition([0,10,-30]);
+        //    zxcv.getTransform().setScale([80,80,0]);
+        //    zxcv.getTransform().setRotation([-90,0,0]);
+        //    
+        //}
+        //this.m_RootGameObject.addChild(zxcv);
+        
+        this.m_RootGameObject.addChild(PREFABS.cloudObject([0,10, 10]));
+        this.m_RootGameObject.addChild(PREFABS.cloudObject([0,10,-30]));
+        this.m_RootGameObject.addChild(PREFABS.cloudObject([0,10,-70]));
+        this.m_RootGameObject.addChild(PREFABS.cloudObject([0,10,-110]));
+        
     };
 
 }
