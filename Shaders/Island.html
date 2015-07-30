@@ -195,8 +195,12 @@ Author: Joseph Cameron
         //Calculate position
         highp vec4 position = vec4(a_Pos,1.0);
         {
-            position *= _ModelScaleMatrix;
-            position *= _ModelRotationMatrix;
+            //position *= _ModelScaleMatrix;
+            //position *= _ModelRotationMatrix;
+            
+            position[0] *= 4.0;
+            position[2] *= 4.0;
+            position[1] += 0.5;
             
             //Model space operations       
          
