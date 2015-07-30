@@ -12,15 +12,10 @@ CHANGELOG
 Date: March 3rd, 2015
 Description: Initial Implementation
 Author: Joseph Cameron
-
-Date: July 28th, 2015
-Description: Refactored draw code specific to the shader into the Draw div
-Author: Joseph Cameron
     
 -->
 <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
 <meta content="utf-8" http-equiv="encoding">
-
 
 <div id="Draw">    
     //*************
@@ -195,7 +190,11 @@ Author: Joseph Cameron
         //Calculate position
         highp vec4 position = vec4(a_Pos,1.0);
         {
-            position *= _ModelScaleMatrix;
+            //position *= _ModelScaleMatrix;
+            position[0] *= 4.0;
+            position[2] *= 4.0;
+            position[1] += 0.5;
+            
             position *= _ModelRotationMatrix;
             
             //Model space operations       
@@ -204,9 +203,16 @@ Author: Joseph Cameron
             //position = rotateAroundY(position,_Time);            
             
             //World space operations
-            
             position = _Object2WorldMatrix * position;
-                  
+            //position[1] += sin(position[0]*1.0/5.0 + (1.0*0.1)) + cos(position[2]*1.0/5.0 + (1.0*0.1))*0.5;
+
+            float dis =  sqrt(pow(position[0],2.0) + pow(position[2],2.0));
+            
+            if (dis > 20.0)
+                //position[1] -= cos(dis*0.2)*4.0;
+                position[1] += (dis*0.25);
+            
+              
             v_FragPosition = vec3(position);
             
             //Camera space operations
