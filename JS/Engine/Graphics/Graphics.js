@@ -450,37 +450,35 @@ function Graphics()
 
     };
     
-    handleTextureLoaded = function (image, texture)  //TODO: simplify. User should specify callback via parameter on loadText call
-    {
-        
-        glContext.bindTexture(glContext.TEXTURE_2D, texture);
+    handleTextureLoaded = function (image, texture, aTextureName)  //TODO: simplify. User should specify callback via parameter on loadText call
+    {        
+        //Load texture's meta data.
+        jQuery.get("Textures/" + aTextureName.replace(".png","") + ".meta", function(data) 
         {
-            //Setup texture format
-            glContext.texImage2D(glContext.TEXTURE_2D, 0, glContext.RGBA, glContext.RGBA,glContext.UNSIGNED_BYTE, image);
+            //bind texture to TEXTURE_2D
+            glContext.bindTexture(glContext.TEXTURE_2D, texture);
+            {
+                //Assign texture parameters from meta file
+                eval(data.getElementsByTagName("TextureParameters")[0].childNodes[0].nodeValue);
+                
+            }
             
-            //Texture parameters
-            //glContext.texParameteri(glContext.TEXTURE_2D, glContext.TEXTURE_MAG_FILTER, glContext.GL_LINEAR);
-            glContext.texParameteri(glContext.TEXTURE_2D, glContext.TEXTURE_MIN_FILTER, glContext.GL_LINEAR);
-            glContext.texParameteri(glContext.TEXTURE_2D, glContext.TEXTURE_WRAP_S, glContext.REPEAT);
-            glContext.texParameteri(glContext.TEXTURE_2D, glContext.TEXTURE_WRAP_T, glContext.REPEAT);
+            glContext.bindTexture(glContext.TEXTURE_2D, null);
             
-            glContext.generateMipmap(glContext.TEXTURE_2D);
-        }
-        
-        glContext.bindTexture(glContext.TEXTURE_2D, null);
-        
+        });
+
         console.log(texture.getName() + " texture did load");
     
     };
     
-    this.loadTexture = function(aTexturePath)
+    this.loadTexture = function(aTextureName)
     {
         var texture = glContext.createTexture();
         {
             var image = new Image();
-            image.onload = function() { handleTextureLoaded(image, texture); }
-            image.src = "Textures/"+aTexturePath;
-            texture.getName = function(){return aTexturePath.toString();};
+            image.onload = function() { handleTextureLoaded(image, texture, aTextureName); }
+            image.src = "Textures/"+aTextureName;
+            texture.getName = function(){return aTextureName.toString();};
             
         }
         
