@@ -1,0 +1,33 @@
+<TextureMeta>
+<!--
+*********************************************************
+Texture name: 
+Description: 
+*********************************************************
+
+*********
+CHANGELOG
+*********
+Date: 
+Description: Initial Implementation
+Author: Joseph Cameron
+    
+-->
+
+<TextureParameters>
+    //***************
+    // Texture format
+    //***************
+    glContext.texImage2D(glContext.TEXTURE_2D, 0, glContext.RGBA, glContext.RGBA,glContext.UNSIGNED_BYTE, image);
+    
+    //*******************
+    // Texture parameters
+    //*******************
+    glContext.texParameteri(glContext.TEXTURE_2D, glContext.TEXTURE_MIN_FILTER, glContext.GL_LINEAR);
+    glContext.texParameteri(glContext.TEXTURE_2D, glContext.TEXTURE_WRAP_S, glContext.REPEAT);
+    glContext.texParameteri(glContext.TEXTURE_2D, glContext.TEXTURE_WRAP_T, glContext.REPEAT);            
+    glContext.generateMipmap(glContext.TEXTURE_2D);
+
+</TextureParameters>
+
+</TextureMeta>
