@@ -456,7 +456,7 @@ function Graphics()
         jQuery.get("Textures/" + aTextureName.replace(".png","") + ".meta", function(data) 
         {
             //alert(data);
-            
+            alert(aTextureName);
             //bind texture to TEXTURE_2D
             glContext.bindTexture(glContext.TEXTURE_2D, texture);
             {
