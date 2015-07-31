@@ -452,22 +452,35 @@ function Graphics()
     
     handleTextureLoaded = function (image, texture, aTextureName)  //TODO: simplify. User should specify callback via parameter on loadText call
     {        
-        //Load texture's meta data.
-        jQuery.get("Textures/" + aTextureName.replace(".png","") + ".meta", function(data) 
-        {
-            //alert(data);
-            alert(aTextureName);
-            //bind texture to TEXTURE_2D
+        ////Load texture's meta data.
+        //jQuery.get("Textures/" + aTextureName.replace(".png","") + ".meta", function(data) 
+        //{
+        //    //alert(data);
+        //    alert(aTextureName);
+        //    //bind texture to TEXTURE_2D
             glContext.bindTexture(glContext.TEXTURE_2D, texture);
-            {
-                //Assign texture parameters from meta file
-                eval(data.getElementsByTagName("TextureParameters")[0].childNodes[0].nodeValue);
-                
-            }
-            
+        //    {
+        //        //Assign texture parameters from meta file
+        //        eval(data.getElementsByTagName("TextureParameters")[0].childNodes[0].nodeValue);
+        //        
+        //    }
+          
+//***************
+    // Texture format
+    //***************
+    glContext.texImage2D(glContext.TEXTURE_2D, 0, glContext.RGBA, glContext.RGBA,glContext.UNSIGNED_BYTE, image);
+    
+    //*******************
+    // Texture parameters
+    //*******************
+    glContext.texParameteri(glContext.TEXTURE_2D, glContext.TEXTURE_MIN_FILTER, glContext.GL_LINEAR);
+    glContext.texParameteri(glContext.TEXTURE_2D, glContext.TEXTURE_WRAP_S, glContext.REPEAT);
+    glContext.texParameteri(glContext.TEXTURE_2D, glContext.TEXTURE_WRAP_T, glContext.REPEAT);            
+    glContext.generateMipmap(glContext.TEXTURE_2D);
+          
             glContext.bindTexture(glContext.TEXTURE_2D, null);
             
-        }, "xml");
+        //}, "xml");
 
         console.log(texture.getName() + " texture did load");
     
