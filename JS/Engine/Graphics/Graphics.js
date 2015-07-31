@@ -455,7 +455,7 @@ function Graphics()
         //Load texture's meta data.
         jQuery.get("Textures/" + aTextureName.replace(".png","") + ".meta", function(data) 
         {
-            alert(data);
+            //alert(data);
             
             //bind texture to TEXTURE_2D
             glContext.bindTexture(glContext.TEXTURE_2D, texture);
@@ -467,7 +467,7 @@ function Graphics()
             
             glContext.bindTexture(glContext.TEXTURE_2D, null);
             
-        });
+        }, "xml");
 
         console.log(texture.getName() + " texture did load");
     
