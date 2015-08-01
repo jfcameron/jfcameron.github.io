@@ -1,12 +1,12 @@
 if (typeof PREFABS == 'undefined')PREFABS = new Object();
 
 //pos in form [0,10,-30]
-PREFABS.playerObject = function()
+PREFABS.playerObject = function(aPosition)
 {
     var gameObject = new GameObject();
     {
         gameObject.setName("TheTestCamera");    
-        gameObject.getTransform().setPosition([0,6,-10]);
+        gameObject.getTransform().setPosition(aPosition);
         gameObject.getTransform().setScale([1,1,1]);
         gameObject.getMesh().draw = null;
         

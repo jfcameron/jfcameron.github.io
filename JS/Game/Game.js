@@ -51,7 +51,7 @@ function Game()
         // Create the demo scene!
         //***********************
         //Create scene space
-        this.m_RootGameObject.addChild(PREFABS.playerObject());
+        this.m_RootGameObject.addChild(PREFABS.playerObject([0,6.5,-11]));
         this.m_RootGameObject.addChild(PREFABS.waterObject());
         this.m_RootGameObject.addChild(PREFABS.namePlateObject());
         this.m_RootGameObject.addChild(PREFABS.rotatorTest());
