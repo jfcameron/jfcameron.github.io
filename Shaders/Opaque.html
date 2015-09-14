@@ -12,10 +12,150 @@ CHANGELOG
 Date: March 3rd, 2015
 Description: Initial Implementation
 Author: Joseph Cameron
+
+Date: July 28th, 2015
+Description: Refactored draw code specific to the shader into the Draw div
+Author: Joseph Cameron
     
 -->
 <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
 <meta content="utf-8" http-equiv="encoding">
+
+
+<div id="Draw">    
+    //*************
+    // Marshal data
+    //*************
+    //Graphics
+    var glContext        = GRAPHICS.getContext();
+    //Time
+    var time             = TIME.getTime();//should be moved
+    //Current camera
+    var viewMatrix       = GRAPHICS.getActiveCamera().getViewMatrix();//This should be part of a camera
+    var projectionMatrix = GRAPHICS.getActiveCamera().getProjectionMatrix();//this should be part of a camera
+    //This gameobject
+    var VertexArray      = aMesh.getVertexBuffer();
+    var shaderProgram    = aMesh.getShader();
+    var texture          = aMesh.getMainTexture();
+    //Model Scale
+    var modelScale = aMesh.getGameObject().getTransform().getLocalScaleMatrix();
+    //Model Rotation
+    var rotation   = aMesh.getGameObject().getTransform().getLocalRotationMatrix();
+    //This transform
+    var object2WorldMatrix = aMesh.getGameObject().getTransform().getWorldMatrix();
+    //Camera pos
+    var cameraPosition = GRAPHICS.getActiveCamera().getGameObject().getTransform().getPosition();
+    
+    //*****************
+    // Set capabilities
+    //*****************
+    glContext.enable  (glContext.DEPTH_TEST);
+    glContext.enable  (glContext.CULL_FACE);
+    glContext.cullFace(glContext.BACK);
+    
+    //********************
+    // Prepare vertex data
+    //********************
+    glContext.bindBuffer( glContext.ARRAY_BUFFER, VertexArray );
+    
+    glContext.vertexAttribPointer
+    (
+        shaderProgram.vertexPositionAttribute,
+        3, //Pos size
+        glContext.FLOAT,
+        false, 
+        4*(3+2+3), //stride is size of vertex format in bytes. 4 is float size, 3 pos, 2 uv 
+        0 
+    
+    );
+    
+    //UV attribute pointer
+    glContext.vertexAttribPointer
+    (
+        shaderProgram.uvAttribute,
+        2, //UV size
+        glContext.FLOAT,
+        false, 
+        4*(3+2+3), //stride is size of vertex format in bytes. 4 is float size, 3 pos, 2 uv 
+        4*3 
+    
+    );
+    
+    //Normal attribute pointer
+    glContext.vertexAttribPointer
+    (
+        shaderProgram.normalAttribute,
+        3, //Normal size
+        glContext.FLOAT,
+        false, 
+        4*(3+2+3), //stride is size of vertex format in bytes. 4 is float size, 3 pos, 2 uv 
+        4*(3+2) 
+    
+    );
+    
+    //************
+    // Prep shader
+    //************
+    glContext.useProgram(shaderProgram);
+        
+    shaderProgram.vertexPositionAttribute = glContext.getAttribLocation( shaderProgram, "a_Pos" );
+    glContext.enableVertexAttribArray( shaderProgram.vertexPositionAttribute);
+    
+    shaderProgram.uvAttribute             = glContext.getAttribLocation( shaderProgram, "a_UV"  );
+    glContext.enableVertexAttribArray( shaderProgram.uvAttribute            );
+    
+    shaderProgram.normalAttribute         = glContext.getAttribLocation( shaderProgram, "a_Normal"  );
+    glContext.enableVertexAttribArray( shaderProgram.normalAttribute        );
+    
+    //*********************
+    // Pass in uniform data
+    //*********************
+    //Time uniform
+    var uTime = glContext.getUniformLocation(shaderProgram,"_Time");
+    if (uTime != -1)
+        glContext.uniform1f(uTime, time);
+    
+    //ModelScale uniform
+    var uModelScaleMatrix = glContext.getUniformLocation(shaderProgram,"_ModelScaleMatrix");
+    if (uModelScaleMatrix != -1)
+        glContext.uniformMatrix4fv(uModelScaleMatrix, false, modelScale);
+    
+    //ModelRotation uniform
+    var uModelRotationMatrix = glContext.getUniformLocation(shaderProgram,"_ModelRotationMatrix");
+    if (uModelRotationMatrix != -1)
+        glContext.uniformMatrix4fv(uModelRotationMatrix, false, rotation);
+        
+    //Model translation matrix uniform
+    var uObject2WorldMatrix = glContext.getUniformLocation(shaderProgram,"_Object2WorldMatrix");
+    if (uObject2WorldMatrix != -1)
+        glContext.uniformMatrix4fv(uObject2WorldMatrix, false, object2WorldMatrix);
+        
+    //View matrix uniform
+    var uViewMatrix = glContext.getUniformLocation(shaderProgram,"_ViewMatrix");
+    if (uViewMatrix != -1)
+        glContext.uniformMatrix4fv(uViewMatrix, false, viewMatrix);
+        
+    //Projection matrix uniform
+    var uProjectionMatrix = glContext.getUniformLocation(shaderProgram,"_ProjectionMatrix");
+    if (uProjectionMatrix != -1)
+        glContext.uniformMatrix4fv(uProjectionMatrix, false, projectionMatrix);
+    
+    //Texture uniform
+    glContext.activeTexture(glContext.TEXTURE0);
+    glContext.bindTexture  (glContext.TEXTURE_2D, texture);
+    glContext.uniform1i    (glContext.getUniformLocation(shaderProgram, "_Texture"), 0);
+    
+    //Camera world position uniform
+    var uCameraWorldPosition = glContext.getUniformLocation(shaderProgram,"_CameraPos");
+    if (uCameraWorldPosition != -1)
+        glContext.uniform3fv(uCameraWorldPosition,cameraPosition);
+
+    //*****
+    // draw
+    //*****
+    glContext.drawArrays( glContext.TRIANGLES, 0, VertexArray.numItems );
+    
+</div>
 
 <script id="Vertex" type = "GLSL">
     //***************

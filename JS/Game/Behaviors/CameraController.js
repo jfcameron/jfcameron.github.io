@@ -88,7 +88,7 @@ function CameraController(aGameObject)
 		var gameObject = new GameObject();
 		{
 			gameObject.setName("CubeTest");    
-			gameObject.getMesh().draw = drawTest;
+			//gameObject.getMesh().draw = drawTest;
 			gameObject.getMesh().setShader(GRAPHICS.getShader("Opaque"));
 			gameObject.getMesh().setMainTexture(GRAPHICS.getTextures()[1]);
 			gameObject.getTransform().setPosition([0,20,0]);

@@ -1,0 +1,301 @@
+<html>
+
+<!--
+*********************************************************
+Shader name: AlphaCutOff
+Description: colors object with a texture,
+             discards frags with alpha less than 1.
+             Meant for rendering images with transparency
+             that do not require blending.
+*********************************************************
+
+*********
+CHANGELOG
+*********
+Date: March 3rd, 2015
+Description: Initial Implementation
+Author: Joseph Cameron
+    
+-->
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
+
+<div id="Draw">    
+    //*************
+    // Marshal data
+    //*************
+    //Graphics
+    var glContext        = GRAPHICS.getContext();
+    //Time
+    var time             = TIME.getTime();//should be moved
+    //Current camera
+    var viewMatrix       = GRAPHICS.getActiveCamera().getViewMatrix();//This should be part of a camera
+    var projectionMatrix = GRAPHICS.getActiveCamera().getProjectionMatrix();//this should be part of a camera
+    //This gameobject
+    var VertexArray      = aMesh.getVertexBuffer();
+    var shaderProgram    = aMesh.getShader();
+    var texture          = aMesh.getMainTexture();
+    //Model Scale
+    var modelScale = aMesh.getGameObject().getTransform().getLocalScaleMatrix();
+    //Model Rotation
+    var rotation   = aMesh.getGameObject().getTransform().getLocalRotationMatrix();
+    //This transform
+    var object2WorldMatrix = aMesh.getGameObject().getTransform().getWorldMatrix();
+    //Camera pos
+    var cameraPosition = GRAPHICS.getActiveCamera().getGameObject().getTransform().getPosition();
+    
+    //*****************
+    // Set capabilities
+    //*****************
+    glContext.enable  (glContext.DEPTH_TEST);
+    glContext.disable (glContext.CULL_FACE);
+    
+    //********************
+    // Prepare vertex data
+    //********************
+    glContext.bindBuffer( glContext.ARRAY_BUFFER, VertexArray );
+    
+    glContext.vertexAttribPointer
+    (
+        shaderProgram.vertexPositionAttribute,
+        3, //Pos size
+        glContext.FLOAT,
+        false, 
+        4*(3+2+3), //stride is size of vertex format in bytes. 4 is float size, 3 pos, 2 uv 
+        0 
+    
+    );
+    
+    //UV attribute pointer
+    glContext.vertexAttribPointer
+    (
+        shaderProgram.uvAttribute,
+        2, //UV size
+        glContext.FLOAT,
+        false, 
+        4*(3+2+3), //stride is size of vertex format in bytes. 4 is float size, 3 pos, 2 uv 
+        4*3 
+    
+    );
+    
+    //Normal attribute pointer
+    glContext.vertexAttribPointer
+    (
+        shaderProgram.normalAttribute,
+        3, //Normal size
+        glContext.FLOAT,
+        false, 
+        4*(3+2+3), //stride is size of vertex format in bytes. 4 is float size, 3 pos, 2 uv 
+        4*(3+2) 
+    
+    );
+    
+    //************
+    // Prep shader
+    //************
+    glContext.useProgram(shaderProgram);
+        
+    shaderProgram.vertexPositionAttribute = glContext.getAttribLocation( shaderProgram, "a_Pos" );
+    glContext.enableVertexAttribArray( shaderProgram.vertexPositionAttribute);
+    
+    shaderProgram.uvAttribute             = glContext.getAttribLocation( shaderProgram, "a_UV"  );
+    glContext.enableVertexAttribArray( shaderProgram.uvAttribute            );
+    
+    shaderProgram.normalAttribute         = glContext.getAttribLocation( shaderProgram, "a_Normal"  );
+    glContext.enableVertexAttribArray( shaderProgram.normalAttribute        );
+    
+    //*********************
+    // Pass in uniform data
+    //*********************
+    //Time uniform
+    var uTime = glContext.getUniformLocation(shaderProgram,"_Time");
+    if (uTime != -1)
+        glContext.uniform1f(uTime, time);
+    
+    //ModelScale uniform
+    var uModelScaleMatrix = glContext.getUniformLocation(shaderProgram,"_ModelScaleMatrix");
+    if (uModelScaleMatrix != -1)
+        glContext.uniformMatrix4fv(uModelScaleMatrix, false, modelScale);
+    
+    //ModelRotation uniform
+    var uModelRotationMatrix = glContext.getUniformLocation(shaderProgram,"_ModelRotationMatrix");
+    if (uModelRotationMatrix != -1)
+        glContext.uniformMatrix4fv(uModelRotationMatrix, false, rotation);
+        
+    //Model translation matrix uniform
+    var uObject2WorldMatrix = glContext.getUniformLocation(shaderProgram,"_Object2WorldMatrix");
+    if (uObject2WorldMatrix != -1)
+        glContext.uniformMatrix4fv(uObject2WorldMatrix, false, object2WorldMatrix);
+        
+    //View matrix uniform
+    var uViewMatrix = glContext.getUniformLocation(shaderProgram,"_ViewMatrix");
+    if (uViewMatrix != -1)
+        glContext.uniformMatrix4fv(uViewMatrix, false, viewMatrix);
+        
+    //Projection matrix uniform
+    var uProjectionMatrix = glContext.getUniformLocation(shaderProgram,"_ProjectionMatrix");
+    if (uProjectionMatrix != -1)
+        glContext.uniformMatrix4fv(uProjectionMatrix, false, projectionMatrix);
+    
+    //Texture uniform
+    glContext.activeTexture(glContext.TEXTURE0);
+    glContext.bindTexture  (glContext.TEXTURE_2D, texture);
+    glContext.uniform1i    (glContext.getUniformLocation(shaderProgram, "_Texture"), 0);
+    
+    //Camera world position uniform
+    var uCameraWorldPosition = glContext.getUniformLocation(shaderProgram,"_CameraPos");
+    if (uCameraWorldPosition != -1)
+        glContext.uniform3fv(uCameraWorldPosition,cameraPosition);
+
+    //*****
+    // draw
+    //*****
+    glContext.drawArrays( glContext.TRIANGLES, 0, VertexArray.numItems );
+    
+</div>
+
+<script id="Vertex" type = "GLSL">
+    //***************
+    // Vertex Formats
+    //***************
+    //VertIn
+    attribute highp vec3 a_Pos    ;
+    attribute lowp  vec2 a_UV     ;
+    attribute lowp  vec3 a_Normal ;
+    
+    //FragIn
+    varying lowp vec2 v_UV     ;
+    varying lowp vec3 v_Normal ;
+    
+    //*********
+    // Uniforms
+    //*********
+    uniform highp float _Time;
+    uniform mat4 _ModelScaleMatrix;
+    uniform mat4 _ModelRotationMatrix;
+    uniform mat4 _Object2WorldMatrix;
+    uniform mat4 _ViewMatrix;
+    uniform mat4 _ProjectionMatrix;
+    
+    //******************************
+    // Vertex operation forward decs
+    //******************************
+    //vec4 rotateAroundZ(const vec4 aPos, const float aDegree);
+    
+    //**************
+    // Vertex shader
+    //**************
+    void main()
+    {
+        //Calculate position
+        highp vec4 position = vec4(a_Pos,1.0);
+        {
+            //Model space operations     
+            position *= _ModelScaleMatrix;
+            
+            //position = rotateAroundY(position, _Time);
+            
+            position *= _ModelRotationMatrix;
+            
+            //Spin
+            //position[2] -= 10.0;
+            //position = rotateAroundY(position,_Time);
+            //position = rotateAroundX(position,-10.0);
+            
+            
+            
+            //World space operations
+            position = _Object2WorldMatrix * position;
+            
+            //Camera space operations
+            position = _ViewMatrix * position;
+            
+            //Perspective space operations
+            position = _ProjectionMatrix * position;
+            
+        }
+        
+        gl_Position = position;
+        
+        //Passthrough UV
+        v_UV = a_UV;
+        
+    }
+  
+ </script>
+
+<script id="Fragment" type = "GLSL">
+    //Indicate byte size for float type
+    precision mediump float;
+    
+    //*************************
+    // FragmentIn vertex format
+    //*************************
+    varying lowp vec2 v_UV;
+    varying lowp vec3 v_Normal ;
+    
+    //*********
+    // Uniforms
+    //*********
+    uniform lowp vec4 _Color;
+    uniform sampler2D _Texture;
+    uniform highp float _Time;
+    
+    //**********
+    // Constants
+    //**********
+    const float c_AlphaCutOff = 1.0;
+    
+    //*********************************
+    // Fragment operations forward decs
+    //*********************************
+    vec4 calculateTexelColor(const vec4 aFrag);
+    vec4 alphaCutOff(const vec4 aFrag);
+    
+    //*****************
+    // Fragment shader
+    //****************
+    void main()
+    {
+        lowp vec4 rvalue = vec4(0);
+        {
+            rvalue = calculateTexelColor(rvalue);
+            rvalue = alphaCutOff(rvalue);
+            
+        }
+    
+        gl_FragColor = rvalue;
+    
+    }
+    
+    //*******************************
+    //Fragment operations definitions
+    //*******************************
+    vec4 calculateTexelColor(const vec4 aFrag)
+    {
+        vec4 rvalue = aFrag;
+        {
+            rvalue = texture2D(_Texture, v_UV + vec2(_Time*0.0005,0));
+            
+        }
+        
+        return rvalue;      
+        
+    }
+    
+    vec4 alphaCutOff(const vec4 aFrag)
+    {
+        vec4 rvalue = aFrag;
+        {
+            if (rvalue[3] < c_AlphaCutOff)
+                discard;  
+                        
+        }
+        
+        return rvalue;
+        
+    }
+    
+  </script>
+
+</html>

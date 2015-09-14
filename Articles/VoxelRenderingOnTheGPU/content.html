@@ -33,8 +33,8 @@
             
             <div class="RatioWrapper">
                 <div class="RatioContent">
-                    <iframe id = "video"  class="RatioContent" src="https://drive.google.com/file/d/0ByMgjmjcPctfZ0xrdWprVGVseXM/preview?autoplay=1" allowfullscreen="1"></iframe>
-                    
+                    <!--<iframe id = "video"  class="RatioContent" src="https://drive.google.com/file/d/0ByMgjmjcPctfZ0xrdWprVGVseXM/preview?autoplay=1" allowfullscreen="1"></iframe>-->
+                    <img src="../../Images/GPU_Voxel_Rendering/Small.png" target="_blank"  style="width:100%;height:100%;"></img>
                 </div>
             
             </div>
@@ -44,74 +44,105 @@
             
             </div>
         
-            <div id = "main">   
-                <img class="left" src="../../Images/SushiJointRumble_TitleScreen/Small.png" target="_blank"></img>
+            <div id = "main">                   
+                <h1>Introduction:</h1>
             
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-                    sunt in culpa qui officia deserunt mollit anim id est laborum.
-                
+                    Voxel rendering is a way to procedurally generate a mesh out of a 3d set of data. A voxel is a unit of information in a 3D grid. Its three indices represent its spatial position. The voxel itself may carry further information, depending on the application, but must at least carry a boolean value: whether a voxel exists at that position in the data or whether it is empty. With these 4 pieces of information, 3d position and true/false occupation, the 3D set of data contains enough information be processed into a mesh.
+
                 </p>
                 
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-                    sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    Voxels have been used since the 1980s in the medical field to visualize the data produced from CT (computed tomographic) scans. A CT scan produces a series of “slices” (2D information) that when compiled together and rendered, creates a 3D image of an object.
+
+                </p>
+                    
+                <p>
+                    In video games, voxels have been used as a technique to produce and render terrain information. In comparison to height mapping, which is bar far the more commonly used terrain information format, voxel data has the huge advantage of storing 3d, instead of 2d information. A height map, as the name suggests, is a 2d set of data. the indices of each unit of information identifies the position of that data in the map, and the 0-1, black to white etc. information stored at that position holds height data (a 0-1 offset in the vertical axis). The data is then mapped to a horizontal plane of vertices, the resulting height offsets of those vertices reflecting the information stored in the height map.
+
+                </p>
+                
+                <p>                    
+                    Height maps are quick and look great, but because they contain 2D rather than 3D information, as a solution to producing 3d terrain they can only be used to describe topographic information. A height map could describe a mountain, but it could not describe a mountain that contains a system of caves.
+
+                </p>
+                
+                <p>                    
+                    Voxels have been around in the video game industry since the 1990s, but generally have not been in the forefront of games because of technical restrictions. Their computational complexity and the strict 60 fps real time requirements of video games are at odds and produces unsatisfactory compromises in the renderer, like bad mesh approximations, strict restrictions on input data size, all of which produce graphical effects that at the end of the day users would reject as unattractive.
                 
                 </p>
                 
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-                    sunt in culpa qui officia deserunt mollit anim id est laborum.
+                <h1>Recent interest:</h1>
                 
+                <p>
+                    Voxels have recently rocketed into the minds of gamers with the success of the game Minecraft. Minecraft perfectly showcases the strengths of voxel data as a solution to terrain data. Players are able to manipulate the terrain around them along all axes to produce complex shapes. However, the game sidesteps the problem of high fidelity rendering by dressing up an extremely simple voxel rendering technique with an extremely simple graphical style.
+
+                </p>
+                    
+                <p>
+                    The way that voxel terrain generation is done is as follows: first a set of input is produced. Input is a 3d array of shape information. At its simplest form its a 3d array of booleans. The way the input is encoded with terrain data is done in one of two ways. first it could be done by hand. This would make sense for areas in a game that must be hand made. The second and far more common way is to use the output of a semi-random function to produce the terrain data. Any old random function won’t do, however. if the output is too noisy, the resulting terrain data will be unnatural and untraversable. The class of functions that are used for this purpose are fractal functions, especially one called Perlin Noise. The noise pattern that is produced by these functions is deterministic. The specific pattern is determined by a seed value. The same seed will always produce the same noise, which is a crucial property of these functions. It means that when a piece of terrain that was previously seen is revisited, it will appear the same. With perlin noise, the output can be further modified, in terms of noise amplitude and frequency. Low frequency noise produces large topographic shapes. A low frequency, low amplitude noise pattern could represent rolling hills. A low frequency, high amplitude noise pattern could represent mountains. By adjusting the frequency and amplitude, and applying multiple passes of noise patterns to the terrain data, complex information, like valleys, caves etc. can be encoded into the terrain data, all retrievable with the seed value.
+
+                </p>
+                
+                <p>                    
+                    With the terrain generation problem solved, the next problem is how to render the data. The data is iterated. For each position, each of its neighbours is checked to determine what polygonal shape should be selected to occupy that position. Depending on the desired complexity of the resulting mesh, the number of possible polygons can be increased.
+
                 </p>
                 
                 <p>
-                    <img class="right" src="../../Images/SushiJointRumble_TitleScreen/Small.png" target="_blank"></img>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-                    sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    In the case of minecraft, a 7 polygon table is used. The first 6 cases represent a quad facing north, south, east, west, up, down and the final case represents 0 polygons generated. The advantage to this rendering solution is that it is quick and easy to implement, however the output mesh is low quality.
+
+                </p>
                 
+                <p>                    
+                    The other, more common method is called “marching cubes.” Marching cubes has been commonly used in medical imaging for decades, but has only recently become viable as a means to render 3d terrain in video games. The marching cubes voxel rendering method requires a table of 256 different polygons. The increased table size makes this method more difficult to implement than the 7 long table solution, but the resulting mesh is much higher quality. These represent each possible shape contained within a single voxel. Once the voxel renderer has iterated the entire data, a mesh is produced.
+
+                </p>
+                
+                <p>                    
+                    In a CPU based solution, this mesh information would be generated on system ram. The next step would be to copy it over to graphics memory to be rendered in the graphics pipeline, and (optionally) to be processed into a collision mesh. The problem with the CPU solution is that it takes a lot of time. Iterating the data, because of the linear nature of CPUs is slow. Copying the data from system memory to graphics memory is another time penalty too. If we stick with the CPU, there are a number of optimizations that can be made to reduce the time cost. Partition the voxel data into pieces and then only generate and render mesh for the volumes of the data that can be seen by the user. In the same vein, we could only generate a collision mesh for the geometry in the immediate volume around the user. Using multiple threads to iterate the data will speed up the mesh generation step. While these are all effective ways to reduce time complexity, unfortunately, at the end of the day on the CPU side, as John Carmack (2009) discovered, voxels just lack the hardware to be used in games.
+
                 </p>
                 
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-                    sunt in culpa qui officia deserunt mollit anim id est laborum.
-                
+                    Recently however, there has been a huge boost in speed in real time voxel rendering. By moving the mesh generation, collider generation and render work all over to the GPU, the process of rendering voxels has received a massive performance boost.
+                    Processing the voxel data using the GPU is much faster. The massively parallel structure of the GPU makes it especially appropriate for iterating the voxel data and generating the mesh. Not only that but generating the mesh data directly in graphics memory means that the GPU no longer has to wait for the mesh data to be copied from system to graphics memory before it can be processed by the graphics pipeline.
+
                 </p>
                 
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-                    sunt in culpa qui officia deserunt mollit anim id est laborum.
-                
+                <p> 
+                    In recent years, there has been a lot of exciting work done in GPU based voxel rendering. In the 3rd and latest release of their GPU Gems series, Nvidia covers the importance of voxels in a number of GPU based programs. Applications range from GPU based volumetric light calculations, simulating the fluid dynamics of smoke and water in real time and procedural terrain generation and rendering. As GPGPU programming becomes more widespread, voxel approaches to rigid body dynamics, pathfinding etc. will no doubt become commonplace in game engines.
+
                 </p>
                 
-                <img class="center" src="../../Images/SushiJointRumble_TitleScreen/Small.png" target="_blank"></img>
-                
+                <h1>Accompanying implementation:</h1>
+
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-                    sunt in culpa qui officia deserunt mollit anim id est laborum.
-                
+                    The GPU based voxel renderer that will accompany this paper will use a simple 7 cases table to render the 3d information. The process is the same as Marching Cubes, but the simpler renderer will be easier to implement.
+
+                </p>
+                  
+                <p>
+                    The objective of the renderer is to take in a set of 3d data and produce a representative mesh. However, on the GPU this presents a few obstacles. Firstly, the pipeline requires vertex input. So in order to iterate the 3d data, a script will have to provide the shader with an input mesh, being an array of vertices that match up in size to the 3d data that is going to be processed. From here, the incoming vertex’s local position should be usable as the indices to the current position in the 3d data. However, a further complication arises in how that 3d data can be passed to the shader. Ideally it would be a uniform bool3, but currently (Unity 4.3), its not possible to pass arrayed data in via uniforms. Fortunately, it is possible to pass 2d textures. So in order to get the data into the shader, it has to be generated, then encoded into a texture, then that texture has to be passed into the shader.
+
+                </p>
+
+                <p>
+                    The data size I will be working with will be 16x16x16 voxels. This means that my data textures will have to be 16x256 to store that information. The incoming vertex’s x and z will be divided by 16 and 256 respectively to convert them from local space coordinates to pixel offsets in the data texture. The y coordinate (height) will be multiplied by a 16 pixel offset and added to the z pixel offset in order to move up and down the 16x16 slices of pixel data stored in the texture. If the alpha value of the current pixel is 0, then the current vertex will not be converted into a voxel. If the alpha value is not 0, a voxel will be placed at that position and the color of that pixel will be passed into the voxel’s vertices’ color attributes.
+                    The project’s main scene (titled Main.unity) will contain a number of different meshes procedurally generated by the voxel renderer shader program. As their inputs, they will use 16x256 pngs that are passed in via their _VoxelData texture property, which can be changed in real time to reconstruct the mesh with a different set of voxel data.
+
                 </p>
                 
+                <h1>Closing thoughts:</h1>
+
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-                    sunt in culpa qui officia deserunt mollit anim id est laborum.
-                
+                    Having written a CPU based voxel renderer over the summer, I was excited to see the performance gains from a GPU based one. On the CPU, writing the renderer did not take too long, but I found myself spending hours thinking of ways to speed it up, reduce complexity and hide the work of generating the mesh and collision mesh. Getting rid of the small frame drops associated with generating a new piece of noise was very difficult, and not something that I solved to a satisfactory degree. Implementing the renderer on the GPU was a bit strange to wrap my head around, but there was a lot of practical information both in the whitepages on voxel rendering and more generally on the Nvidia website on the Cg language. I had expected some performance gain in moving the renderer to the GPU, but not the dramatic effect that it actually had. One of the first things I tried to do once I had finished the renderer was to stress test it. On the school computers, I got up to 1.5 million polygons at real time framerates, which really impressed me.
+
+                </p>
+                    
+                <p>
+                    Writing this program has absolutely sold me on the power of the GPU to process big data. The problems of simulating water, smoke, etc. in interactive real time don’t seem so much like science fiction to me anymore. It was eyeopening to see all the extremely open and hard work going into the solutions to these problems. Going forward, I want to learn how to generate a PhysX collision mesh to match the mesh generated for drawing. I have the vague notion that it involves processing the voxel data in a compute shader, then passing the data both to the physics engine and the graphics pipeline for collision detection and rendering, but really understanding and solving that problem will be a problem for another day.
+
                 </p>
                
                     

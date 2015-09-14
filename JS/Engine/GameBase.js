@@ -38,6 +38,7 @@ function GameBase()
     {
         this.m_RootGameObject = new GameObject();
         this.m_RootGameObject.setName("RootGameObject");
+        this.m_RootGameObject.getMesh().draw = null;
     
     };
     

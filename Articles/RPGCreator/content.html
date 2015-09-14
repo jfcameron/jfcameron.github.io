@@ -33,7 +33,8 @@
             
             <div class="RatioWrapper">
                 <div class="RatioContent">
-                    <iframe id = "video"  class="RatioContent" src="https://drive.google.com/file/d/0ByMgjmjcPctfZ0xrdWprVGVseXM/preview?autoplay=1" allowfullscreen="1"></iframe>
+                    <!--<iframe id = "video"  class="RatioContent" src="https://drive.google.com/file/d/0ByMgjmjcPctfZ0xrdWprVGVseXM/preview?autoplay=1" allowfullscreen="1"></iframe>-->
+                    <img src="../../Images/RPGCreator_ScriptEditor/Small.png" target="_blank"  style="width:100%;height:100%;"></img>
                     
                 </div>
             
@@ -45,74 +46,34 @@
             </div>
         
             <div id = "main">   
-                <img class="left" src="../../Images/SushiJointRumble_TitleScreen/Small.png" target="_blank"></img>
-            
+                <h1>Overview of Level & script editors</h1>
+                
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-                    sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    This is a prototype 2D RPG game making program. Tested on PC and Android. The program features a level editor and a script editor.
+                    NPC routines are written in the scripting language Lua. A Lua interpretor, MoonSharp runs the NPC routines.
+                    
+                </p>
+                
+                <p> 
+                    Lua code interacts with AI state through a simple API. Before the script is executed for that cycle, the NPC pushes
+                    its health, position etc. values to global variables in the Lua context. Once the script has finished executing, these
+                    values are copied back over. The script editor is accessible by selecting an NPC in the level editor and then clicking on its script name.
+                    The script editor features an error checker.
                 
                 </p>
                 
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-                    sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    The level editor features box selection and pasting, multiple visual layers to simulate different heights, lighting and NPC placement.
                 
                 </p>
                 
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-                    sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    The entire rendering process is done in a single shader. The shader is responsible for looking up tile offsets (supplied as a texture uniform),
+                    animating characters and placing characters at the correct depth.
                 
                 </p>
                 
-                <p>
-                    <img class="right" src="../../Images/SushiJointRumble_TitleScreen/Small.png" target="_blank"></img>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-                    sunt in culpa qui officia deserunt mollit anim id est laborum.
-                
-                </p>
-                
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-                    sunt in culpa qui officia deserunt mollit anim id est laborum.
-                
-                </p>
-                
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-                    sunt in culpa qui officia deserunt mollit anim id est laborum.
-                
-                </p>
-                
-                <img class="center" src="../../Images/SushiJointRumble_TitleScreen/Small.png" target="_blank"></img>
-                
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-                    sunt in culpa qui officia deserunt mollit anim id est laborum.
-                
-                </p>
-                
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-                    sunt in culpa qui officia deserunt mollit anim id est laborum.
-                
-                </p>
+                [More content, video soon]
                
                     
             </div>

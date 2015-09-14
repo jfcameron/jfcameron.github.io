@@ -18,7 +18,7 @@
     /*width:70%;*/
     
     min-width: 500px;
-    max-width: 850px;
+    max-width: 1100px;
     
     margin-left: auto ;
     margin-right: auto ;
@@ -82,7 +82,6 @@
 
 #footer
 {
-
     /* Display */            
     display: block;          
     background: #101010;   
@@ -105,6 +104,32 @@
     font-size:      10pt ;   
     color:          #505050 ;
     
+}
+
+#attributions
+{
+    /* Display */            
+    display: block;          
+    /*background: #101010;   */
+                             
+    /* Position, size */     
+    position:absolute;       
+    bottom:10px;
+    left:80%;
+                             
+    /* Padding */            
+    margin-left: auto;       
+    margin-right: auto;
+    padding-top: 10px;  
+
+    /*width: 96.5%;*/    
+                             
+    /* Font */               
+    letter-spacing: 0px  ;   
+    text-align:     left ; 
+    font-size:      10pt ;   
+    color:          #505050 ;
+
 }
 
 #tech
@@ -131,7 +156,7 @@
     margin-left: auto;
     margin-right: auto;
     width:100%;
-    height:280px;
+    height:100%;/*280px*/
     
     background: #000000;
     
@@ -208,20 +233,28 @@
 
 #previewImage
 {
-    /*width:   266px ;*/
-    height:  200px ;
-    
-    width: 100%;
+    width:   100% ;
+    height: 100%;
+    /*height:  200px ;*/
+    /*width: 100%;    */
 
     
+}
+
+.instructions
+{
+    z-index: 1;
+    position: relative;
+    top: -50px;
+
 }
 
 #previewImageWide
 {
     width:   225px ;
-    height:  175px ;
-    
-    width: 100%;
+    /*height:  175px ;*/
+    /*                */
+    /*width: 100%;    */
 
 
 }
@@ -254,6 +287,7 @@ table
 td
 {
     width: 33.333%;
+    height: 100px;
     
     
 }
@@ -270,9 +304,10 @@ body
     /*min-width: 700px;*/
 
     /* Background */
-    background-image: url("../Textures/bgtest.png");
+    /*background-image: url("../Textures/bgtest.png");*/
+    background-image: url("../Textures/lodyas.png");
     background-color: #101A1A;
-    background-size: 256px;
+    /*background-size: 256px;*/
     background-position: center bottom;
     background-repeat:repeat; 
     background-attachment: scroll;
@@ -295,7 +330,39 @@ body
     font-weight: normal;
     
    
+<<<<<<< HEAD
+=======
 
+}
+>>>>>>> origin/master
+
+/* BG scroll animation */
+@keyframes animatedBackground 
+{
+	from { background-position: 0 0; }
+	to { background-position: 256px -256px; }
+
+}
+
+#background
+{
+    /*animation: animatedBackground 8.5s linear infinite;*/
+
+    position: fixed;
+    /*background-image: url("../Textures/bgtest.png");*/
+    background-image: url("../Textures/lodyas.png");
+    background-color: #101A1A;
+    /*background-size: 256px;*/
+    background-position: center bottom;
+    background-repeat:repeat; 
+    /*background-attachment: fixed;*/
+    
+    width: 100%;
+    height: 100%;
+    
+    top: 0px;
+    right: 0px;
+    
 }
 
 /* BG scroll animation */
@@ -384,8 +451,8 @@ p
 
 image
 {
-    width:100px;
-    height:100px;
+    width:100%;
+    height:100%;
     
 }
 
@@ -399,6 +466,7 @@ image
 .RatioWrapper
 {
     min-width: 50%;
+    width: 100%;
     /* whatever width you want */
     display: inline-block;
     position: relative;
@@ -407,8 +475,8 @@ image
 
 .RatioWrapper:after 
 {
-    padding-top: 56.25%;
-    /* 16:9 ratio */
+    padding-top: 35.0%;
+    /* ?? ratio */
     display: block;
     content: '';
 
@@ -429,6 +497,44 @@ image
 }
 /* End of Div with fixed ratio */
 
+<<<<<<< HEAD
+=======
+/* fixed ratio Images */
+.PreviewImageRatioWrapper
+{
+    min-width: 30%;
+    width: 30%;
+    /* whatever width you want */
+    display: inline-block;
+    position: relative;
+
+}
+
+.PreviewImageRatioWrapper:after 
+{
+    padding-top: 90.0%;
+    /* ?? ratio */
+    display: block;
+    content: '';
+
+}
+
+.PreviewImageRatioContent
+{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    /* fill parent */
+    background-color: deepskyblue;
+    /* let's see it! */
+    color: white;
+
+}
+/* End of fixed ratio Images */
+
+>>>>>>> origin/master
 
 
 /*  Link styling    */

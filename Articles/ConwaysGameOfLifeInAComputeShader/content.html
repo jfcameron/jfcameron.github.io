@@ -7,20 +7,68 @@
         
     </head>
 
+    <script>
+    var data = [];
+    
+    function loadSource(sourceID)
+    {
+        var newData = document.getElementById(sourceID).contentWindow.document.body.innerHTML;
+        {
+            newData.name = sourceID;
+            
+        }
+        data.push(newData);
+    
+    }
+    
+    function displaySource(displayID, sourceID)
+    {
+        var displayData = "asdf";
+        {
+            console.log("beginning dump");
+        
+            for(var i = 0; i < data.length; i++)
+            {
+                console.log(i);
+            
+                if (data[i].name == sourceID)
+                {
+                    displayData = sourceID;
+                    break;
+                    
+                }
+        
+            }
+        
+        }
+        document.getElementById(displayID).innerHTML   = displayData;
+    
+    }
+    
+    </script>
+    
     <!--**************-->
     <!-- CSS includes -->
     <!--**************-->
     <link rel="stylesheet" href="../../CSS/Main.css" type="text/css"/>
     <link rel="stylesheet" href="../../CSS/Article.css" type="text/css"/>
-        
+    <link rel="stylesheet" href="../../CSS/highlightJS_styles/monokai_sublime.css" type="text/css"/>
+    
     <!--*************-->
     <!-- JS includes -->
     <!--*************-->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script type="text/javascript" src="../../JS/HighlightJS/highlight.pack.js"></script>
+    
+    <!--*************************-->
+    <!-- Source code includes -->
+    <!--*************************-->
 
     <!--***************-->
     <!-- HTML Document -->
     <!--***************-->
+
+    
     <title>Joseph Cameron - Game Programmer Portfolio</title>
     
     <body>    
@@ -45,74 +93,203 @@
             </div>
         
             <div id = "main">   
-                <img class="left" src="../../Images/SushiJointRumble_TitleScreen/Small.png" target="_blank"></img>
+            <h1>A little background on GPGPU programming</h1>
+                <!--<img class="left" src="../../Images/SushiJointRumble_TitleScreen/Small.png" target="_blank"></img>-->
+            
+                
             
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-                    sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    When I first got a good grasp of how to write my own shaders, I became very interested in using graphics programs to solve general programming problems.
+                    Using 2d or 3d vertex fields to setup thread groups and putting instance data in vertex the program's vertex and fragment format, writing the result to
+                    a carefully prepared texture; so called <a href = "https://en.wikipedia.org/wiki/General-purpose_computing_on_graphics_processing_units" target="_blank">GPGPU programming</a>.
+                
+                </p>
+                
+                
+                
+                <p>
+                    Offloading certain types of non-graphical problems onto the GPU is highly appealing for a few reasons. First, the highly parallelized design of a GPU
+                    makes it very good at solving otherwise highly iterative problems. Pathfinding and physics simulation come to mind. Second, GPUs are ubiquitous on mobile devices,
+                    so being able to offload some game logic onto the GPU could improve CPU performance on such platforms.
+                    
+                </p>
+                
+                <p>
+                    The idea with GPGPU is to solve some problem in a graphics program. During your game's initialization routine, it compiles the program and retains
+                    a handle to it - like any other shader - and whenever the problem you've encapsulated in the graphics program needs to be solved, you marshall
+                    the data in shader friendly formats (textures, floats), dispatch the program and read the results (output texture/s).
                 
                 </p>
                 
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-                    sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    Unfortunately, as it stands today, there is a massive bottleneck when it comes to copying back data from graphics memory to system memory.
+                    In other words, there is a big time penalty whenever your game tries to read the graphics program's output.
                 
                 </p>
                 
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-                    sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    Although its not always realistic, if you can manage to completely avoid reading back the graphics program's output on the CPU side, this penalty can be avoided.
+
+                </p>
+                
+                <p>
+                    This compute shader is an example of such a graphics program.
+                
+                </p>
+                
+                <h1>An overview of the program</h1>
+                
+                <p>
+                    <!--<img class="right" src="../../Images/SushiJointRumble_TitleScreen/Small.png" target="_blank"></img>-->
+                    The program can be divided into two separate parts: the game logic and the Game of Life simulation.
+                
+                </p>
+                
+                <p> 
+                    The game logic is responsible for collecting player input, moving the character, determining if the player is interacting with
+                    the Game of Life simulation and passing input data to the simulation. This is done in a single thread on the CPU.
                 
                 </p>
                 
                 <p>
-                    <img class="right" src="../../Images/SushiJointRumble_TitleScreen/Small.png" target="_blank"></img>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-                    sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    The Game of Life simulation is responsible for updating the simulation state and handling user input with the simulation. This is done
+                    with a varying (but large) number of threads on the GPU. Since the simulation's state
+                    is calculated concurrently, the simulation data is double buffered to prevent collision issues. The program uses one texture as the
+                    input state and another texture as the output state. Whenever the simulation graphics program is dispatched, the two textures are flipped.
+                    Once the simulation has completed updating the data, the texture it wrote to is passed to a traditional fragment shader and used
+                    to color the surface of the various computer screens in the demo scene.
                 
                 </p>
                 
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-                    sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    By watching the demo video, you may have noticed that the demonstration takes place in a kind of computer lab.
+                    Conceptually, there are 3 spaces in the demo scene. First, there is the 3D space of the computer lab, where the player can move his
+                    character around. Second, there is the 2D screen space of the controller computer. This computer displays a number of buttons that affect
+                    Game of Life simulation parameters (simulation tick rate, state). Third, there is the 2D simulation space, where the game of life simulation takes place.
                 
                 </p>
                 
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-                    sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    Whenever the user clicks the left mouse button, the cursor's corresponding worldspace coordinate is calculated, and a ray is sent from that
+                    position along the users camera direction. If the ray intersects with a computer screen, the worldspace collision coordinate is mulled into
+                    that computer screen's local coordinate system, thereby giving the cursor's position within the virtual display. Depth is discarded, leaving
+                    the program with a 2D display coordinate. If the display was showing the Game of Life simulation, the cursor's position is converted into a
+                    texture coordinate and passed to the simulation's compute shader, to set the corresponding Game of Life cell to alive. If the screen was 
+                    displaying the simulation controls, some AABB to point collisions are calculated, and if the cursor is within a button, some callback 
+                    function is called, resulting in a parameter change in the simulation.
                 
                 </p>
                 
-                <img class="center" src="../../Images/SushiJointRumble_TitleScreen/Small.png" target="_blank"></img>
+                <h1>Implementation of the Game of Life graphics program</h1>
                 
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-                    sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    Here you can take a look at Game of Life simulation compute shader. The program is made up of 3 separate kernels: Main, UserInput, CopyColorBuffer.
+                
+                </p>
+
+                <p>
+                    Main reads the old state from the _Input texture and writes the new state to the _Output texture. Its written from the perspective of a single cell within
+                    the simulation space. The thread group is 3x3, representing the cell that is currently being evaluated and its 8 neighbours.
                 
                 </p>
                 
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-                    sunt in culpa qui officia deserunt mollit anim id est laborum.
-                
+                    UserInput handles user input with the simulation. If _InputDown is true, the cell at _TexelCoordinate is set to alive.
+                    
                 </p>
+                
+                <p>
+                    CopyColorBuffer copies data between the two data buffers.
+                    
+                </p>
+                
+                <!---------SOURCE----------->
+                <p><pre><code class="cpp">
+//
+// Name: GameOfLife
+// Description: Compute shader implementation of game of life.
+// 
+#pragma kernel Main
+#pragma kernel UserInput
+#pragma kernel CopyColorBuffer
+
+//*********
+// Uniforms
+//*********
+RWTexture2D<float> _Input;
+RWTexture2D<float> _Output;
+float2 _TexelCoordinate;
+int _InputDown;
+
+//          x, y, z
+[numthreads(3, 3, 1)]
+void Main (uint3 dtid : SV_DispatchThreadID, uint3 Gid : SV_GroupID,  uint3 GTid : SV_GroupThreadID)
+{
+    //Calc offset
+    float2 offset = float2(Gid.x * 1, Gid.y * 1) + float2(GTid.x-2,GTid.y-2).xy + float2(0,0);
+    
+    //Collect neighbour data
+    float neighbourValue = 0;
+    
+    neighbourValue += int(_Input[offset + float2(-1,1)]);
+    neighbourValue += int(_Input[offset + float2( 0,1)]);
+    neighbourValue += int(_Input[offset + float2( 1,1)]);
+    
+    neighbourValue += int(_Input[offset + float2(-1,0)]);
+    neighbourValue += int(_Input[offset + float2( 1,0)]);
+    
+    neighbourValue += int(_Input[offset + float2(-1,-1)]);
+    neighbourValue += int(_Input[offset + float2( 0,-1)]);
+    neighbourValue += int(_Input[offset + float2( 1,-1)]);    
+    
+    //Evaluate
+    //Im alive
+    if ((_Input[offset + float2( 0,0)]) == 1.0)
+    {
+        if (neighbourValue < 2 || neighbourValue > 3) //CORRECT
+        {
+            _Output[offset + float2( 0,0)] = 0.0;
+        
+        }
+        else
+            _Output[offset + float2( 0,0)] = 1;
+        
+    }
+    //Im dead
+    else if (ceil(_Input[offset + float2( 0,0)]) < 1.0)
+    {
+        if (neighbourValue == 3)
+            _Output[offset + float2( 0,0)] = 1.0;
+        
+    }
+                    
+}
+
+//           x,  y, z
+[numthreads(30, 30, 1)]
+void UserInput (uint3 dtid : SV_DispatchThreadID, uint3 Gid : SV_GroupID,  uint3 GTid : SV_GroupThreadID)
+{
+    float2 offset = float2(Gid.x * 30, Gid.y * 30) + float2(GTid.x-29,GTid.y-29).xy;
+
+    //Handle input
+    if (_InputDown)
+        _Output[offset + _TexelCoordinate] = 1.0;
+    
+}
+
+//           x,  y, z
+[numthreads(30, 30, 1)]
+void CopyColorBuffer (uint3 dtid : SV_DispatchThreadID, uint3 Gid : SV_GroupID,  uint3 GTid : SV_GroupThreadID)
+{
+    float2 offset = float2(Gid.x * 30, Gid.y * 30) + float2(GTid.x-29,GTid.y-29).xy;
+
+    //Copy color
+    _Input[dtid.xy] = _Output[dtid.xy];
+
+}
+                
+                </code></pre></p>
+                <!----------END OF SOURCE------------>
                
                     
             </div>
@@ -125,6 +302,7 @@
         </div>
      
         <script type="text/javascript" src="../../JS/Presentation/StagingLabel.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
         
     </body>
     

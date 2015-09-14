@@ -5,7 +5,6 @@ PREFABS.rotatorTest = function()
     var whatIsJavaScript3 = new GameObject();
         {
             whatIsJavaScript3.setName("RotatorTest");    
-            whatIsJavaScript3.getMesh().draw = drawTest;
             whatIsJavaScript3.getMesh().setShader(GRAPHICS.getShader("Opaque"));
             whatIsJavaScript3.getMesh().setMainTexture(GRAPHICS.getTextures()[1]);
             whatIsJavaScript3.getTransform().setPosition([0,-5,-10]);

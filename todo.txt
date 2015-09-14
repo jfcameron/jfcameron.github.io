@@ -1,0 +1,4 @@
+replace iframe method for shader source loading with ajax method.
+fix get by name for textures.
+automate shader loading (load entire directory at init)
+automate texture loading.

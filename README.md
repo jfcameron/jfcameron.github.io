@@ -9,3 +9,10 @@ Math library with useful types and operations for 3d graphics.
 
 Cannon: http://cannonjs.org/
 Rigidbody physics for JS applications.
+
+--
+
+The website also makes use of highlight.js and jquery.
+
+Highlight.js: https://highlightjs.org/
+Code highlighting js library.
