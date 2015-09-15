@@ -330,11 +330,8 @@ body
     font-weight: normal;
     
    
-<<<<<<< HEAD
-=======
 
 }
->>>>>>> origin/master
 
 /* BG scroll animation */
 @keyframes animatedBackground 
@@ -356,34 +353,6 @@ body
     background-position: center bottom;
     background-repeat:repeat; 
     /*background-attachment: fixed;*/
-    
-    width: 100%;
-    height: 100%;
-    
-    top: 0px;
-    right: 0px;
-    
-}
-
-/* BG scroll animation */
-@keyframes animatedBackground 
-{
-	from { background-position: 0 0; }
-	to { background-position: 256px -256px; }
-
-}
-
-#background
-{
-    animation: animatedBackground 4.5s linear infinite;
-
-    position: fixed;
-    background-image: url("../Textures/bgtest.png");
-    background-color: #101A1A;
-    background-size: 256px;
-    background-position: center bottom;
-    background-repeat:repeat; 
-    background-attachment: fixed;
     
     width: 100%;
     height: 100%;
@@ -497,8 +466,6 @@ image
 }
 /* End of Div with fixed ratio */
 
-<<<<<<< HEAD
-=======
 /* fixed ratio Images */
 .PreviewImageRatioWrapper
 {
@@ -534,7 +501,6 @@ image
 }
 /* End of fixed ratio Images */
 
->>>>>>> origin/master
 
 
 /*  Link styling    */
