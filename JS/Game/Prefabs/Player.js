@@ -8,6 +8,7 @@ PREFABS.playerObject = function(aPosition)
         gameObject.setName("TheTestCamera");    
         gameObject.getTransform().setPosition(aPosition);
         gameObject.getTransform().setScale([1,1,1]);
+        gameObject.getTransform().setRotation([0,10 * (3.14/180),0]);
         gameObject.getMesh().draw = null;
         
         //Add camera
