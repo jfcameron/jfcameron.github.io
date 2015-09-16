@@ -218,6 +218,11 @@ Author: Joseph Cameron
                 position[1] += dis*0.25;
             
             }
+            if (dis > 25.0)
+            {
+                position[1] = -1.0;
+                
+            }
             
             v_FragPosition = vec3(position);
             
