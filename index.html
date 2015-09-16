@@ -49,6 +49,7 @@
     <script type="text/javascript" src="JS/Game/Prefabs/NamePlate.js"></script>
     <script type="text/javascript" src="JS/Game/Prefabs/Water.js"></script>
     <script type="text/javascript" src="JS/Game/Prefabs/Player.js"></script>
+    <script type="text/javascript" src="JS/Game/Prefabs/Skybox.js"></script>
     <!--Nonstandard scripts-->
     <script type="text/javascript" src="JS/Engine/BootLoader.js"></script><!--Forces engine to load before document is ready. May move into engine repo at some point.-->
     
@@ -61,6 +62,7 @@
     <iframe id="Water"       src="Shaders/Water.html"       class = "ShaderProgram" onload="tryBoot();"></iframe>
     <iframe id="Island"      src="Shaders/Island.html"      class = "ShaderProgram" onload="tryBoot();"></iframe>
     <iframe id="Sky"         src="Shaders/Sky.html"         class = "ShaderProgram" onload="tryBoot();"></iframe>
+    <iframe id="Skybox"      src="Shaders/Skybox.html"      class = "ShaderProgram" onload="tryBoot();"></iframe>
     
     <!--***************-->
     <!-- HTML Document -->
@@ -126,7 +128,7 @@
                     Implementation of Conway's Game of Life in a Direct X compute shader. Demonstrates how a shader program can be used to solve highly iterative but non-graphical
                     problems. The rules of Game of Life are quite simple. Given the way that shader programming makes you pose the problem makes the source code very legible.
                     
-                    <a href ="Articles/ConwaysGameOfLifeInAComputeShader/content.html" target="_blank">Demo & full article</a>
+                    <a href ="Articles/ConwaysGameOfLifeInAComputeShader/content.html" class="readmore" target="_blank">Demo & full article</a>
                     
                     <br>
                     
@@ -178,11 +180,18 @@
                     Javascript along the way.<br><br>The project files are available <a href = "https://github.com/jfcameron/WebGLGameEngine">here</a>.
                     The project makes use of glMatrix, a useful graphics math library and Cannon a javascript based physics engine.
                     
-                    <a href ="Articles/WebGLGameEngine/content.html" target="_blank">Demo & full article</a>
+                    <a href ="Articles/WebGLGameEngine/content.html class="readmore"" target="_blank">Demo & full article</a>
                     
                     <br><br>
                     
                     <center>
+                        <div class="PreviewImageRatioWrapper">
+                            <div class="PreviewImageRatioContent">
+                                <a href="Images/WebGLGameEngine_Banner/Big.png" target="_blank"><img src="Images/WebGLGameEngine_Banner/Small.jpg" target="_blank" id = "previewImage"></img></a>
+                                
+                            </div>
+                        
+                        </div>
                         
                         <div class="PreviewImageRatioWrapper">
                             <div class="PreviewImageRatioContent">
@@ -199,13 +208,47 @@
                 
                 </p>
                 
+                <!--
+                <h1>Cross platform Game engine in C & C++</h1>
+                <p>
+                    3D game engine builds for Win32 and Android.
+                    
+                    <a href ="Articles/CRenderer/content.html" target="_blank">Demo & full article</a>
+                    
+                    <br><br>
+                    
+                    <center>
+                        <div class="PreviewImageRatioWrapper">
+                            <div class="PreviewImageRatioContent">
+                                <a href="Images/CRenderer_Windows_And_Android/Big.png" target="_blank"><img src="Images/CRenderer_Windows_And_Android/Small.jpg" target="_blank" id = "previewImage"></img></a>
+                                
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="PreviewImageRatioWrapper">
+                            <div class="PreviewImageRatioContent">
+                                <a href="Images/CRenderer_Box/Big.png" target="_blank"><img src="Images/CRenderer_Box/Small.png" target="_blank" id = "previewImage"></img></a>
+
+                            </div>
+                        
+                        </div>
+                                
+                    </center>
+                    
+                    <br><br>
+                    C, C++, OpenGL, Android NDK, Java, JNI, cross-platform development.
+                
+                </p>
+                -->
+                
                 <h1>Cross platform 3D Renderer in C</h1>
                 <p>
                     3D renderer written in C (C89), using OpenGL ES 2.0. I used C89 and OpenGL for portability. I used the ES 2.0 standard specifically because that API standard
                     is so widly supported on modern (mobile) devices and because it plays nice with WebGL, which lets me use GLSL programs interchangably between this renderer
                     and the WebGL renderer. There are currently builds for Android and Windows.
                     
-                    <a href ="Articles/CRenderer/content.html" target="_blank">Demo & full article</a>
+                    <a href ="Articles/CRenderer/content.html" class="readmore" target="_blank">Demo & full article</a>
                     
                     <br><br>
                     
@@ -243,7 +286,7 @@
                     The purpose was to separate game code from the engine, separate the implementation of the graphics renderer from the graphics interface and
                     to seperate the entire program from the specifics of initializing itself on the Windows platform.
                     
-                    <a href ="Articles/TowerDefense/content.html" target="_blank">Demo & full article</a>
+                    <a href ="Articles/TowerDefense/content.html" class="readmore" target="_blank">Demo & full article</a>
                         
                     <br><br>
                     
@@ -287,7 +330,7 @@
                     This was the result of my 3 semester long final school project during the Algonquin College Game Development program. I worked as the lead programmer on 5 man team.
                     My responsibilities included technical design, weekly builds, reviewing code commits and of course programming. 
                     
-                    <a href ="Articles/SushiJointRumble/content.html" target="_blank">Demo & full article</a>
+                    <a href ="Articles/SushiJointRumble/content.html" class="readmore" target="_blank">Demo & full article</a>
                     
                     <br><br>
                     
@@ -322,14 +365,14 @@
                     Features a hardware accelerated 2D tile renderer, a level editor, a script editor.
                     Builds for PC & Android.
                     
-                    <a href ="Articles/RPGCreator/content.html" target="_blank">Demo & full article</a>.
+                    <a href ="Articles/RPGCreator/content.html" class="readmore" target="_blank">Demo & full article</a>.
                     
                     <br><br>
                     
                     <center>
                         <div class="PreviewImageRatioWrapper">
                             <div class="PreviewImageRatioContent">
-                                <img src="Images/RPGCreator_LevelEditor/Small.png" target="_blank" id = "previewImage"></img>
+                                <a href="Images/RPGCreator_LevelEditor/Big.png" target="_blank" ><img src="Images/RPGCreator_LevelEditor/Small.png" target="_blank" id = "previewImage"></img></a>
                                 
                             </div>
                             
@@ -345,7 +388,7 @@
                         
                         <div class="PreviewImageRatioWrapper">
                             <div class="PreviewImageRatioContent">
-                                <img src="Images/RPGCreator_CollisionLayer/Small.png" target="_blank" id = "previewImage"></img>
+                                <a href="Images/RPGCreator_CollisionLayer/Big.png" target="_blank" ><img src="Images/RPGCreator_CollisionLayer/Small.png" target="_blank" id = "previewImage"></img></a>
                     
                             </div>
                             
@@ -367,14 +410,30 @@
                     texture lookup. Normals are recalculated after displacement and the terrain is coloured as usual in the fragment shader. Using this method, a huge amount of terrain
                     data can be stored in a texture, as the player moves around, the tesselated plane is used to render a subsection of the data.
                     
-                    <a href ="Articles/TerrainMaps/content.html" target="_blank">Demo & full article</a>
+                    <a href ="Articles/TerrainMaps/content.html" class="readmore" target="_blank">Demo & full article</a>
                     
                     <br><br>
                     
                     <center>
                         <div class="PreviewImageRatioWrapper">
                             <div class="PreviewImageRatioContent">
-                                <a href="Images/GPU_Terrain/Big.png" target="_blank" ><img src="Images/GPU_Terrain/Small.png" id = "previewImage"></img></a>
+                                <a href="Images/GPU_Voxel_Forest/Big.png" target="_blank" ><img src="Images/GPU_Voxel_Forest/Small.jpg" id = "previewImage"></img></a>
+                        
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="PreviewImageRatioWrapper">
+                            <div class="PreviewImageRatioContent">
+                                <a href="Images/GPU_Terrain/Big.png" target="_blank" ><img src="Images/GPU_Terrain/Small.jpg" id = "previewImage"></img></a>
+                        
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="PreviewImageRatioWrapper">
+                            <div class="PreviewImageRatioContent">
+                                <a href="Images/GPU_Terrain_Trees/Big.png" target="_blank" ><img src="Images/GPU_Terrain_Trees/Small.jpg" id = "previewImage"></img></a>
                         
                             </div>
                             
@@ -392,12 +451,12 @@
                 <p>
                     Here are a few different voxel renderers I made while reading about procedural terrain generation. 
                     One is a minecraft style terrain generator, rendering a noise function as voxel data around the player. 
-                    It was implemented on the CPU, so I had to spend time hiding chunk loading etc and this lead me to thinking of better solutions.
-                    The other two, one is an example GPU based renderer, the third is a GPU based renderer + editor.
+                    It was implemented on the CPU, so I had to spend time hiding chunk loading etc and this lead me to thinking about how to hardware accelerate the process.
                     To move voxel generation onto the GPU, I encoded the terrain data into a texture and used the texture data to generate voxels in
-                    a geometry shader.
+                    a geometry shader. I used this technique to build a proof of concept demo (the one with the smiling stick figure) then a voxel editor and finally I added a curve
+                    function to give it a planetary effect.
                     
-                    <a href ="Articles/VoxelRenderingOnTheGPU/content.html" target="_blank">Demo & full article</a>
+                    <a href ="Articles/VoxelRenderingOnTheGPU/content.html" class="readmore" target="_blank">Demo & full article</a>
                     
                     <br><br>
                     
@@ -425,6 +484,22 @@
                             </div>
                             
                         </div>
+                        <!---->
+                        <div class="PreviewImageRatioWrapper">
+                            <div class="PreviewImageRatioContent">
+                                <a href="Images/GPU_Voxel_Planet_Render/Big.png" target="_blank" ><img src="Images/GPU_Voxel_Planet_Render/Small.jpg" id = "previewImage"></img></a>
+                                
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="PreviewImageRatioWrapper">
+                            <div class="PreviewImageRatioContent">
+                                <a href="Images/GPU_Voxel_Planet_EditorView/Big.png" target="_blank" ><img src="Images/GPU_Voxel_Planet_EditorView/Small.jpg" id = "previewImage"></img></a>
+                                
+                            </div>
+                            
+                        </div>
                                 
                     </center>
                     
@@ -436,7 +511,8 @@
                 <h1>Speed King</h1>
                 <p>
                     This was a short game I worked on for the global game jam 2015. Team size was 2 people. I didnt end up submitting the game unfortunately,
-                    due to an untimely 10 hour power outage on the final day.
+                    due to an untimely 10 hour power outage on the final day. Mobile game targeting tablets. Combat was structured on simon says. Threw in a vertex shader that curves the game world
+                    for an interesting graphical effect.
                     
                     <!--<a href ="Articles/SpeedKing/content.html" target="_blank">Demo & full article</a>-->
                     
@@ -446,7 +522,23 @@
                     
                         <div class="PreviewImageRatioWrapper">
                             <div class="PreviewImageRatioContent">
+                                <a href="Images/SpeedKing_Fight/Big.png" target="_blank"><img src="Images/SpeedKing_Fight/Small.jpg" target="_blank" id = "previewImage"></img></a>
+                            
+                            </div>
+                            
+                        </div>
+                    
+                        <div class="PreviewImageRatioWrapper">
+                            <div class="PreviewImageRatioContent">
                                 <a href="Images/SpeedKing_SplashScreen/Big.png" target="_blank"><img src="Images/SpeedKing_SplashScreen/Small.png" target="_blank" id = "previewImage"></img></a>
+                            
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="PreviewImageRatioWrapper">
+                            <div class="PreviewImageRatioContent">
+                                <a href="Images/SpeedKing_MainMenu/Big.png" target="_blank"><img src="Images/SpeedKing_MainMenu/Small.jpg" target="_blank" id = "previewImage"></img></a>
                             
                             </div>
                             
@@ -472,7 +564,23 @@
                     <center>
                         <div class="PreviewImageRatioWrapper">
                             <div class="PreviewImageRatioContent">                    
-                                <a href="Images/RailShooter_Title/Big.png" target="_blank"><img src="Images/RailShooter_Title/Small.png" target="_blank" id = "previewImage"></img></a>
+                                <a href="Images/RailShooter_Title/Big.png" target="_blank"><img src="Images/RailShooter_Title/Small.jpg" target="_blank" id = "previewImage"></img></a>
+                                
+                            </div>
+                                
+                        </div>
+                        
+                        <div class="PreviewImageRatioWrapper">
+                            <div class="PreviewImageRatioContent">                    
+                                <a href="Images/RailShooter_Flight/Big.png" target="_blank"><img src="Images/RailShooter_Flight/Small.jpg" target="_blank" id = "previewImage"></img></a>
+                                
+                            </div>
+                                
+                        </div>
+                        
+                        <div class="PreviewImageRatioWrapper">
+                            <div class="PreviewImageRatioContent">                    
+                                <a href="Images/RailShooter_Editor/Big.png" target="_blank"><img src="Images/RailShooter_Editor/Small.jpg" target="_blank" id = "previewImage"></img></a>
                                 
                             </div>
                                 

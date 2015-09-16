@@ -8,7 +8,7 @@ PREFABS.namePlateObject = function()
         gameObject.setName("Name");    
         gameObject.getMesh().setVertexBuffer(GRAPHICS.getQuadVertexArray());
         gameObject.getMesh().setMainTexture(GRAPHICS.getTexture("name.png"));
-        gameObject.getTransform().setPosition([0,2,-30]);
+        gameObject.getTransform().setPosition([0,2.8,-30]);
         gameObject.getTransform().setScale([80,80,0]);
         
     }

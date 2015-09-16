@@ -63,6 +63,8 @@ function Game()
         this.m_RootGameObject.addChild(PREFABS.cloudObject([0,10,-70]));
         this.m_RootGameObject.addChild(PREFABS.cloudObject([0,10,-110]));
         
+        this.m_RootGameObject.addChild(PREFABS.skyboxObject());
+        
     };
 
 }

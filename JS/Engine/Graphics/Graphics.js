@@ -521,6 +521,7 @@ function Graphics()
         this.initShader("Water");
         this.initShader("Island");
         this.initShader("Sky");
+        this.initShader("Skybox");
     
     };
         
