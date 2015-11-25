@@ -110,8 +110,12 @@
                     
                     Briefly, I'm experienced at programming in C, C++, C#. I have worked with Java and Objective-C in order
                     to setup OpenGL & C++ environments for IOS and Android applications. I'm experienced with various APIs including OpenGL and OpenAL
-                    and have spent a lot of time working with the Unity 3d engine.
-                    I'm also experienced with WebGL and Javascript. As long as it's well documented, I'm a quick learner.<br>
+                    and have spent a lot of time working with the Unity 3d engine. 
+                    I'm also experienced with WebGL and Javascript. 
+                    As long as it's well documented, I'm a quick learner.<br>
+                    I was hired into a web development company right out of graduation and after 6 months of job experience and working on personal projects, 
+                    I have decided its time to pursue my career in the videogame industry.
+                    <br>
                     
                     <br><br>
                     
@@ -125,8 +129,9 @@
                 
                 <h1>Conway's Game of Life in a compute shader</h1>
                 <p>
-                    Implementation of Conway's Game of Life in a Direct X compute shader. Demonstrates how a shader program can be used to solve highly iterative but non-graphical
-                    problems. The rules of Game of Life are quite simple. Given the way that shader programming makes you pose the problem makes the source code very legible.
+                    Implementation of Conway's Game of Life in a Direct X compute shader. Demonstrates how a shader program can be used to solve highly iterative non-graphical
+                    problems. Compute shader programming makes you pose the problem in terms of the evaluation of thread groups. This mapped very easily onto the
+                    rules of the Game Of Life, which are all about the evaluation of a cell's neighbours. Lead to a short and simple program. Video and source can be viewed on the article page. 
                     
                     <a href ="Articles/ConwaysGameOfLifeInAComputeShader/content.html" class="readmore" target="_blank">Demo & full article</a>
                     
@@ -176,9 +181,12 @@
                 
                 <h1>WebGL Game Engine</h1>
                 <p>
-                    Making something in WebGL seemed like a good idea for this portfolio. It's on the web, afterall. It was also a chance to use OpenGL in a new environment, and learn something about
-                    Javascript along the way.<br><br>The project files are available <a href = "https://github.com/jfcameron/WebGLGameEngine">here</a>.
-                    The project makes use of glMatrix, a useful graphics math library and Cannon a javascript based physics engine.
+                    Making something in WebGL seemed like a good idea for this portfolio. Read about how to follow object oriented patterns in Javascript and used my understanding of OpenGL to
+                    write a game engine for the web.<br>
+                    Features a 3D renderer (forward rendering), an entity component system and a rigidbody physics system. I look forward to when then next WebGL standard
+                    becomes prevalent so I can add a deferred rendering path without the use of browser specific extensions.
+                    <br><br>The project files are available <a href = "https://github.com/jfcameron/WebGLGameEngine">here</a>.
+                    The project makes use of glMatrix, a useful 3d math library and Cannon, a rigidbody physics library.
                     
                     <!--<a href ="Articles/WebGLGameEngine/content.html class="readmore"" target="_blank">Demo & full article</a>-->
                     
@@ -244,9 +252,9 @@
                 
                 <h1>Cross platform 3D Renderer in C</h1>
                 <p>
-                    3D renderer written in ANSI C, using OpenGL ES 2.0. I used C89 and OpenGL for portability. I used the ES 2.0 standard specifically because that API standard
-                    is so widly supported on modern (mobile) devices and because it plays nice with WebGL, which lets me use GLSL programs interchangably between this renderer
-                    and the WebGL renderer. There are currently builds for Android and Windows.
+                    3D renderer written in C, using OpenGL. I used ANSI C and OpenGL ES 2.0 to emphasize portability. I wanted to be able to use this project as the foundation for the renderer of any sort of 3D application I might write
+                    for desktop or mobile devices for as long as the OpenGL API is relevant. I am also looking into replacing my WebGL renderer with this project because of how much faster Emscripten generated JavaScript is compared to handwritten JavaScript.
+                    Builds for Windows and Android platforms.
                     
                     <a href ="Articles/CRenderer/content.html" class="readmore" target="_blank">Demo & full article</a>
                     
@@ -278,13 +286,11 @@
                 
                 <h1>Tower Defense</h1>
                 <p>
-                    A 2D tower defense game I wrote from scratch. Renderer uses Direct X 9. Written in C++. I'm very happy with the technical design of this project.
-                    The code is separated into a number separate projects, linked and compiled together.
-                    
-                    <br><br>
-                    
-                    The purpose was to separate game code from the engine, separate the implementation of the graphics renderer from the graphics interface and
-                    to seperate the entire program from the specifics of initializing itself on the Windows platform.
+                    A 2D tower defense game I wrote in C++, uses Direct X 9. I'm happy with the organization of this project.
+                    The code is separated into a number separate sub projects, linked and compiled together. 
+                    Improves compile times, improves modularity of the project's individual components.<br><br>
+                    Features an implementation of the A* path-finding algorithm and a hardware accelerated tile renderer. 
+                    Level data is stored in XML documents and loaded from file. I never wrote a level editor, so making the game's different stages was a bit tedious.
                     
                     <a href ="Articles/TowerDefense/content.html" class="readmore" target="_blank">Demo & full article</a>
                         
@@ -327,8 +333,10 @@
                 <h1>Sushi Joint Rumble</h1>
                 <p>
                     A beat 'em up game with RPG leveling, skill unlocking, item purchasing.
-                    This was the result of my 3 semester long final school project during the Algonquin College Game Development program. I worked as the lead programmer on 5 man team.
-                    My responsibilities included technical design, weekly builds, reviewing code commits and of course programming. 
+                    This was the result of my 3 semester long final school project during the Algonquin College Game Development program. I worked as the lead programmer on a 7 person team.
+                    My responsibilities included technical design, weekly builds, reviewing code commits and of course programming.
+                    The amount of subsystems and mechanics lead to a scope that well exceeded the year and a half we had to complete the project.
+                    Definitely learned a lesson on the importance of simple, concise design. A lot of over nights at the computer labs, a lot of hard work, a lot of fun. 
                     
                     <a href ="Articles/SushiJointRumble/content.html" class="readmore" target="_blank">Demo & full article</a>
                     
@@ -361,10 +369,10 @@
                 
                 <h1>RPG creator - Level editor & NPC scripting editor</h1>
                 <p>
-                    Game making program for 2D RPGs.
-                    Features a hardware accelerated 2D tile renderer, a level editor, a script editor.
-                    The motivation here was to work with an embedded script interpreter and try offloading all tile and sprite rendering onto graphics programs.
-                    A game editor seemed like an interesting way to tie it all together.
+                    After playing an old Playstation game I'm fond of, I thought it would be an interesting problem to create an equivalent renderer that offloads all forms of rendering and animation onto the GPU. Once the renderer was complete
+                    I wrote a simple level editor. I decided to add end user programmable NPCs, so I embedded a Lua interpreter for that purpose.<br>
+                    Features a hardware accelerated 2D tile renderer, a level editor, a script editor. The renderer works excellently but seems to burn through mobile device batteries. It turns my cellphone into a mini space heater. 
+                    It should be noted that I do not own the graphics for this project.
                     Builds for PC & Android.
                     
                     <a href ="Articles/RPGCreator/content.html" class="readmore" target="_blank">Demo & full article</a>.
@@ -453,7 +461,7 @@
                 <p>
                     Here are a few different voxel renderers I made while reading about procedural terrain generation. 
                     One is a minecraft style terrain generator, rendering a noise function as voxel data around the player. 
-                    It was implemented on the CPU, so I had to spend time hiding chunk loading etc and this lead me to thinking about how to hardware accelerate the process.
+                    It was implemented on the CPU, so I had to spend time hiding chunk loading etc. and this lead me to thinking about how to hardware accelerate the process.
                     To move voxel generation onto the GPU, I encoded the terrain data into a texture and used the texture data to generate voxels in
                     a geometry shader. I used this technique to build a proof of concept demo (the one with the smiling stick figure) then a voxel editor and finally I added a curve
                     function to give it a planetary effect.
