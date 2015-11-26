@@ -114,7 +114,7 @@
                     I'm also experienced with WebGL and Javascript. 
                     As long as it's well documented, I'm a quick learner.<br>
                     I was hired into a web development company right out of graduation and after 6 months of job experience and working on personal projects, 
-                    I have decided its time to pursue my career in the videogame industry.
+                    I have decided it's time to pursue my career in the videogame industry.
                     <br>
                     
                     <br><br>
@@ -131,7 +131,7 @@
                 <p>
                     Implementation of Conway's Game of Life in a Direct X compute shader. Demonstrates how a shader program can be used to solve highly iterative non-graphical
                     problems. Compute shader programming makes you pose the problem in terms of the evaluation of thread groups. This mapped very easily onto the
-                    rules of the Game Of Life, which are all about the evaluation of a cell's neighbours. Lead to a short and simple program. Video and source can be viewed on the article page. 
+                    rules of the Game Of Life, which are all about the evaluation of groups of neighbours. Lead to a short and simple program. Video and source can be viewed on the article page. 
                     
                     <a href ="Articles/ConwaysGameOfLifeInAComputeShader/content.html" class="readmore" target="_blank">Demo & full article</a>
                     
@@ -181,11 +181,15 @@
                 
                 <h1>WebGL Game Engine</h1>
                 <p>
-                    Making something in WebGL seemed like a good idea for this portfolio. Read about how to follow object oriented patterns in Javascript and used my understanding of OpenGL to
-                    write a game engine for the web.<br>
-                    Features a 3D renderer (forward rendering), an entity component system and a rigidbody physics system. I look forward to when then next WebGL standard
-                    becomes prevalent so I can add a deferred rendering path without the use of browser specific extensions.
-                    <br><br>The project files are available <a href = "https://github.com/jfcameron/WebGLGameEngine">here</a>.
+                    The engine features a 3D renderer (forward rendering), an entity component system and a rigidbody physics system.
+                    I wanted to embed some sort of WebGL application into this website's landing page. Read about how to follow object 
+                    oriented patterns in Javascript and used my understanding of OpenGL to write a game engine for the web.                   
+                    I look forward to when then next WebGL standard becomes prevalent so I can add a deferred rendering path without 
+                    the use of browser specific extensions.
+                    
+                    <br><br>
+                    
+                    The project files are available <a href = "https://github.com/jfcameron/WebGLGameEngine">here</a>.
                     The project makes use of glMatrix, a useful 3d math library and Cannon, a rigidbody physics library.
                     
                     <!--<a href ="Articles/WebGLGameEngine/content.html class="readmore"" target="_blank">Demo & full article</a>-->
@@ -253,7 +257,7 @@
                 <h1>Cross platform 3D Renderer in C</h1>
                 <p>
                     3D renderer written in C, using OpenGL. I used ANSI C and OpenGL ES 2.0 to emphasize portability. I wanted to be able to use this project as the foundation for the renderer of any sort of 3D application I might write
-                    for desktop or mobile devices for as long as the OpenGL API is relevant. I am also looking into replacing my WebGL renderer with this project because of how much faster Emscripten generated JavaScript is compared to handwritten JavaScript.
+                    for desktop or mobile devices for as long as the OpenGL API remains relevant. When ES 3.0 becomes ubiquitous, I may add a deferred path. I am also looking into replacing my WebGL renderer with this project because of how much faster Emscripten generated JavaScript is compared to handwritten JavaScript.
                     Builds for Windows and Android platforms.
                     
                     <a href ="Articles/CRenderer/content.html" class="readmore" target="_blank">Demo & full article</a>
@@ -284,13 +288,64 @@
                 
                 </p>
                 
+                <h1>RPG creator - Level editor & NPC scripting editor</h1>
+                <p>
+                    Features a hardware accelerated 2D tile renderer, a level editor and a script editor for NPC behavior.
+                    The scripts are interpreted by an embedded Lua interpreter, allowing end users to reprogram NPCs without needing access to the project's source code. Users can use external text editors or use the script editor programmed
+                    into the level editor. Script editor includes a debugging feature.
+                    <br><br>
+                    After playing an old Playstation game I'm fond of, I thought it would be an interesting problem to create an equivalent renderer that offloads all forms of animation and drawing onto the GPU. Once the renderer was complete
+                    I wrote a simple level editor. I decided to add end user programmable NPCs, so I embedded a Lua interpreter for that purpose.<br>
+                    It should be noted that I do not own the graphics for this project. It started as an homage and ended up some kind of tech demo.<br><br>
+                    
+                    
+                    Builds for PC & Android.
+                    
+                    <a href ="Articles/RPGCreator/content.html" class="readmore" target="_blank">Demo & full article</a>.
+                    
+                    <br><br>
+                    
+                    <center>
+                        <div class="PreviewImageRatioWrapper">
+                            <div class="PreviewImageRatioContent">
+                                <a href="Images/RPGCreator_LevelEditor/Big.png" target="_blank" ><img src="Images/RPGCreator_LevelEditor/Small.png" target="_blank" id = "previewImage"></img></a>
+                                
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="PreviewImageRatioWrapper">
+                            <div class="PreviewImageRatioContent">
+                                <a href="Images/RPGCreator_ScriptEditor/Big.png" target="_blank"><img src="Images/RPGCreator_ScriptEditor/Small.png" target="_blank" id = "previewImage"></img></a>
+                            
+                            </div>
+                        
+                        </div>
+                        
+                        <div class="PreviewImageRatioWrapper">
+                            <div class="PreviewImageRatioContent">
+                                <a href="Images/RPGCreator_CollisionLayer/Big.png" target="_blank" ><img src="Images/RPGCreator_CollisionLayer/Small.png" target="_blank" id = "previewImage"></img></a>
+                    
+                            </div>
+                            
+                        </div>
+                    
+                    </center>
+                    
+                    <br><br>
+                    C#, Cg, XML, Lua, embedded interpreter, cross-platform development.
+                
+                </p>
+                
+                <br>
+                
                 <h1>Tower Defense</h1>
                 <p>
-                    A 2D tower defense game I wrote in C++, uses Direct X 9. I'm happy with the organization of this project.
-                    The code is separated into a number separate sub projects, linked and compiled together. 
-                    Improves compile times, improves modularity of the project's individual components.<br><br>
+                    A 2D tower defense game I wrote in C++, uses Direct X9 for rendering.
                     Features an implementation of the A* path-finding algorithm and a hardware accelerated tile renderer. 
                     Level data is stored in XML documents and loaded from file. I never wrote a level editor, so making the game's different stages was a bit tedious.
+                    The code is split up into a number separate sub projects, divided according to purpose (Renderer, Pathfinder, etc.) to improve compile times and modularity. 
+                    
                     
                     <a href ="Articles/TowerDefense/content.html" class="readmore" target="_blank">Demo & full article</a>
                         
@@ -336,7 +391,8 @@
                     This was the result of my 3 semester long final school project during the Algonquin College Game Development program. I worked as the lead programmer on a 7 person team.
                     My responsibilities included technical design, weekly builds, reviewing code commits and of course programming.
                     The amount of subsystems and mechanics lead to a scope that well exceeded the year and a half we had to complete the project.
-                    Definitely learned a lesson on the importance of simple, concise design. A lot of over nights at the computer labs, a lot of hard work, a lot of fun. 
+                    Content ended up being spread thinly across all aspects of the game, whereas we would have been better off focusing on the core elements of the beat 'em up.
+                    Definitely learned a lesson on the importance of a focused design. Many over nights at the computer labs, a lot of hard work, a lot of fun. 
                     
                     <a href ="Articles/SushiJointRumble/content.html" class="readmore" target="_blank">Demo & full article</a>
                     
@@ -367,58 +423,13 @@
                 
                 </p>
                 
-                <h1>RPG creator - Level editor & NPC scripting editor</h1>
-                <p>
-                    After playing an old Playstation game I'm fond of, I thought it would be an interesting problem to create an equivalent renderer that offloads all forms of rendering and animation onto the GPU. Once the renderer was complete
-                    I wrote a simple level editor. I decided to add end user programmable NPCs, so I embedded a Lua interpreter for that purpose.<br>
-                    Features a hardware accelerated 2D tile renderer, a level editor, a script editor. The renderer works excellently but seems to burn through mobile device batteries. It turns my cellphone into a mini space heater. 
-                    It should be noted that I do not own the graphics for this project.
-                    Builds for PC & Android.
-                    
-                    <a href ="Articles/RPGCreator/content.html" class="readmore" target="_blank">Demo & full article</a>.
-                    
-                    <br><br>
-                    
-                    <center>
-                        <div class="PreviewImageRatioWrapper">
-                            <div class="PreviewImageRatioContent">
-                                <a href="Images/RPGCreator_LevelEditor/Big.png" target="_blank" ><img src="Images/RPGCreator_LevelEditor/Small.png" target="_blank" id = "previewImage"></img></a>
-                                
-                            </div>
-                            
-                        </div>
-                        
-                        <div class="PreviewImageRatioWrapper">
-                            <div class="PreviewImageRatioContent">
-                                <a href="Images/RPGCreator_ScriptEditor/Big.png" target="_blank"><img src="Images/RPGCreator_ScriptEditor/Small.png" target="_blank" id = "previewImage"></img></a>
-                            
-                            </div>
-                        
-                        </div>
-                        
-                        <div class="PreviewImageRatioWrapper">
-                            <div class="PreviewImageRatioContent">
-                                <a href="Images/RPGCreator_CollisionLayer/Big.png" target="_blank" ><img src="Images/RPGCreator_CollisionLayer/Small.png" target="_blank" id = "previewImage"></img></a>
-                    
-                            </div>
-                            
-                        </div>
-                    
-                    </center>
-                    
-                    <br><br>
-                    C#, Cg, XML, Lua, scripting language API, cross-platform development
-                
-                </p>
-                
-                <br>
-
                 <h1>Terrain map generation on the GPU</h1>
                 <p>
                     Hardware accelerated terrain generation. Terrain data is encoded in a texture. Various channels are used for height displacement, uv, foliage type.
                     A highly tesselated plane supplys the vertex data for the shader. Verts are aligned with texels in the texture, new heights, coloring etc. are calculated via
                     texture lookup. Normals are recalculated after displacement and the terrain is coloured as usual in the fragment shader. Using this method, a huge amount of terrain
-                    data can be stored in a texture, as the player moves around, the tesselated plane is used to render a subsection of the data.
+                    data can be stored in a texture, as the player moves around, the tesselated plane is used to render a subsection of the data. This also lets you take advantage of texture wrap modes
+                    to very easily create finite or infinite worlds.
                     
                     <a href ="Articles/TerrainMaps/content.html" class="readmore" target="_blank">Demo & full article</a>
                     
@@ -634,36 +645,52 @@
                 <br>
                 -->
                 
-                <!--
-                <h1>CSnake, 2014</h1>
+                
+                <h1>Oldschool Snake</h1>
                 <p>
-                    A snake clone written in C using the C89 standard.
+                    A snake clone written in ANSI C for a command-line interface. I wanted to see what kind of constraints the command-line would bring up for game programming.
+                    I found that clearing the screen after every frame lead to unacceptably low framerates, so instead I had to selectively blank the last [x,y] position of moving objects. For example, blanking where the
+                    end of the snake's tail had been a frame ago. Fun to write, but this was some ancient technology.
                     
-                    <a href ="Articles/CSnake/content.html" target="_blank">Demo & full article</a>
+                    <!--<a href ="Articles/CSnake/content.html" target="_blank">Demo & full article</a>-->
                     
                     <br><br>
                     
                     <center>
                     
-                        <table>
-                            <tr>
-                                <td id = "contenttd"><a href="Images/Snake_Intro/Big.png" target="_blank" ><img src="Images/Snake_Intro/Small.png" id = "previewImageWide"></img></a></td>
-                                <td id = "contenttd"><a href="Images/Snake_MidGame/Big.png" target="_blank"><img src="Images/Snake_MidGame/Small.png" id = "previewImageWide"></img></a></td>
-                                <td id = "contenttd"><a href="Images/Snake_Died/Big.png" target="_blank"><img src="Images/Snake_Died/Small.png" id = "previewImageWide"></img></a></td>
+                        <div class="PreviewImageRatioWrapper">
+                            <div class="PreviewImageRatioContent">                    
+                                <a href="Images/Snake_Intro/Big.png" target="_blank" ><img src="Images/Snake_Intro/Small.png" id = "previewImage"></img></a>
                                 
-                            </tr>
-                            
-                        </table>
+                            </div>
+                                
+                        </div>
+                        
+                        <div class="PreviewImageRatioWrapper">
+                            <div class="PreviewImageRatioContent">                    
+                                <a href="Images/Snake_MidGame/Big.png" target="_blank"><img src="Images/Snake_MidGame/Small.png" id = "previewImage"></img></a>
+                                
+                            </div>
+                                
+                        </div>
+                        
+                        <div class="PreviewImageRatioWrapper">
+                            <div class="PreviewImageRatioContent">                    
+                                <a href="Images/Snake_Died/Big.png" target="_blank"><img src="Images/Snake_Died/Small.png" id = "previewImage"></img></a>
+                                
+                            </div>
+                                
+                        </div>
 
                     </center>
                     
                     <br><br>
-                    C programming.
+                    C, 1980s.
                 
                 </p>
                 
                 <br>
-                -->
+                
 
             </div>
             
