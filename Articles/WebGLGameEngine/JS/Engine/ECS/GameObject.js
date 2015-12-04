@@ -88,7 +88,7 @@ function GameObject()
         if (m_Mesh != undefined && typeof m_Mesh.draw === 'function')
             m_Mesh.draw();
         
-        for(var i = 0; i < m_Children.length; i++)
+        for(var i = m_Children.length -1; i >= 0; i--)
             if (m_Children[i].getMesh != undefined && typeof m_Children[i].getMesh().draw == 'function')
                 m_Children[i].getMesh().draw();
         

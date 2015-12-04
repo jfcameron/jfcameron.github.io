@@ -45,11 +45,11 @@ function Graphics()
     var textures            = []; //List of handles to textures
     var VertexArrays        = []; //List of user defined vertex data
     
-    
     //Special VBOs TODO: consider moving to vertexarrays
-    var QuadVertexArray     = null; //Reference to the VBO containing Quad vertex data
-    var TriVertexArray      = null; //Reference to the VBO containing Triangle vertex data
-    var CubeVertexArray     = null;    
+    var QuadVertexArray             = null; //Reference to the VBO containing Quad vertex data
+    var TriVertexArray              = null; //Reference to the VBO containing Triangle vertex data
+    var CubeVertexArray             = null;    
+    var tessellatedPlaneVertexArray = null;
     
 	//Lighting data
 	var m_AmbientLight = [1,1,1,1];
@@ -68,9 +68,10 @@ function Graphics()
     //**********
     this.getContext            = function(){return glContext      ;};
     
-    this.getQuadVertexArray    = function(){return QuadVertexArray;};
-    this.getTriVertexArray     = function(){return TriVertexArray;};
-    this.getCubeVertexArray    = function(){return CubeVertexArray;};
+    this.getQuadVertexArray             = function(){return QuadVertexArray;};
+    this.getTriVertexArray              = function(){return TriVertexArray;};
+    this.getCubeVertexArray             = function(){return CubeVertexArray;};
+    this.getTessellatedPlaneVertexArray = function(){return tessellatedPlaneVertexArray;};
     
     this.getShaderPrograms     = function(){return shaderPrograms;};
     this.getShader             = function(y){return shaderPrograms.find(function(x){return x.getName() == y ? true : false;})}; 
@@ -88,15 +89,16 @@ function Graphics()
     this.initopenglContext = function ()
     {
         console.log("Init");
-    
-        canvas                   = document.getElementById("canvas");
-        glContext                = canvas.getContext( "webgl" ); //must be webgl
-        glContext.viewportWidth  = canvas.width;
-        glContext.viewportHeight = canvas.height;
         
-        //glContext.viewport(0,0,canvas.width,canvas.height);
+        if (canvas == undefined)
+        {
+            canvas                   = document.getElementById("canvas");
+            glContext                = canvas.getContext( "webgl" ); //must be webgl
+            glContext.viewportWidth  = canvas.width;
+            glContext.viewportHeight = canvas.height;
+            
+        }
         
-    
     };
     
     this.initMatricies = function ()
@@ -133,7 +135,7 @@ function Graphics()
             alert( glContext.getShaderInfoLog(vertexShader) );
         if( !glContext.getShaderParameter( fragShader, glContext.COMPILE_STATUS) )
             alert( glContext.getShaderInfoLog(fragShader) );
-        
+                
         //Create the shader program & compile shaders into graphics programs     
         var shaderProgram = glContext.createProgram();
         shaderProgram.getName = function(){return aShaderProgramName;}; //Passes in name, for later retrieval
@@ -142,8 +144,52 @@ function Graphics()
         glContext.attachShader(shaderProgram, vertexShader);
         glContext.linkProgram(shaderProgram);
         
+        //Get the draw code
+        //shaderProgram.draw = function()
+        //{
+        //    var drawSource = GRAPHICS.getShaderDrawSource(aShaderProgramName);
+        //    
+        //    if (drawSource != null)            
+        //        eval(drawSource);
+        //    
+        //};
+        //shaderProgram.draw();
+        
+        var drawSource = this.getShaderDrawSource(aShaderProgramName);
+        
+        if (drawSource != null)
+        {
+            shaderProgram.draw = eval("new (function(){return (function(aMesh){ " + drawSource + "});})");
+            
+        }
+        
         //add to the list
         shaderPrograms.push(shaderProgram);
+        
+    };
+    
+    this.getShaderDrawSource = function(aShaderProgram)
+    {
+        // get shader program doc, sanity check
+        var shaderProgramDocument = document.getElementById(aShaderProgram);
+        
+        if (!shaderProgramDocument)
+        {
+            alert("Shader program " + aShaderProgram + " could not be found.\nAre you missing a reference?");
+            return null;
+        }
+        
+        // get shader source from doc, sanity check
+        var shaderScript = document.getElementById(aShaderProgram).contentWindow.document.getElementById("Draw");
+        
+        if (!shaderScript)
+        {
+            alert("Shader " + aShaderProgram + "'s " + "draw code" + " could not be found.\nIs the object mislabeled?");
+            return null;
+    
+        }
+        
+        return shaderScript.innerHTML;
         
     };
     
@@ -204,7 +250,8 @@ function Graphics()
     {
         this.createQuadVertexBuffer();
         this.createTriangleVertexBuffer();
-        this.createCubeVertexBuffer();    
+        this.createCubeVertexBuffer();
+        this.createTessellatedPlaneVertexBuffer();
         
     };
     
@@ -357,28 +404,98 @@ function Graphics()
 
     };
     
-    handleTextureLoaded = function (image, texture)  //TODO: simplify. User should specify callback via parameter on loadText call
+    this.createTessellatedPlaneVertexBuffer = function () 
     {
-    
-        glContext.bindTexture(glContext.TEXTURE_2D, texture);
-        glContext.texImage2D(glContext.TEXTURE_2D, 0, glContext.RGBA, glContext.RGBA,glContext.UNSIGNED_BYTE, image);
-        glContext.texParameteri(glContext.TEXTURE_2D, glContext.TEXTURE_MAG_FILTER, glContext.GL_NEAREST);
-        glContext.texParameteri(glContext.TEXTURE_2D, glContext.TEXTURE_MIN_FILTER, glContext.GL_NEAREST);
-        glContext.generateMipmap(glContext.TEXTURE_2D);
-        glContext.bindTexture(glContext.TEXTURE_2D, null);
+        //
+        // Generate and store quad vertex data
+        //
+        tessellatedPlaneVertexArray = glContext.createBuffer();
+        glContext.bindBuffer( glContext.ARRAY_BUFFER, tessellatedPlaneVertexArray );
         
-        console.log(texture.getName());
+        var size = 1.0;
+        var vertices = [];
+        
+        tessellatedPlaneVertexArray.numItems = 0;
+        
+        for(var y = 0; y < 20; y++)
+            for(var x = 0; x < 20; x++)
+            {
+                vertices = vertices.concat
+                ([
+                    //               x,   y,                  z,   u,   v,  Nx,  Ny,  Nz,
+                    size -(size/2) + x - 10, 0.0, size -(size/2) + y - 10, 1.0, 0.0, 0.0, 0.0, 1.0, // 1--0
+                    0.0  -(size/2) + x - 10, 0.0, 0.0  -(size/2) + y - 10, 0.0, 1.0, 0.0, 0.0, 1.0, // 2
+                    0.0  -(size/2) + x - 10, 0.0, size -(size/2) + y - 10, 0.0, 0.0, 0.0, 0.0, 1.0, // | /
+                    
+                    
+                    size -(size/2) + x - 10, 0.0, size -(size/2) + y - 10, 1.0, 0.0, 0.0, 0.0, 1.0, //    0
+                    size -(size/2) + x - 10, 0.0, 0.0  -(size/2) + y - 10, 1.0, 1.0, 0.0, 0.0, 1.0, // 1--2
+                    0.0  -(size/2) + x - 10, 0.0, 0.0  -(size/2) + y - 10, 0.0, 1.0, 0.0, 0.0, 1.0, //  / |
+                    
+                    
+                ]);
+                
+                tessellatedPlaneVertexArray.numItems += 6;
+                
+            }
+        
+        glContext.bufferData( glContext.ARRAY_BUFFER, new Float32Array(vertices), glContext.STATIC_DRAW );
+        tessellatedPlaneVertexArray.itemSize = 8; //num of atts
+        //tessellatedPlaneVertexArray.numItems = 6 *2; //num of vex
+        
+        //
+        // Clean up. Its a state machine. Go back to null.
+        //
+        glContext.bindBuffer(glContext.ARRAY_BUFFER,null);
+
+    };
+    
+    handleTextureLoaded = function (image, texture, aTextureName)  //TODO: simplify. User should specify callback via parameter on loadText call
+    {        
+        //Load texture's meta data.
+        jQuery.get("Textures/" + aTextureName.replace(".png","") + ".meta", function(data) 
+        {
+            //alert(data);
+            //alert(aTextureName);
+            //bind texture to TEXTURE_2D
+          glContext.bindTexture(glContext.TEXTURE_2D, texture);
+            {
+                //Assign texture parameters from meta file
+                eval(data.getElementsByTagName("TextureParameters")[0].childNodes[0].nodeValue);
+                
+            }
+          
+            ////THIS SHOULD BE A FALLBACK
+            ////***************
+            //// Texture format
+            ////***************
+            //glContext.texImage2D(glContext.TEXTURE_2D, 0, glContext.RGBA, glContext.RGBA,glContext.UNSIGNED_BYTE, image);
+            //
+            ////*******************
+            //// Texture parameters
+            ////*******************
+            //glContext.texParameteri(glContext.TEXTURE_2D, glContext.TEXTURE_MIN_FILTER, glContext.GL_LINEAR);
+            //glContext.texParameteri(glContext.TEXTURE_2D, glContext.TEXTURE_WRAP_S, glContext.REPEAT);
+            //glContext.texParameteri(glContext.TEXTURE_2D, glContext.TEXTURE_WRAP_T, glContext.REPEAT);            
+            //glContext.generateMipmap(glContext.TEXTURE_2D);
+            //
+            //glContext.bindTexture(glContext.TEXTURE_2D, null);
+            ////END OF THIS SHOULD BE A FALLBACK
+            
+        }, "xml");
+
+        console.log(texture.getName() + " texture did load");
     
     };
     
-    this.loadTexture = function(aTexturePath)
+    this.loadTexture = function(aTextureName)
     {
         var texture = glContext.createTexture();
         {
             var image = new Image();
-            image.onload = function() { handleTextureLoaded(image, texture); }
-            image.src = "textures/"+aTexturePath;
-            texture.getName = function(){return aTexturePath.toString();};
+            image.onload = function() { handleTextureLoaded(image, texture, aTextureName); }
+            image.src = "Textures/"+aTextureName;
+            texture.getName = function(){return aTextureName.toString();};
             
         }
         
@@ -391,7 +508,9 @@ function Graphics()
         this.loadTexture("awesome.png");
         this.loadTexture("brick.png");
         this.loadTexture("grass.png");
-        
+        this.loadTexture("name.png");
+        this.loadTexture("Water.png");
+        this.loadTexture("Cloud.png");
     
     };
     
@@ -399,6 +518,10 @@ function Graphics()
     {
         this.initShader("AlphaCutOff");
         this.initShader("Opaque");
+        this.initShader("Water");
+        this.initShader("Island");
+        this.initShader("Sky");
+        this.initShader("Skybox");
     
     };
         

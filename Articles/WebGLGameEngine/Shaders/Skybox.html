@@ -2,11 +2,8 @@
 
 <!--
 *********************************************************
-Shader name: AlphaCutOff
-Description: colors object with a texture,
-             discards frags with alpha less than 1.
-             Meant for rendering images with transparency
-             that do not require blending.
+Shader name: Opaque
+Description: Simple textured.
 *********************************************************
 
 *********
@@ -15,10 +12,15 @@ CHANGELOG
 Date: March 3rd, 2015
 Description: Initial Implementation
 Author: Joseph Cameron
+
+Date: July 28th, 2015
+Description: Refactored draw code specific to the shader into the Draw div
+Author: Joseph Cameron
     
 -->
 <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
 <meta content="utf-8" http-equiv="encoding">
+
 
 <div id="Draw">    
     //*************
@@ -48,7 +50,8 @@ Author: Joseph Cameron
     // Set capabilities
     //*****************
     glContext.enable  (glContext.DEPTH_TEST);
-    glContext.disable (glContext.CULL_FACE);
+    glContext.enable  (glContext.CULL_FACE);
+    glContext.cullFace(glContext.FRONT);
     
     //********************
     // Prepare vertex data
@@ -164,8 +167,10 @@ Author: Joseph Cameron
     attribute lowp  vec3 a_Normal ;
     
     //FragIn
-    varying lowp vec2 v_UV     ;
-    varying lowp vec3 v_Normal ;
+    varying lowp  vec2 v_UV          ;
+    varying lowp  vec3 v_Normal      ;
+    varying highp vec3 v_WorldNormal ;
+	varying highp vec3 v_FragPosition;
     
     //*********
     // Uniforms
@@ -190,29 +195,29 @@ Author: Joseph Cameron
         //Calculate position
         highp vec4 position = vec4(a_Pos,1.0);
         {
-            //Model space operations     
             position *= _ModelScaleMatrix;
-            
-            //position = rotateAroundY(position, _Time);
-            
             position *= _ModelRotationMatrix;
             
+            //Model space operations       
+         
             //Spin
-            //position[2] -= 10.0;
-            //position = rotateAroundY(position,_Time);
-            //position = rotateAroundX(position,-10.0);
-            
-            
+            //position = rotateAroundY(position,_Time);            
             
             //World space operations
+            
             position = _Object2WorldMatrix * position;
-            position[1] += sin(_Time*0.1)/2.0;
+                  
+            v_FragPosition = vec3(position);
             
             //Camera space operations
             position = _ViewMatrix * position;
             
+            
+            
             //Perspective space operations
             position = _ProjectionMatrix * position;
+         
+            
             
         }
         
@@ -220,6 +225,21 @@ Author: Joseph Cameron
         
         //Passthrough UV
         v_UV = a_UV;
+        
+        //Passthough Normal
+        v_Normal = a_Normal;
+        
+        //Calc worldnormal
+        highp vec4 worldNormal = vec4(a_Normal,1.0);
+        {
+            worldNormal *= _ModelScaleMatrix    ;
+            worldNormal *= _ModelRotationMatrix ;
+            worldNormal *= _Object2WorldMatrix  ;
+        
+        }
+        
+        v_WorldNormal = worldNormal.xyz;
+        
         
     }
   
@@ -232,35 +252,53 @@ Author: Joseph Cameron
     //*************************
     // FragmentIn vertex format
     //*************************
-    varying lowp vec2 v_UV;
-    varying lowp vec3 v_Normal ;
+    varying lowp  vec2 v_UV          ;
+    varying lowp  vec3 v_Normal      ;
+    varying highp vec3 v_WorldNormal ;
+	varying highp vec3 v_FragPosition;
     
     //*********
     // Uniforms
     //*********
-    uniform lowp vec4 _Color;
-    uniform sampler2D _Texture;
+    uniform lowp vec4    _Color;
+    uniform sampler2D    _Texture;
+	uniform mediump vec3 _CameraPos;
     
     //**********
     // Constants
     //**********
     const float c_AlphaCutOff = 1.0;
     
+    //Sky colors
+    const vec4 spaceColor = vec4(0.0, 0.0, 6.0, 6.0);
+    const vec4 horizonColor = vec4(0.3294, 0.92157, 1.0, 1.0);
+    
+    
     //*********************************
     // Fragment operations forward decs
     //*********************************
+    vec4 calculateDiffuseLighting(const vec3 aNormal, const vec3 aLightPos, const vec4 aLightColor, const float aStrength);
     vec4 calculateTexelColor(const vec4 aFrag);
-    vec4 alphaCutOff(const vec4 aFrag);
-    
+    vec4 calculateSpecularTerm(const vec3 aFragPos, const vec3 aWorldNormal, const vec3 aWorldLightPos, const vec3 aWorldCameraPos);
+   
+	vec4 alphaCutOff(const vec4 aFrag);
+	 
     //*****************
     // Fragment shader
     //****************
     void main()
     {
         lowp vec4 rvalue = vec4(0);
-        {
-            rvalue = calculateTexelColor(rvalue);
-            rvalue = alphaCutOff(rvalue);
+        {            
+            vec4 pointOnSphere = normalize(vec4(v_FragPosition,1.0));
+            float a = pointOnSphere.y;
+            
+            //Step for "retro" style
+            //a = floor(a*25.0);
+            //a *= 1.0/25.0;
+            
+            rvalue = mix(horizonColor, spaceColor, a);
+            
             
         }
     
@@ -271,6 +309,42 @@ Author: Joseph Cameron
     //*******************************
     //Fragment operations definitions
     //*******************************
+    vec4 calculateDiffuseLighting(const vec3 aNormal, const vec3 aLightPos, const vec4 aLightColor, const float aStrength)
+    {
+        vec4 rvalue = vec4(0.0,0.0,0.0,0.0);
+        {
+            lowp vec3 normal   = normalize(aNormal);
+            lowp vec3 lightDir = normalize(aLightPos);
+            
+            rvalue = aStrength * aLightColor*max(dot(normal,lightDir),0.1);
+
+        }
+        
+        return rvalue;
+    
+    }
+	
+	vec4 calculateSpecularTerm(const vec3 aFragPos, const vec3 aWorldNormal, const vec3 aWorldLightPos, const vec3 aWorldCameraPos)
+	{
+		vec4 rvalue = vec4(1.0);
+		{			
+			vec3 P = aFragPos;
+			vec3 L = normalize(aWorldLightPos + vec3(-aWorldCameraPos.x,-aWorldCameraPos.y,-aWorldCameraPos.z)  - P);
+			vec3 V = normalize(-aWorldCameraPos - P);
+			vec3 H = normalize(L+V);
+			vec3 N = normalize(aWorldNormal);
+			
+			if (dot(N,L) > 0.0)
+				rvalue *= pow(max(dot(N,H),0.0),50.0)*0.75;
+			else
+				rvalue = vec4(0.0);
+			
+		}
+		
+		return rvalue;
+	
+	}
+    
     vec4 calculateTexelColor(const vec4 aFrag)
     {
         vec4 rvalue = aFrag;

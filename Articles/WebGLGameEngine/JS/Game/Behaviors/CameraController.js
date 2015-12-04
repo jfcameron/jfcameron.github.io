@@ -13,8 +13,16 @@ function CameraController(aGameObject)
     var cameraRotation  = m_GameObject.getTransform().getRotation();
     var cameraDeltaSize = 0.05;
     
+    var spawnsomeboxes = 10;
+    var clampDistance = 18;
+    
     this.update = function()
     {
+        if (spawnsomeboxes-- > 0)
+            for(var i = 0; i < 1; i++)
+                this.testGenCube();
+            
+    
         //************
         // Buffer data
         //************
@@ -56,11 +64,31 @@ function CameraController(aGameObject)
         
         }
         
-        if (INPUT.getKeys()[69])//down
-            cameraPosition[1] -= 1 *cameraDeltaSize;
+        //if (INPUT.getKeys()[69])//down
+        //    cameraPosition[1] -= 1 *cameraDeltaSize;
+        //    
+        //if (INPUT.getKeys()[81])//up
+        //    cameraPosition[1] += 1 *cameraDeltaSize;
+        
+        //***************
+        // Distance clamp: this is a hack cylindrical collider
+        //***************
+        var dist = Math.sqrt( (cameraPosition[0]*cameraPosition[0]) + (cameraPosition[2]*cameraPosition[2]) );
+        
+        if (dist > clampDistance)
+        {
+            //normalize
+            var normalizedXZPlanePos = [];
+            normalizedXZPlanePos[0] = cameraPosition[0]/dist;
+            normalizedXZPlanePos[1] = cameraPosition[2]/dist;
             
-        if (INPUT.getKeys()[81])//up
-            cameraPosition[1] += 1 *cameraDeltaSize;
+            normalizedXZPlanePos[0] *= clampDistance;
+            normalizedXZPlanePos[1] *= clampDistance;
+            
+            cameraPosition[0] = normalizedXZPlanePos[0];
+            cameraPosition[2] = normalizedXZPlanePos[1];
+
+        }
         
         //**********
         // Push data
@@ -81,7 +109,7 @@ function CameraController(aGameObject)
 		var gameObject = new GameObject();
 		{
 			gameObject.setName("CubeTest");    
-			gameObject.getMesh().draw = drawTest;
+			//gameObject.getMesh().draw = drawTest;
 			gameObject.getMesh().setShader(GRAPHICS.getShader("Opaque"));
 			gameObject.getMesh().setMainTexture(GRAPHICS.getTextures()[1]);
 			gameObject.getTransform().setPosition([0,20,0]);

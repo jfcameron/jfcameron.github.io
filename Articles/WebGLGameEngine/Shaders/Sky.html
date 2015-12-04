@@ -206,7 +206,6 @@ Author: Joseph Cameron
             
             //World space operations
             position = _Object2WorldMatrix * position;
-            position[1] += sin(_Time*0.1)/2.0;
             
             //Camera space operations
             position = _ViewMatrix * position;
@@ -240,6 +239,7 @@ Author: Joseph Cameron
     //*********
     uniform lowp vec4 _Color;
     uniform sampler2D _Texture;
+    uniform highp float _Time;
     
     //**********
     // Constants
@@ -275,7 +275,7 @@ Author: Joseph Cameron
     {
         vec4 rvalue = aFrag;
         {
-            rvalue = texture2D(_Texture, v_UV);
+            rvalue = texture2D(_Texture, v_UV + vec2(_Time*0.0005,0));
             
         }
         
