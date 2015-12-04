@@ -12,11 +12,13 @@
     <!--**************-->
     <link rel="stylesheet" href="../../CSS/Main.css" type="text/css"/>
     <link rel="stylesheet" href="../../CSS/Article.css" type="text/css"/>
+    <link rel="stylesheet" href="../../CSS/highlightJS_styles/monokai_sublime.css" type="text/css"/>
     
     <!--*************-->
     <!-- JS includes -->
     <!--*************-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript" src="../../JS/HighlightJS/highlight.pack.js"></script>
     <!--This is a custom JS, WebGL game engine I wrote for my portfolio banner.-->
     <!--The project is available for download from my github account here:     -->
     <!--https://github.com/jfcameron/WebGLGameEngine                           -->
@@ -110,36 +112,50 @@
             </div>
         
             <div id = "main">   
-                <h1>Overview of Level & script editors</h1>
+                <h1>Overview</h1>
+            
+                <p>
+                    When I heard about WebGL, I thought it would be a great idea to make something with it for my portfolio. Initially, I wrote the renderer.
+                    Forward rendering, 3D. After I had completed the renderer, I decided to add an <a href="https://en.wikipedia.org/wiki/Entity_component_system" target="_blank">Entity Component System</a>
+                    to provide a space for game (client) code and an abstraction layer to sit on top of the renderer, I/O manager, Physics engine etc.
+                
+                </p>
                 
                 <p>
-                    This is a prototype 2D RPG game making program. Tested on PC and Android. The program features a level editor and a script editor.
-                    NPC routines are written in the scripting language Lua. A Lua interpretor, MoonSharp runs the NPC routines.
+                    The project as you see it now is made of three parts. A renderer, a physics engine (<a href="http://www.cannonjs.org/">Cannon.js</a>) and an ECS pulling them together.
+                
+                </p>
+                
+                <p>
+                    Javascript was a very strange language to write in. I wanted to write in an object-oriented manner for a couple of
+                    reasons, so after skimming through<a href = "http://addyosmani.com/resources/essentialjsdesignpatterns/book/" target="_blank"> Learning JavaScript Design Patterns</a>
+                    I imposed a kind of object-oriented style on my project.
+
+                </p>
+                
+                <p>    
+                    Besides familiarity, I really wanted access to polymorphism for the implementation of the
+                    Entity Component System. ECS is a very simple pattern that relies on iterating 2 types: GameObjects and Components. GameObject doesn't need to be derivable;
+                    it's essentially a collection of components and a bit of meta information. Components, on the other hand are most easily implemented via polymorphism. Components
+                    provide all game functionality within an ECS. Some cruical components will be provided along with the engine, but most will be written by clients writing their own game.
+                    In order to provide a common interface to the engine for all these unknown component types, I wanted to define a base type "Component" and have all real components implement this component type.
                     
                 </p>
                 
-                <p> 
-                    Lua code interacts with AI state through a simple API. Before the script is executed for that cycle, the NPC pushes
-                    its health, position etc. values to global variables in the Lua context. Once the script has finished executing, these
-                    values are copied back over. The script editor is accessible by selecting an NPC in the level editor and then clicking on its script name.
-                    The script editor features an error checker.
+                <p>
+                    Once the ECS was up and running, I decided to add some physics. I looked around the internet for javascript rigidbody libraries and found
+                    <a href="http://www.cannonjs.org/">Cannon.js</a> to be particularly well documented and with a straightforward API.
                 
                 </p>
                 
                 <p>
-                    The level editor features box selection and pasting, multiple visual layers to simulate different heights, lighting and NPC placement.
+                    So thats it. The ECS provides a place for game logic to be written and simplifies working with the renderer and physics simulation. 
+                    Connecting the game logic to the 
+                    renderer is the Mesh component, which holds model (VBO, IBO) and material data (Shader program handle, uniform data). 
+                    Connecting game logic to the physics simulation is the Rigidbody component. Rigidbody retains a reference to an object within the physics simulation and provides accessors to certain
+                    properties of that object. The final basic component is Transform, which holds the model matrix and methods for translation, rotation, scaling.
                 
                 </p>
-                
-                <p>
-                    The entire rendering process is done in a single shader. The shader is responsible for looking up tile offsets (supplied as a texture uniform),
-                    animating characters and placing characters at the correct depth.
-                
-                </p>
-                
-                [More content, video soon]
-                
-                
 
             </div>
             
