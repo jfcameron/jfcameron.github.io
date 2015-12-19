@@ -30,6 +30,17 @@
 // Description: removed update and clear. Clear and update behaviors have been refactored into camera. 
 // Author: Joseph Cameron
 //
+// Date: December 18th, 2015
+// Description: 1. naive implementation of rendertexture: object that contains a handle to an FBO and handles to textures attached to 
+//      the color and depth buffers. Currently fixed to only 1 FBO. Generalizing this in another update.
+//  2. reversed uv values on quad and flipped texture data loaded from disk. - After rendering the output of an FBO texture 
+//      I finally realized I had been rendering textures upside down.
+//  3. wrote enableExtensions and enableExtension functions to handle enabling openGL functionality that is not part of the 
+//      current webGL specification
+//  4. Began writing the generalized implemenation of rendertexture. Rendertexture hashtable, new xml fileformat .rtex, 
+//      writing loadRenderTexture function
+// Author: Joseph Cameron
+//
 function Graphics()
 {
     //*************
@@ -38,14 +49,16 @@ function Graphics()
     //Context data
     var canvas              = null; //Reference to the html element
     var glContext           = null; //Reference to the gl context
+    var gl                  = null;
     
     //User data
     var clearColor          = [0.535,0.535,0.8,1.0];
     var shaderPrograms      = []; //List of handles to shader programs
     var textures            = []; //List of handles to textures
+    var renderTextures      = []; //List of renderTextures
     var VertexArrays        = []; //List of user defined vertex data
     
-    //Special VBOs TODO: consider moving to vertexarrays
+    //Special VBOs TODO: move to VertexArrays
     var QuadVertexArray             = null; //Reference to the VBO containing Quad vertex data
     var TriVertexArray              = null; //Reference to the VBO containing Triangle vertex data
     var CubeVertexArray             = null;    
@@ -79,6 +92,8 @@ function Graphics()
     this.getTextures           = function(){return textures;};
     this.getTexture            = function(y){return textures.find(function(x){return x.getName() == y ? true : false;})};
     
+    this.getRenderTexture      = function(y){return renderTextures.find(function(x){return x.getName() == y ? true : false;})};
+    
     this.getViewMatrix         = function(){return viewMatrix;};
     this.getProjectionMatrix   = function(){return projectionMatrix;};
     
@@ -94,10 +109,13 @@ function Graphics()
         {
             canvas                   = document.getElementById("canvas");
             glContext                = canvas.getContext( "webgl" ); //must be webgl
+            gl                       = canvas.getContext( "webgl" ); //must be webgl
             glContext.viewportWidth  = canvas.width;
             glContext.viewportHeight = canvas.height;
             
         }
+        
+        glContext.clearColor(clearColor[0],clearColor[1],clearColor[2],clearColor[3]);
         
     };
     
@@ -268,13 +286,13 @@ function Graphics()
         var vertices = 
         [
             //          x,               y,    z,   u,   v,  Nx,  Ny,  Nz,
-           size -(size/2),  size -(size/2),  0.0, 1.0, 0.0, 0.0, 0.0, 1.0, // 1--0
-           0.0  -(size/2),  size -(size/2),  0.0, 0.0, 0.0, 0.0, 0.0, 1.0, // | /
-           0.0  -(size/2),  0.0  -(size/2),  0.0, 0.0, 1.0, 0.0, 0.0, 1.0, // 2
+           size -(size/2),  size -(size/2),  0.0, 1.0, 1.0, 0.0, 0.0, 1.0, // 1--0
+           0.0  -(size/2),  size -(size/2),  0.0, 0.0, 1.0, 0.0, 0.0, 1.0, // | /
+           0.0  -(size/2),  0.0  -(size/2),  0.0, 0.0, 0.0, 0.0, 0.0, 1.0, // 2
                                             
-           size -(size/2),  size -(size/2),  0.0, 1.0, 0.0, 0.0, 0.0, 1.0, //    0
-           0.0  -(size/2),  0.0  -(size/2),  0.0, 0.0, 1.0, 0.0, 0.0, 1.0, //  / |
-           size -(size/2),  0.0  -(size/2),  0.0, 1.0, 1.0, 0.0, 0.0, 1.0, // 1--2
+           size -(size/2),  size -(size/2),  0.0, 1.0, 1.0, 0.0, 0.0, 1.0, //    0
+           0.0  -(size/2),  0.0  -(size/2),  0.0, 0.0, 0.0, 0.0, 0.0, 1.0, //  / |
+           size -(size/2),  0.0  -(size/2),  0.0, 1.0, 0.0, 0.0, 0.0, 1.0, // 1--2
             
         ];
         
@@ -458,32 +476,16 @@ function Graphics()
             //alert(data);
             //alert(aTextureName);
             //bind texture to TEXTURE_2D
-          glContext.bindTexture(glContext.TEXTURE_2D, texture);
+            glContext.bindTexture(glContext.TEXTURE_2D, texture);
+            glContext.pixelStorei(glContext.UNPACK_FLIP_Y_WEBGL, true);
             {
                 //Assign texture parameters from meta file
                 eval(data.getElementsByTagName("TextureParameters")[0].childNodes[0].nodeValue);
                 
             }
-          
-            ////THIS SHOULD BE A FALLBACK
-            ////***************
-            //// Texture format
-            ////***************
-            //glContext.texImage2D(glContext.TEXTURE_2D, 0, glContext.RGBA, glContext.RGBA,glContext.UNSIGNED_BYTE, image);
-            //
-            ////*******************
-            //// Texture parameters
-            ////*******************
-            //glContext.texParameteri(glContext.TEXTURE_2D, glContext.TEXTURE_MIN_FILTER, glContext.GL_LINEAR);
-            //glContext.texParameteri(glContext.TEXTURE_2D, glContext.TEXTURE_WRAP_S, glContext.REPEAT);
-            //glContext.texParameteri(glContext.TEXTURE_2D, glContext.TEXTURE_WRAP_T, glContext.REPEAT);            
-            //glContext.generateMipmap(glContext.TEXTURE_2D);
-            //
-            //glContext.bindTexture(glContext.TEXTURE_2D, null);
-            ////END OF THIS SHOULD BE A FALLBACK
             
         }, "xml");
-
+        
         console.log(texture.getName() + " texture did load");
     
     };
@@ -522,20 +524,151 @@ function Graphics()
         this.initShader("Island");
         this.initShader("Sky");
         this.initShader("Skybox");
-    
+        this.initShader("Bounce");
+        this.initShader("Unlit");
+        this.initShader("DepthBufferGrayscaleRender");
+        
     };
         
     //Program entry and update
     this.start = function ()
     {
         this.initopenglContext();
+        this.enableExtensions();
         this.initShaderPrograms();
         this.initializeVertexData();
         this.initTextures();
         this.initMatricies();
+        this.initRenderTextures();
         
-        glContext.clearColor(clearColor[0],clearColor[1],clearColor[2],clearColor[3]);
+        this.renderTextureTest();
+        
+    };
+    
+    //
+    // Redner tegsture tegst
+    //
+    var rttFramebuffer; //FBO
+    var rttTexture; //textures to render color + depth data to
+    var depthTexture;   
+    
+    this.getRttTexture     = function(){return rttTexture    ;};//this.getRenderTexture("LightTexture").getColorTexture();};
+    this.getdepthTexture   = function(){return depthTexture  ;};//this.getRenderTexture("LightTexture").getDepthTexture();};
+    this.getRttFramebuffer = function(){return rttFramebuffer;};//this.getRenderTexture("LightTexture").getFBO         ();};
+    
+    
+    
+    this.renderTextureTest = function()
+    {
+        var textureSize = [1024,256];
+        
+        //create FBO
+        rttFramebuffer = glContext.createFramebuffer();
+        glContext.bindFramebuffer(gl.FRAMEBUFFER, rttFramebuffer);
+        
+        //create color texture
+        rttTexture = gl.createTexture();
+        gl.bindTexture(gl.TEXTURE_2D, rttTexture);
+        glContext.texParameteri(glContext.TEXTURE_2D, glContext.TEXTURE_MAG_FILTER, glContext.NEAREST);
+        glContext.texParameteri(glContext.TEXTURE_2D, glContext.TEXTURE_MIN_FILTER, glContext.NEAREST);
+        glContext.texParameteri(glContext.TEXTURE_2D, glContext.TEXTURE_WRAP_S    , glContext.CLAMP_TO_EDGE);
+        glContext.texParameteri(glContext.TEXTURE_2D, glContext.TEXTURE_WRAP_T    , glContext.CLAMP_TO_EDGE);
+        glContext.texImage2D(glContext.TEXTURE_2D, 0, glContext.RGBA, textureSize[0], textureSize[1], 0, glContext.RGBA, glContext.UNSIGNED_BYTE, null);
+        
+        //create depth texture
+        depthTexture = gl.createTexture();
+        gl.bindTexture(gl.TEXTURE_2D, depthTexture);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+        gl.texImage2D(gl.TEXTURE_2D, 0, gl.DEPTH_COMPONENT, textureSize[0], textureSize[1], 0, gl.DEPTH_COMPONENT, gl.UNSIGNED_SHORT, null);
+        
+        //attach color and depthbuffer and depth texture
+        gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, rttTexture, 0);
+        gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.DEPTH_ATTACHMENT, gl.TEXTURE_2D, depthTexture, 0);
+        
+        //Cleanup
+        gl.bindTexture(gl.TEXTURE_2D, null);
+        gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+        
+        console.log("init rendertex");
+        
+    };
+    
+    this.enableExtensions = function()
+    {
+        this.enableExtension("WEBGL_depth_texture");
+        
+    };
+    
+    this.enableExtension = function(aExtensionName)
+    {
+        if (!(extensionDidEnable = glContext.getExtension(aExtensionName)))
+            console.log("extension " + aExtensionName + " is not supported");
+        else
+            console.log("extension " + aExtensionName + " is supported");
+        
+    };
+    
+    this.initRenderTextures = function()
+    {
+        this.loadRenderTexture("LightTexture");
+        
+    };
+    
+    this.loadRenderTexture = function(aRenderTextureName)
+    {
+        var renderTexture = new RenderTexture();
+        {
+            jQuery.get("Textures/" + aRenderTextureName + ".rtex", function(data) 
+            {   
+                //set name
+               // renderTexture.setName(aRenderTextureName);
+            
+                //create FBO
+                var fbo = renderTexture.getFBO();
+                {
+                    fbo = glContext.createFramebuffer();
+                    glContext.bindFramebuffer(gl.FRAMEBUFFER, fbo);
+                
+                }
+                
+                //create color texture
+                var colorTexture = renderTexture.getColorTexture();
+                {
+                    colorTexture = gl.createTexture();
+                    gl.bindTexture(gl.TEXTURE_2D, colorTexture);
+                    eval(data.getElementsByTagName("ColorTextureParameters")[0].childNodes[0].nodeValue);
+                    
+                }
+                
+                //create depth texture
+                var depthTexture = renderTexture.getDepthTexture();
+                {
+                    depthTexture = gl.createTexture();
+                    gl.bindTexture(gl.TEXTURE_2D, depthTexture);
+                    eval(data.getElementsByTagName("DepthTextureParameters")[0].childNodes[0].nodeValue);
+                    
+                }                
+                
+            }, "xml");
+            
+        }
+        
+        renderTextures.push(renderTexture);
         
     };
     
 }
+
+
+
+
+
+
+
+
+
+
+

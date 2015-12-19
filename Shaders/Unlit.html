@@ -12,12 +12,9 @@ Description: colors object with a texture,
 *********
 CHANGELOG
 *********
-Date: March 3rd, 2015
-Description: Initial Implementation
-Author: Joseph Cameron
-
 Date: December 18th, 2015
-Description: Refactored oscillation from AlphaCutOff, to new "bounce" shader
+Description: Init implementation. Derivative of AlphaCutOff, but no frag discarding. 
+             Needed shader to confirm render texture implementation was working.
 Author: Joseph Cameron
     
 -->
@@ -264,7 +261,7 @@ Author: Joseph Cameron
         lowp vec4 rvalue = vec4(0);
         {
             rvalue = calculateTexelColor(rvalue);
-            rvalue = alphaCutOff(rvalue);
+            //rvalue = alphaCutOff(rvalue);
             
         }
     

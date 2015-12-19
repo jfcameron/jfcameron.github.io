@@ -1,0 +1,44 @@
+<RenderTexture>
+<!--
+*********************************************************
+RenderTexture name: LightTexture
+Description: stores light perspective for demo scene
+*********************************************************
+
+*********
+CHANGELOG
+*********
+Date: 
+Description: Initial Implementation
+Author: Joseph Cameron
+    
+-->
+
+<ColorTextureParameters>
+    //alert("parsing color");
+    
+    var textureSize = [1024,256];
+    
+    glContext.texParameteri(glContext.TEXTURE_2D, glContext.TEXTURE_MAG_FILTER, glContext.NEAREST);
+    glContext.texParameteri(glContext.TEXTURE_2D, glContext.TEXTURE_MIN_FILTER, glContext.NEAREST);
+    glContext.texParameteri(glContext.TEXTURE_2D, glContext.TEXTURE_WRAP_S    , glContext.CLAMP_TO_EDGE);
+    glContext.texParameteri(glContext.TEXTURE_2D, glContext.TEXTURE_WRAP_T    , glContext.CLAMP_TO_EDGE);
+    glContext.texImage2D(glContext.TEXTURE_2D, 0, glContext.RGBA, textureSize[0], textureSize[1], 0, glContext.RGBA, glContext.UNSIGNED_BYTE, null);
+    
+</ColorTextureParameters>
+
+<DepthTextureParameters>
+    //alert("parsing depth");
+    
+    var textureSize = [1024,256];
+
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.DEPTH_COMPONENT, textureSize[0], textureSize[1], 0, gl.DEPTH_COMPONENT, gl.UNSIGNED_SHORT, null);
+        
+</DepthTextureParameters>
+
+
+</RenderTexture>

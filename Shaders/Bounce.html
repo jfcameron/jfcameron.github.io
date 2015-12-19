@@ -15,10 +15,6 @@ CHANGELOG
 Date: March 3rd, 2015
 Description: Initial Implementation
 Author: Joseph Cameron
-
-Date: December 18th, 2015
-Description: Refactored oscillation from AlphaCutOff, to new "bounce" shader
-Author: Joseph Cameron
     
 -->
 <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
@@ -210,7 +206,7 @@ Author: Joseph Cameron
             
             //World space operations
             position = _Object2WorldMatrix * position;
-            //position[1] += sin(_Time*0.1)/2.0;
+            position[1] += sin(_Time*0.1)/2.0;
             
             //Camera space operations
             position = _ViewMatrix * position;

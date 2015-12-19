@@ -29,6 +29,7 @@
     <script type="text/javascript" src="JS/Engine/Graphics/glMatrix-0.9.5.min.js"></script>
     <script type="text/javascript" src="JS/Engine/Graphics/Graphics.js"></script>
     <script type="text/javascript" src="JS/Engine/Graphics/Material.js"></script>
+    <script type="text/javascript" src="JS/Engine/Graphics/RenderTexture.js"></script>
     <script type="text/javascript" src="JS/Engine/Physics/cannon.js"></script>
     <script type="text/javascript" src="JS/Engine/Physics/Physics.js"></script>
     <!--src="JS/Engine/Sound/Sound.js"-->
@@ -48,6 +49,7 @@
     <!--Game Components-->
     <script type="text/javascript" src="JS/Game/Behaviors/Rotator.js"></script>
     <script type="text/javascript" src="JS/Game/Behaviors/CameraController.js"></script>
+    <script type="text/javascript" src="JS/Game/Behaviors/MovementTest.js"></script>
     <!--Prefabs-->
     <script type="text/javascript" src="JS/Game/Prefabs/Ground.js"></script>
     <script type="text/javascript" src="JS/Game/Prefabs/RotatorTest.js"></script>
@@ -56,19 +58,25 @@
     <script type="text/javascript" src="JS/Game/Prefabs/Water.js"></script>
     <script type="text/javascript" src="JS/Game/Prefabs/Player.js"></script>
     <script type="text/javascript" src="JS/Game/Prefabs/Skybox.js"></script>
+    <script type="text/javascript" src="JS/Game/Prefabs/TextureDisplay.js"></script>
+    <script type="text/javascript" src="JS/Game/Prefabs/Light.js"></script>
     <!--Nonstandard scripts-->
     <script type="text/javascript" src="JS/Engine/BootLoader.js"></script><!--Forces engine to load before document is ready. May move into engine repo at some point.-->
     
     <!--*************************-->
     <!-- Shader program includes -->
     <!--*************************-->
-    <iframe id="GLSLLibrary" src="Shaders/GLSLLibrary.html" class = "ShaderProgram" onload="tryBoot();"></iframe>
-    <iframe id="AlphaCutOff" src="Shaders/AlphaCutOff.html" class = "ShaderProgram" onload="tryBoot();"></iframe>
-    <iframe id="Opaque"      src="Shaders/Opaque.html"      class = "ShaderProgram" onload="tryBoot();"></iframe>
-    <iframe id="Water"       src="Shaders/Water.html"       class = "ShaderProgram" onload="tryBoot();"></iframe>
-    <iframe id="Island"      src="Shaders/Island.html"      class = "ShaderProgram" onload="tryBoot();"></iframe>
-    <iframe id="Sky"         src="Shaders/Sky.html"         class = "ShaderProgram" onload="tryBoot();"></iframe>
-    <iframe id="Skybox"      src="Shaders/Skybox.html"      class = "ShaderProgram" onload="tryBoot();"></iframe>
+    <iframe id="GLSLLibrary"                src="Shaders/GLSLLibrary.html"                class = "ShaderProgram" onload="tryBoot();"></iframe>
+    <iframe id="AlphaCutOff"                src="Shaders/AlphaCutOff.html"                class = "ShaderProgram" onload="tryBoot();"></iframe>
+    <iframe id="Unlit"                      src="Shaders/Unlit.html"                      class = "ShaderProgram" onload="tryBoot();"></iframe>
+    <iframe id="Bounce"                     src="Shaders/Bounce.html"                     class = "ShaderProgram" onload="tryBoot();"></iframe>
+    <iframe id="Opaque"                     src="Shaders/Opaque.html"                     class = "ShaderProgram" onload="tryBoot();"></iframe>
+    <iframe id="Water"                      src="Shaders/Water.html"                      class = "ShaderProgram" onload="tryBoot();"></iframe>
+    <iframe id="Island"                     src="Shaders/Island.html"                     class = "ShaderProgram" onload="tryBoot();"></iframe>
+    <iframe id="Sky"                        src="Shaders/Sky.html"                        class = "ShaderProgram" onload="tryBoot();"></iframe>
+    <iframe id="Skybox"                     src="Shaders/Skybox.html"                     class = "ShaderProgram" onload="tryBoot();"></iframe>
+    <iframe id="DepthBufferGrayscaleRender" src="Shaders/DepthBufferGrayscaleRender.html" class = "ShaderProgram" onload="tryBoot();"></iframe>
+    
     
     <!--***************-->
     <!-- HTML Document -->
