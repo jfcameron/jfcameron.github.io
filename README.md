@@ -1,5 +1,5 @@
 #jfcameron.github.io
-Project for this GitHub account website.
+Project for this GitHub account's website.
 
 ![alt tag](https://dl.dropboxusercontent.com/u/102655232/Github/jfcameron.io/Build_Image.png "")
 live site: [jfcameron.github.io](http://jfcameron.github.io) 
