@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+        <meta content="utf-8" http-equiv="encoding">
+        <meta name="viewport" content="width=device-width; target-densityDpi=device-dpi;" />
+        
+    </head>
+
+    <!--**************-->
+    <!-- CSS includes -->
+    <!--**************-->
+    <link rel="stylesheet" href="../../CSS/Main.css" type="text/css"/>
+    <link rel="stylesheet" href="../../CSS/Article.css" type="text/css"/>
+    <link rel="stylesheet" href="overrides.css" type="text/css"/>
+    <link rel="stylesheet" href="../../CSS/highlightJS_styles/monokai_sublime.css" type="text/css"/>
+        
+    <!--*************-->
+    <!-- JS includes -->
+    <!--*************-->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script type="text/javascript" src="../../JS/HighlightJS/highlight.pack.js"></script>
+
+    <!--***************-->
+    <!-- HTML Document -->
+    <!--***************-->
+    <title>Joseph Cameron - Game Programmer Portfolio</title>
+    
+    <body>    
+        <div id = "background"></div>
+        
+        <div id = "wrapper">
+            <div id="ArticleHeader">WebGL101 Seminar</div>
+            
+            <div id="ArticleHeaderSpacer"></div>
+            
+            <div class="RatioWrapper">
+                <div class="RatioContent">
+                    <iframe id = "video"  class="RatioContent" src="Example.html" allowfullscreen="1"></iframe>
+                    
+                </div>
+            
+            </div>
+            
+            <div id = "header">
+                Joseph Cameron | <a href="mailto:jf.cameron@gmail.com">jf.cameron@gmail.com</a>
+            
+            </div>
+        
+            <div id = "main">   
+                <h1>Writeup</h1>
+                <iframe class="pdfdocument" class="RatioContent" src="Introduction_to_WebGL.pdf" allowfullscreen="1"></iframe>
+
+                <h1>Code snippets</h1>
+<!---------SOURCE----------->
+                <p><pre>AlphaCutOff_Vertex.glsl<code class="c">
+//Attributes represent components of your vertex data
+attribute highp vec3 vPos ;
+attribute lowp  vec2 vUV  ;
+
+//Varying specifies attribute data that will be used by the fragment shader
+varying lowp vec2 v_UV;
+
+//Uniforms are values that remain the same across each instance of the vertex shader in this draw call
+uniform   highp float _Time;
+
+void main()
+{
+    highp vec4 position = vec4(vPos,1.0);
+    {
+        //creating a rotation matrix. Done in shader for simplicity, better practice to pass via uniform.
+        mat4 rotationMatrix;
+        rotationMatrix[0][0] = cos(_Time); 
+        rotationMatrix[0][1] = sin(_Time); 
+        rotationMatrix[0][2] = 0.0       ; 
+        rotationMatrix[0][3] = 0.0       ;
+        
+        rotationMatrix[1][0] =-sin(_Time);
+        rotationMatrix[1][1] = cos(_Time);
+        rotationMatrix[1][2] = 0.0       ;
+        rotationMatrix[1][3] = 0.0       ;
+        
+        rotationMatrix[2][0] = 0.0 ; 
+        rotationMatrix[2][1] = 0.0 ; 
+        rotationMatrix[2][2] = 1.0 ; 
+        rotationMatrix[2][3] = 0.0 ; 
+        
+        rotationMatrix[3][0] = 0.0;
+        rotationMatrix[3][1] = 0.0;
+        rotationMatrix[3][2] = 0.0;
+        rotationMatrix[3][3] = 1.0;
+        
+        //example vector * mat mul. generally you will see a mul against an MVP in the vertex shader
+        position = rotationMatrix*position; 
+        
+    }
+    
+    gl_Position = position; //pass final position value to the gl
+    
+    v_UV = vUV; //pass UV attribute to the fragment shader
+    
+}
+                </code></pre></p>
+                <!----------END OF SOURCE------------>
+                
+                <!---------SOURCE----------->
+                <p><pre>AlphaCutOff_Fragment.glsl<code class="c">
+precision mediump float; //specifies the byte size for float type. This is a unique requirement of WebGL
+varying lowp vec2 v_UV; //attribute data passed to the fragment shader from the vertex shader
+
+uniform sampler2D _Texture; //a sampler2D corresponds to a 2D texture
+
+void main()
+{
+    lowp vec4 rvalue = vec4(0);
+    {
+        rvalue = texture2D(_Texture, v_UV); //retreve RGBA from texel at position UV
+        
+        //Destroy the fragment if the alpha channel is not 1 (completely opaque)
+        if (rvalue[3] < 1.0) 
+            discard;
+        
+    }
+
+    gl_FragColor = rvalue; //pass final RGBA to the fragment
+
+}
+                </code></pre></p>
+                <!----------END OF SOURCE------------>
+               
+            </div>
+            
+            <div id = "footer">
+                Joseph Cameron | <a href="">jf.cameron@gmail.com</a>
+            
+            </div>
+            
+        </div>
+     
+        <script type="text/javascript" src="../../JS/Presentation/StagingLabel.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        
+    </body>
+    
+</html>
+
+
+
+
+
+

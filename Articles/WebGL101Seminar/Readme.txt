@@ -1,0 +1,1 @@
+Use firefox, chrome has security issues with local textures

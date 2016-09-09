@@ -1,0 +1,23 @@
+/* 
+    Filename: overrides.css
+    Description: redefines style where necessary for the specific article
+    
+*/
+
+#video
+{
+    display: inline ;
+    border:  0px solid ;
+    width:   100% ;
+    height:  100% ;
+
+}
+
+.pdfdocument
+{
+    display: inline ;
+    border:  0px solid ;
+    width:   100%;
+    height:  600px; 
+    
+}

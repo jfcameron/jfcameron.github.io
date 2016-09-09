@@ -118,12 +118,12 @@
             </div>
         
             <div id = "main">   
-                <small><a href="#PROJECTS">Projects</a> | <a href="Resume/JosephCameron_Resume.pdf" target="_blank">Resume</a> | <a href="https://github.com/jfcameron" target="_blank">GitHub</a> | <a href="https://www.linkedin.com/in/josephcameron" target="_blank">LinkedIn</a></small>            
+                <small><a href="#PROJECTS">Projects</a> | <a href="Resume/JosephCameron_Resume.pdf" target="_blank" class="github">Resume<img src="Images/Icons/pdf.png"></a> | <a href="https://github.com/jfcameron" target="_blank" class="github">GitHub<img src="Images/Icons/github.png"></a> | <a href="https://www.linkedin.com/in/josephcameron" target="_blank" class="github">LinkedIn<img src="Images/Icons/linkedin.png"></a></small>            
                 
                 <h1>Joseph Cameron - Game Programmer Portfolio</h1>
                 <p>
                     Hello! I am an honours graduate of the Game Development program at Algonquin College. My resume can be found 
-                    <a href ="Resume/JosephCameron_Resume.pdf" target="_blank">here</a>.
+                    <a href ="Resume/JosephCameron_Resume.pdf" target="_blank" class="github">here<img src="Images/Icons/pdf.png"></a>
                     
                     <br><br>
                     
@@ -152,13 +152,24 @@
                 
                 </p>
                 
-                <h1>Conway's Game of Life in a compute shader</h1>
+                <h1 class="entry">
+                    <div class="entry__title">Game of Life in a Compute Shader</div>
+                    
+                    <div class="entry__buttons">
+                        <a href="Articles/ConwaysGameOfLifeInAComputeShader/content.html" target="_blank" title="View video"><img src="Images/Icons/video.png"></a>
+                        <a href="Articles/ConwaysGameOfLifeInAComputeShader/content.html" target="_blank" title="View article"><img src="Images/Icons/file.png"></a>
+                        <a href="" target="_blank" title="View project on GitHub"><img src="Images/Icons/github.png"></a>
+                    
+                    </div>
+                
+                </h1>
+                
                 <p>
                     Implementation of Conway's Game of Life in a Direct X compute shader. Demonstrates how a shader program can be used to solve highly iterative non-graphical
                     problems. Compute shader programming makes you pose the problem in terms of the evaluation of thread groups. This mapped very easily onto the
                     rules of the Game Of Life, which are all about the evaluation of groups of neighbours. Lead to a short and simple program. Video and source can be viewed on the article page. 
                     
-                    <a href ="Articles/ConwaysGameOfLifeInAComputeShader/content.html" class="readmore" target="_blank">Demo & full article</a>
+                    <a href ="Articles/ConwaysGameOfLifeInAComputeShader/content.html" class="readmore" target="_blank">Demo & full article<img src="Images/Icons/file.png"></a>
                     
                     <br>
                     
@@ -204,7 +215,18 @@
                 
                 </p>
                 
-                <h1>WebGL Game Engine</h1>
+                <h1 class="entry">
+                    <div class="entry__title">WebGL Game Engine</div>
+                    
+                    <div class="entry__buttons">
+                        <a href="Articles/WebGLGameEngine/content.html" target="_blank" title="View interactive demo"><img src="Images/Icons/game.png"></a>
+                        <a href="Articles/WebGLGameEngine/content.html" target="_blank" title="View article"><img src="Images/Icons/file.png"></a>
+                        <a href="https://github.com/jfcameron/WebGLGameEngine" target="_blank" title="View project on GitHub"><img src="Images/Icons/github.png"></a>
+                    
+                    </div>
+                
+                </h1>
+                
                 <p>
                     The engine features a 3D renderer (forward rendering), an entity component system and a rigidbody physics system.
                     I wanted to embed some sort of WebGL application into this website's landing page. Read about how to follow object 
@@ -212,11 +234,11 @@
                     I look forward to when then next WebGL standard becomes prevalent so I can add a deferred rendering path without 
                     the use of browser specific extensions.
                     
-                    <a href ="Articles/WebGLGameEngine/content.html" class="readmore" target="_blank">Demo & full article</a>
+                    <a href ="Articles/WebGLGameEngine/content.html" class="readmore" target="_blank">Demo & full article<img src="Images/Icons/file.png"></a>
                     
                     <br><br>
                     
-                    The project files are available <a href = "https://github.com/jfcameron/WebGLGameEngine">here</a>. Alternatively you can view source on this page and make your way through the JavaScript includes, left unminified for this purpose.
+                    The project files are available <a href = "https://github.com/jfcameron/WebGLGameEngine" class="github">here<img src="Images/Icons/github.png"></a>. Alternatively you can view source on this page and make your way through the JavaScript includes, left unminified for this purpose.
                     
                     <!--<a href ="Articles/WebGLGameEngine/content.html class="readmore"" target="_blank">Demo & full article</a>-->
                     
@@ -280,13 +302,24 @@
                 </p>
                 -->
                 
-                <h1>Cross platform 3D Renderer in C</h1>
+                <h1 class="entry">
+                    <div class="entry__title">Cross platform 3D Renderer in C</div>
+                    
+                    <div class="entry__buttons">
+                        <a href="Articles/CRenderer/content.html" target="_blank" title="View video"><img src="Images/Icons/video.png"></a>
+                        <a href="Articles/CRenderer/content.html" target="_blank" title="View article"><img src="Images/Icons/file.png"></a>
+                        <!--<a href="" target="_blank" title="View project on GitHub"><img src="Images/Icons/github.png"></a>-->
+                    
+                    </div>
+                
+                </h1>
+                
                 <p>
                     3D renderer written in C, using OpenGL. I used ANSI C and OpenGL ES 2.0 to emphasize portability. I wanted to be able to use this project as the foundation for the renderer of any sort of 3D application I might write
                     for desktop or mobile devices for as long as the OpenGL API remains relevant. When ES 3.0 becomes ubiquitous, I may add a deferred path. I am also looking into replacing my WebGL renderer with this project because of how much faster Emscripten generated JavaScript is compared to handwritten JavaScript.
                     Builds for Windows and Android platforms.
                     
-                    <a href ="Articles/CRenderer/content.html" class="readmore" target="_blank">Demo & full article</a>
+                    <a href ="Articles/CRenderer/content.html" class="readmore" target="_blank">Demo & full article<img src="Images/Icons/file.png"></a>
                     
                     <br><br>
                     
@@ -314,7 +347,17 @@
                 
                 </p>
                 
-                <h1>RPG creator - Level editor & NPC scripting editor</h1>
+                <h1 class="entry">
+                    <div class="entry__title">RPG level & script editor</div>
+                    
+                    <div class="entry__buttons">
+                        <a href="Articles/RPGCreator/content.html" target="_blank" title="View video"><img src="Images/Icons/video.png"></a>
+                        <a href="Articles/RPGCreator/content.html" target="_blank" title="View article"><img src="Images/Icons/file.png"></a>
+                    
+                    </div>
+                
+                </h1>
+                
                 <p>
                     Features a hardware accelerated 2D tile renderer, a level editor and a script editor for NPC behavior.
                     The scripts are interpreted by an embedded Lua interpreter, allowing end users to reprogram NPCs without needing access to the project's source code. Users can use external text editors or use the script editor programmed
@@ -327,7 +370,7 @@
                     
                     Builds for PC & Android.
                     
-                    <a href ="Articles/RPGCreator/content.html" class="readmore" target="_blank">Demo & full article</a>.
+                    <a href ="Articles/RPGCreator/content.html" class="readmore" target="_blank">Demo & full article<img src="Images/Icons/file.png"></a>.
                     
                     <br><br>
                     
@@ -365,7 +408,18 @@
                 
                 <br>
                 
-                <h1>Tower Defense</h1>
+                <h1 class="entry">
+                    <div class="entry__title">Tower Defense</div>
+                    
+                    <div class="entry__buttons">
+                        <a href="Articles/TowerDefense/content.html" target="_blank" title="View video"><img src="Images/Icons/video.png"></a>
+                        <a href="Articles/TowerDefense/content.html" target="_blank" title="View article"><img src="Images/Icons/file.png"></a>
+                        <!--<a href="" target="_blank" title="View project on GitHub"><img src="Images/Icons/github.png"></a>-->
+                    
+                    </div>
+                
+                </h1>
+                
                 <p>
                     A 2D tower defense game I wrote in C++, uses Direct X9 for rendering.
                     Features an implementation of the A* path-finding algorithm and a hardware accelerated tile renderer. 
@@ -373,7 +427,7 @@
                     The code is split up into a number separate sub projects, divided according to purpose (Renderer, Pathfinder, etc.) to improve compile times and modularity. 
                     
                     
-                    <a href ="Articles/TowerDefense/content.html" class="readmore" target="_blank">Demo & full article</a>
+                    <a href ="Articles/TowerDefense/content.html" class="readmore" target="_blank">Demo & full article<img src="Images/Icons/file.png"></a>
                         
                     <br><br>
                     
@@ -449,7 +503,18 @@
                 
                 </p>
                 
-                <h1>Terrain map generation on the GPU</h1>
+                <h1 class="entry">
+                    <div class="entry__title">Terrain map generation on the GPU</div>
+                    
+                    <div class="entry__buttons">
+                        <a href="Articles/TerrainMaps/content.html" target="_blank" title="View interactive demo"><img src="Images/Icons/game.png"></a>
+                        <a href="Articles/TerrainMaps/content.html" target="_blank" title="View article"><img src="Images/Icons/file.png"></a>
+                        <!--<a href="" target="_blank" title="View project on GitHub"><img src="Images/Icons/github.png"></a>-->
+                    
+                    </div>
+                
+                </h1>
+                
                 <p>
                     Hardware accelerated terrain generation. Terrain data is encoded in a texture. Various channels are used for height displacement, uv, foliage type.
                     A highly tesselated plane supplys the vertex data for the shader. Verts are aligned with texels in the texture, new heights, coloring etc. are calculated via
@@ -457,7 +522,7 @@
                     data can be stored in a texture, as the player moves around, the tesselated plane is used to render a subsection of the data. This also lets you take advantage of texture wrap modes
                     to very easily create finite or infinite worlds.
                     
-                    <a href ="Articles/TerrainMaps/content.html" class="readmore" target="_blank">Demo & full article</a>
+                    <a href ="Articles/TerrainMaps/content.html" class="readmore" target="_blank">Demo & full article<img src="Images/Icons/file.png"></a>
                     
                     <br><br>
                     
@@ -493,7 +558,17 @@
                 
                 </p>
                 
-                <h1>Voxel renderering on the GPU</h1>
+                <h1 class="entry">
+                    <div class="entry__title">Voxel renderering on the GPU</div>
+                    
+                    <div class="entry__buttons">
+                        <a href="Articles/VoxelRenderingOnTheGPU/content.html" target="_blank" title="View image"><img src="Images/Icons/image.png"></a>
+                        <a href="Articles/VoxelRenderingOnTheGPU/content.html" target="_blank" title="View article"><img src="Images/Icons/file.png"></a>
+                        <!--<a href="" target="_blank" title="View project on GitHub"><img src="Images/Icons/github.png"></a>-->
+                    
+                    </div>
+                
+                </h1>
 
                 <p>
                     Here are a few different voxel renderers I made while reading about procedural terrain generation. 
@@ -503,7 +578,7 @@
                     a geometry shader. I used this technique to build a proof of concept demo (the one with the smiling stick figure) then a voxel editor and finally I added a curve
                     function to give it a planetary effect.
                     
-                    <a href ="Articles/VoxelRenderingOnTheGPU/content.html" class="readmore" target="_blank">Demo & full article</a>
+                    <a href ="Articles/VoxelRenderingOnTheGPU/content.html" class="readmore" target="_blank">Demo & full article<img src="Images/Icons/file.png"></a>
                     
                     <br><br>
                     
@@ -671,14 +746,22 @@
                 <br>
                 -->
                 
+                <h1 class="entry">
+                    <div class="entry__title">Oldschool Snake</div>
+                    
+                    <div class="entry__buttons">
+                        <a href="https://github.com/jfcameron/Snake/" target="_blank" title="View project on GitHub"><img src="Images/Icons/github.png"></a>
+                    
+                    </div>
                 
-                <h1>Oldschool Snake</h1>
+                </h1>
+                
                 <p>
                     A snake clone written in ANSI C for a command-line interface. I wanted to see what kind of constraints the command-line would bring up for game programming.
                     I found that clearing the screen after every frame lead to unacceptably low framerates, so instead I had to selectively blank the last [x,y] position of moving objects. For example, blanking where the
                     end of the snake's tail had been a frame ago. Fun to write, but this was some ancient technology. 
                     <br><br>
-                    The project files are available <a href = "https://github.com/jfcameron/Snake">here</a>.
+                    The project files are available <a href = "https://github.com/jfcameron/Snake" class="github">here<img src="Images/Icons/github.png"></a>
                     
                     <!--<a href ="Articles/CSnake/content.html" target="_blank">Demo & full article</a>-->
                     
@@ -719,12 +802,24 @@
                 
                 <br>
                 
-                <h1>WebGL 101 seminar</h1>
+                <h1 class="entry">
+                    <div class="entry__title">WebGL 101 seminar</div>
+                    
+                    <div class="entry__buttons">
+                        <a href="Articles/WebGL101Seminar/content.html" target="_blank" title="View interactive demo"><img src="Images/Icons/game.png"></a>
+                        <a href="Articles/WebGL101Seminar/content.html" target="_blank" title="View article"><img src="Images/Icons/file.png"></a>
+                        <a href="https://github.com/jfcameron/Intro-to-WebGL/" target="_blank" title="View project on GitHub"><img src="Images/Icons/github.png"></a>
+                    
+                    </div>
+                
+                </h1>
+                
                 <p>
                     An introductory seminar on WebGL I presented for the student group "Algonquin Startup" at Algonquin College in late November 2015. Talked about some of the more interesting WebGL projects on the web,
                     OpenGL at large and a little bit about working with the API yourself. Along with the talk, I wrote a 5 page writeup and a simple example of a textured quad.
+                    <a href="Articles/WebGL101Seminar/content.html" class="readmore" target="_blank">Demo & full article<img src="Images/Icons/file.png"></a>
                     <br><br>
-                    The writeup and example are available for download <a href="https://github.com/jfcameron/Intro-to-WebGL/archive/master.zip">here</a>.
+                    The writeup and example are available for download <a href="https://github.com/jfcameron/Intro-to-WebGL" target="_blank" class="github">here<img src="Images/Icons/github.png"></a>.
                     <!--<a href ="Articles/CSnake/content.html" target="_blank">Demo & full article</a>-->
                     
                     <br><br>
@@ -763,7 +858,7 @@
                 </p>
                 
                 <br>
-
+    
             </div>
             
             <div id = "footer">
@@ -772,9 +867,8 @@
             </div>
             
             <div id ="attributions">
-            
+            Icons by <a href="http://www.flaticon.com/authors/madebyoliver" title="Madebyoliver">Madebyoliver</a> & <a href="http://www.flaticon.com/authors/pixel-buddha" title="Pixel Buddha">Pixel Buddha</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>
             </div>
-            
             
         </div>
      
