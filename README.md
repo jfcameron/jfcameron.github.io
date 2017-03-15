@@ -1,7 +1,7 @@
-#jfcameron.github.io
+# jfcameron.github.io
 Project for this GitHub account's website.
 
-![alt tag](https://dl.dropboxusercontent.com/u/102655232/Github/jfcameron.io/Build_Image.png "")
+![alt tag](http://jfcameron.github.io/Github/jfcameron.io/Build_Image.png "")
 live site: [jfcameron.github.io](http://jfcameron.github.io) 
 
 ### Libraries used
