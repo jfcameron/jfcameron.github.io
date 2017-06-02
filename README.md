@@ -1,14 +1,13 @@
 # jfcameron.github.io
-Project for this GitHub account's website.
-
 ![alt tag](http://jfcameron.github.io/Github/jfcameron.io/Build_Image.png "")
-live site: [jfcameron.github.io](http://jfcameron.github.io) 
 
-### Libraries used
-Interactive 3D demo
-* [WebGLGameEngine](https://github.com/jfcameron/WebGLGameEngine)
+## Description:
+Project for this GitHub account's website: [jfcameron.github.io](http://jfcameron.github.io) 
 
-Source code highlighting
-* [highlight.js](https://highlightjs.org/)
+## Libraries used
+* [WebGLGameEngine](https://github.com/jfcameron/WebGLGameEngine) - landing page demo
+* [highlight.js](https://highlightjs.org/) - Source code highlighting
 
-library licenses can be found in /Docs.
+## Tools used
+* [Notepad++](https://notepad-plus-plus.org/) - text editor with code highlighting
+* [Updog](https://updog.co/) + [Dropbox](https://www.dropbox.com) for staging
