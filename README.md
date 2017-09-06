@@ -13,5 +13,5 @@ Project for this GitHub account's website: [jfcameron.github.io](http://jfcamero
 * [highlight.js](https://highlightjs.org/) - Source code highlighting
 
 ## Tools used
-* [Notepad++](https://notepad-plus-plus.org/) - text editor with code highlighting
+* [Notepad++](https://notepad-plus-plus.org/) & [VSCode](https://code.visualstudio.com/) - text editor with code highlighting
 * [Updog](https://updog.co/) + [Dropbox](https://www.dropbox.com) for staging
