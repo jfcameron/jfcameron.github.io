@@ -9,8 +9,8 @@
 		
 		<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
         <meta content="utf-8" http-equiv="encoding">
+
         <meta name="viewport" content="width=device-width; target-densityDpi=device-dpi;" />
-		
     </head>
 
     <!--**************-->
@@ -48,6 +48,7 @@
     <script type="text/javascript" src="JS/Engine/ECS/Transform.js"></script>
     <script type="text/javascript" src="JS/Engine/ECS/Camera.js"></script>
     <script type="text/javascript" src="JS/Engine/ECS/GameObject.js"></script>
+
     <!--****-->
     <!--Game-->
     <!--****-->
@@ -67,7 +68,7 @@
     <script type="text/javascript" src="JS/Game/Prefabs/TextureDisplay.js"></script>
     <script type="text/javascript" src="JS/Game/Prefabs/Light.js"></script>
     <!--Nonstandard scripts-->
-    <script type="text/javascript" src="JS/Engine/BootLoader.js"></script><!--Forces engine to load before document is ready. May move into engine repo at some point.-->
+    <script type="text/javascript" src="JS/Engine/BootLoader.js"></script>
     
     <!--*************************-->
     <!-- Shader program includes -->
@@ -88,37 +89,33 @@
     <!--***************-->
     <title>Joseph Cameron - Game Programmer Portfolio</title>
     
-    <body>    
-        <!--<script type="text/javascript" src="JS/Presentation/BackgroundScroller.js"></script>-->
-        <!--<div id = "background"></div>-->
-        
+    <body>
         <div id = "wrapper">
             <div class="RatioWrapper">
                 <div class="RatioContent">
                     <canvas id="canvas" width="1024" height="358">
                         Loading...
-            
                     </canvas>
-                
-                <div class="instructions">
-                    Walk: W,A,S,D<br>
-                    Look: Click canvas then move mouse
-                
+                    
+                    <div class="instructions">
+                        Walk: W,A,S,D<br>
+                        Look: Click canvas then move mouse
+                    </div>
                 </div>
-                
-                </div>
-            
             </div>
             
-        
             <div id = "header">
-                
                 Joseph Cameron | <a href="mailto:jf.cameron@gmail.com">jf.cameron@gmail.com</a>
-                
             </div>
         
             <div id = "main">   
-                <small><a href="#PROJECTS">Projects</a> | <a href="Resume/JosephCameron_Resume.pdf" target="_blank" class="github">Resume<img src="Images/Icons/pdf.png"></a> | <a href="https://github.com/jfcameron" target="_blank" class="github">GitHub<img src="Images/Icons/github.png"></a> | <a href="https://www.linkedin.com/in/josephcameron" target="_blank" class="github">LinkedIn<img src="Images/Icons/linkedin.png"></a></small>            
+                <small>
+                    <a href="#PROJECTS">Projects</a> |
+                    <a href="https://repl.it/@jfcameron" target="_blank" class="github">Repl<img src="Images/Icons/repl.png"></a> |
+                    <a href="https://github.com/jfcameron" target="_blank" class="github">GitHub<img src="Images/Icons/github.png"></a> |
+                    <a href="Resume/JosephCameron_Resume.pdf" target="_blank" class="github">Resume<img src="Images/Icons/pdf.png"></a> |
+                    <a href="https://www.linkedin.com/in/josephcameron" target="_blank" class="github">LinkedIn<img src="Images/Icons/linkedin.png"></a>
+                </small>            
                 
                 <h1>Joseph Cameron - Game Programmer Portfolio</h1>
                 <p>
@@ -128,994 +125,744 @@
                     <br><br>
                     
                     My main strengths are in my strong understanding of the C, C++ and C# programming languages, OpenGL and
-                    the Unity game engine.
+                    the Unity game engine.<br><br>
                     
-                    <br><br>
+                    I have acted as programming lead on an 18 month project. 
+                    Aside from writing technical designs and implementing new features, my responsibilities included running code reviews, 
+                    writing interfaces for other programmers to code against, maintaining a TDD, integrating SVN branches, 
+                    communicating with artists and animators, and presenting regular progress updates on the technical aspects of the project.<br><br>
                     
-                    I have acted as programming lead on an 18 month project. Aside from writing technical designs and implementing new features, my responsibilities included running code reviews, writing interfaces for other programmers to code against, maintaining a TDD, integrating SVN branches, communicating with artists and animators, and presenting regular progress updates on the technical aspects of the project.
-                    
-					<br><br>
-                    
-                    I am constantly reading up on new technologies and applying what I learn to my projects. I have written ANSI C-based 3D renderers for Windows and Android, an HTML5 game engine (demoed above) and am in the process of writing a game engine in C++11 for desktop platforms. These projects and more can be seen below.
+                    I am constantly reading up on new technologies and applying what I learn to my projects. 
+                    I have written ANSI C-based 3D renderers for Windows and Android, an HTML5 game engine (demoed above) and am in the process of writing a game engine in C++11 for desktop platforms. 
+                    These projects and more can be seen below.<br><br>
 					
-                    <br><br>
+                    I have also worked in the web development industry, writing code with CakePHP as well as maintaining legacy sites using Joomla and Wordpress.<br><br><br>
                     
-                    I have also worked in the web development industry, writing code with CakePHP as well as maintaining legacy sites using Joomla and Wordpress.
-                    
-                    <br><br><br>
-                    
-                    Videos and documentation of my work can be found below:
-                    
-                    <br>
+                    Videos and documentation of my work can be found below:<br>
                     
                     <h2><a name="PROJECTS"></a>Projects</h2>
-                
                 </p>
                 
-                <h1 class="entry">
-                    <div class="entry__title">Game of Life in a Compute Shader</div>
-                    
-                    <div class="entry__buttons">
-                        <a href="Articles/ConwaysGameOfLifeInAComputeShader/content.html" target="_blank" title="View video"><img src="Images/Icons/video.png"></a>
-                        <a href="Articles/ConwaysGameOfLifeInAComputeShader/content.html" target="_blank" title="View article"><img src="Images/Icons/file.png"></a>
-                        <!--<a href="" target="_blank" title="View project on GitHub"><img src="Images/Icons/github.png"></a>-->
-                    
-                    </div>
+                <div class="article">
+                    <h1 class="entry">
+                        <div class="entry__title">Game of Life in a Compute Shader</div>
+                        <div class="entry__buttons">
+                            <a href="Articles/ConwaysGameOfLifeInAComputeShader/content.html" target="_blank" title="View video"><img src="Images/Icons/video.png"></a>
+                            <a href="Articles/ConwaysGameOfLifeInAComputeShader/content.html" target="_blank" title="View article"><img src="Images/Icons/file.png"></a>
+                            <a href="https://github.com/jfcameron/GameOfLife" target="_blank" title="View project on GitHub"><img src="Images/Icons/github.png"></a>
+                        </div>
+                    </h1>
                 
-                </h1>
-                
-                <center>
+                    <center>
                         <div class="PreviewImageRatioWrapper">
                             <div class="PreviewImageRatioContent">
                                 <a href="Images/ConwaysGameOfLifeInAComputeShader_Gosper/Big.png" target="_blank"><img src="Images/ConwaysGameOfLifeInAComputeShader_Gosper/Small.jpg" target="_blank" id = "previewImage"></img></a>
-                                    
                             </div>
-                                
                         </div>
                         
                         <div class="PreviewImageRatioWrapper">
                             <div class="PreviewImageRatioContent">
                                 <iframe id = "previewVideo"  class="PreviewImageRatioContent" src="https://drive.google.com/file/d/0ByMgjmjcPctfRG5NQmZfY3I1QlU/preview" allowfullscreen="1"></iframe>
-                                
                             </div>
-                                
                         </div>
-                        
+
                         <div class="PreviewImageRatioWrapper">
                             <div class="PreviewImageRatioContent">
-                                <a href="Images/ConwaysGameOfLifeInAComputeShader_Hello/Big.png" target="_blank"><img src="Images/ConwaysGameOfLifeInAComputeShader_Hello/Small.jpg" target="_blank" id = "previewImage"></img></a>
-                                    
+                                <a href="Images/ConwaysGameOfLifeInAComputeShader_Hello/Big.png" target="_blank"><img src="Images/ConwaysGameOfLifeInAComputeShader_Hello/Small.jpg" target="_blank" id = "previewImage"></img></a>                
                             </div>
-                                
                         </div>
-                    
-                </center>
+                    </center>
                 
-                <br>
+                    <br>
                 
-                <p>
-                    Implementation of Conway's Game of Life in a Direct X compute shader. Demonstrates how a shader program can be used to solve highly iterative non-graphical
-                    problems. Compute shader programming makes you pose the problem in terms of the evaluation of thread groups. This mapped very easily onto the
-                    rules of the Game Of Life, which are all about the evaluation of groups of neighbours. Lead to a short and simple program. Video and source can be viewed on the article page. 
+                    <p>
+                        Implementation of Conway's Game of Life in a Direct X compute shader. Demonstrates how a shader program can be used to solve highly iterative non-graphical
+                        problems. Compute shader programming makes you pose the problem in terms of the evaluation of thread groups. This mapped very easily onto the
+                        rules of the Game Of Life, which are all about the evaluation of groups of neighbours. Lead to a short and simple program. Video and source can be viewed on the article page. 
                     
-                    <a href ="Articles/ConwaysGameOfLifeInAComputeShader/content.html" class="readmore" target="_blank">Demo & full article<img src="Images/Icons/file.png"></a>
-                    
-                </p>
+                        <a href ="Articles/ConwaysGameOfLifeInAComputeShader/content.html" class="readmore" target="_blank">Demo & full article<img src="Images/Icons/file.png"></a>
+                    </p>
                 
-                C#, HLSL, Unity.
+                    C#, HLSL, Unity.
+                </div>
                 
                 <br><br>
                 
-                <h1 class="entry">
-                    <div class="entry__title">WebGL Game Engine</div>
-                    
-                    <div class="entry__buttons">
-                        <a href="Articles/WebGLGameEngine/content.html" target="_blank" title="View interactive demo"><img src="Images/Icons/game.png"></a>
-                        <a href="Articles/WebGLGameEngine/content.html" target="_blank" title="View article"><img src="Images/Icons/file.png"></a>
-                        <a href="https://github.com/jfcameron/WebGLGameEngine" target="_blank" title="View project on GitHub"><img src="Images/Icons/github.png"></a>
-                    
-                    </div>
-                
-                </h1>
-                
-                <center>
-                        <div class="PreviewImageRatioWrapper">
-                            <div class="PreviewImageRatioContent">
-                                <a href="Images/WebGLGameEngine_Banner/Big.png" target="_blank"><img src="Images/WebGLGameEngine_Banner/Small.jpg" target="_blank" id = "previewImage"></img></a>
-                                
-                            </div>
-                        
+                <div class="article">
+                    <h1 class="entry">
+                        <div class="entry__title">WebGL Game Engine</div>
+                        <div class="entry__buttons">
+                            <a href="Articles/WebGLGameEngine/content.html" target="_blank" title="View interactive demo"><img src="Images/Icons/game.png"></a>
+                            <a href="Articles/WebGLGameEngine/content.html" target="_blank" title="View article"><img src="Images/Icons/file.png"></a>
+                            <a href="https://github.com/jfcameron/WebGLGameEngine" target="_blank" title="View project on GitHub"><img src="Images/Icons/github.png"></a>
                         </div>
-                        
-                        <div class="PreviewImageRatioWrapper">
-                            <div class="PreviewImageRatioContent">
-                                <a href="Images/WebGLGameEngine_Rigidbodies/Big.png" target="_blank"><img src="Images/WebGLGameEngine_Rigidbodies/Small.jpg" target="_blank" id = "previewImage"></img></a>
-                                
-                            </div>
-                        
-                        </div>
+                    </h1>
                 
-                </center>
-                
-                <br>
-                
-                <p>
-                    The engine features a 3D renderer (forward rendering), an entity component system and a rigidbody physics system.
-                    I wanted to embed some sort of WebGL application into this website's landing page. Read about how to follow object 
-                    oriented patterns in Javascript and used my understanding of OpenGL to write a game engine for the web.                   
-                    I look forward to when then next WebGL standard becomes prevalent so I can add a deferred rendering path without 
-                    the use of browser specific extensions.
-                    
-                    <a href ="Articles/WebGLGameEngine/content.html" class="readmore" target="_blank">Demo & full article<img src="Images/Icons/file.png"></a>
-                    
-                    <br><br>
-                    
-                    The project files are available <a href = "https://github.com/jfcameron/WebGLGameEngine" class="github" target="_blank">here<img src="Images/Icons/github.png"></a>. Alternatively you can view source on this page and make your way through the JavaScript includes, left unminified for this purpose.
-                    
-                    <!--<a href ="Articles/WebGLGameEngine/content.html class="readmore"" target="_blank">Demo & full article</a>-->
-                                    
-                </p>
-                
-                Javascript, GLSL, WebGL, HTML5.
-                
-                <br><br>
-                
-                <!--
-                <h1>Cross platform Game engine in C & C++</h1>
-                <p>
-                    3D game engine builds for Win32 and Android.
-                    
-                    <a href ="Articles/CRenderer/content.html" target="_blank">Demo & full article</a>
-                    
-                    <br><br>
-                    
                     <center>
                         <div class="PreviewImageRatioWrapper">
                             <div class="PreviewImageRatioContent">
-                                <a href="Images/CRenderer_Windows_And_Android/Big.png" target="_blank"><img src="Images/CRenderer_Windows_And_Android/Small.jpg" target="_blank" id = "previewImage"></img></a>
-                                
+                                <a href="Images/WebGLGameEngine_Banner/Big.png" target="_blank"><img src="Images/WebGLGameEngine_Banner/Small.jpg" target="_blank" id = "previewImage"></img></a>
                             </div>
-                            
                         </div>
-                        
-                        <div class="PreviewImageRatioWrapper">
-                            <div class="PreviewImageRatioContent">
-                                <a href="Images/CRenderer_Box/Big.png" target="_blank"><img src="Images/CRenderer_Box/Small.png" target="_blank" id = "previewImage"></img></a>
 
+                        <div class="PreviewImageRatioWrapper">
+                            <div class="PreviewImageRatioContent">
+                                <a href="Images/WebGLGameEngine_Rigidbodies/Big.png" target="_blank"><img src="Images/WebGLGameEngine_Rigidbodies/Small.jpg" target="_blank" id = "previewImage"></img></a>
                             </div>
-                        
                         </div>
-                                
                     </center>
+                
+                    <br>
+                
+                    <p>
+                        The engine features a 3D renderer (forward rendering), an entity component system and a rigidbody physics system.
+                        I wanted to embed some sort of WebGL application into this website's landing page. Read about how to follow object 
+                        oriented patterns in Javascript and used my understanding of OpenGL to write a game engine for the web.                   
+                        I look forward to when then next WebGL standard becomes prevalent so I can add a deferred rendering path without 
+                        the use of browser specific extensions.
                     
-                    <br><br>
-                    C, C++, OpenGL, Android NDK, Java, JNI, cross-platform development.
-                
-                </p>
-                -->
-                
-                <h1 class="entry">
-                    <div class="entry__title">C/C++ Game Engine</div>
+                        <a href ="Articles/WebGLGameEngine/content.html" class="readmore" target="_blank">Demo & full article<img src="Images/Icons/file.png"></a>
                     
-                    <div class="entry__buttons">
-                        <!--<a href="Articles/ConwaysGameOfLifeInAComputeShader/content.html" target="_blank" title="View video"><img src="Images/Icons/video.png"></a>-->
-                        <!--<a href="Articles/ConwaysGameOfLifeInAComputeShader/content.html" target="_blank" title="View article"><img src="Images/Icons/file.png"></a>-->
-                        <a href="https://github.com/jfcameron/Guar3D" target="_blank" title="View project on GitHub"><img src="Images/Icons/github.png"></a>
+                        <br><br>
                     
-                    </div>
+                        The project files are available <a href = "https://github.com/jfcameron/WebGLGameEngine" class="github" target="_blank">here<img src="Images/Icons/github.png"></a>. Alternatively you can view source on this page and make your way through the JavaScript includes, left unminified for this purpose.
+                    </p>
                 
-                </h1>
-                
-                <center>
-                        <div class="PreviewImageRatioWrapper">
-                            <div class="PreviewImageRatioContent">
-                                <a href="Images/G3D_Rigidbodies/Big.png" target="_blank"><img src="Images/G3D_Rigidbodies/Small.jpg" target="_blank" id = "previewImage"></img></a>
-                                    
-                            </div>
-                                
-                        </div>
-                        
-                        <div class="PreviewImageRatioWrapper">
-                            <div class="PreviewImageRatioContent">
-                                <iframe id = "previewVideo"  class="PreviewImageRatioContent" src="https://drive.google.com/file/d/0ByMgjmjcPctfWmhoczNZamhtbW8/preview" allowfullscreen="1"></iframe>
-                                
-                            </div>
-                                
-                        </div>
-                        
-                        <div class="PreviewImageRatioWrapper">
-                            <div class="PreviewImageRatioContent">
-                                <a href="Images/G3D_Dwarf/Big.png" target="_blank"><img src="Images/G3D_Dwarf/Small.jpg" target="_blank" id = "previewImage"></img></a>
-                                    
-                            </div>
-                                
-                        </div>
-                    
-                </center>
-                
-                <br>
-                
-                <p>
-                    Game Engine in C/C++. Features an ECS, rigidbody physics (via Bullet library), forward rendering with Ambient, Diffuse, Specular + Shadows lighting model. Currently working on hardware accelerated rig-based animation.
-                    Long term project, work in progress.
-                    
-                </p>
-                
-                C, C++, GLSL.
+                    Javascript, GLSL, WebGL, HTML5.
+                </div>
                 
                 <br><br>
                 
-                <h1 class="entry">
-                    <div class="entry__title">Cardboard Drive</div>
-                    
-                    <div class="entry__buttons">
-                        <!--<a href="Articles/ConwaysGameOfLifeInAComputeShader/content.html" target="_blank" title="View video"><img src="Images/Icons/video.png"></a>-->
-                        <!--<a href="Articles/ConwaysGameOfLifeInAComputeShader/content.html" target="_blank" title="View article"><img src="Images/Icons/file.png"></a>-->
-                        <!--<a href="https://github.com/jfcameron/Guar3D" target="_blank" title="View project on GitHub"><img src="Images/Icons/github.png"></a>-->
-                    
-                    </div>
+                <div class="article">
+                    <h1 class="entry">
+                        <div class="entry__title">C/C++ Game Engine</div>
+                        <div class="entry__buttons">
+                            <a href="https://github.com/jfcameron/Guar3D" target="_blank" title="View project on GitHub"><img src="Images/Icons/github.png"></a>
+                        </div>
+                    </h1>
                 
-                </h1>
-                
-                <center>
+                    <center>
                         <div class="PreviewImageRatioWrapper">
                             <div class="PreviewImageRatioContent">
-                                <a href="Images/CardboardDrive_MainStreet/Big.png" target="_blank"><img src="Images/CardboardDrive_MainStreet/Small.jpg" target="_blank" id = "previewImage"></img></a>
-                                    
-                            </div>
-                                
+                                <a href="Images/G3D_Rigidbodies/Big.png" target="_blank"><img src="Images/G3D_Rigidbodies/Small.jpg" target="_blank" id = "previewImage"></img></a>
+                            </div>      
+                        </div>    
+
+                        <div class="PreviewImageRatioWrapper">
+                            <div class="PreviewImageRatioContent">
+                                <iframe id = "previewVideo"  class="PreviewImageRatioContent" src="https://drive.google.com/file/d/0ByMgjmjcPctfWmhoczNZamhtbW8/preview" allowfullscreen="1"></iframe>  
+                            </div>                                
                         </div>
                         
                         <div class="PreviewImageRatioWrapper">
                             <div class="PreviewImageRatioContent">
-                                <a href="Images/CardboardDrive_TrackShot/Big.png" target="_blank"><img src="Images/CardboardDrive_TrackShot/Small.jpg" target="_blank" id = "previewImage"></img></a>
-                                
-                            </div>
-                                
+                                <a href="Images/G3D_Dwarf/Big.png" target="_blank"><img src="Images/G3D_Dwarf/Small.jpg" target="_blank" id = "previewImage"></img></a>                            
+                            </div>            
+                        </div>
+                    </center>
+                
+                    <br>
+                
+                    <p>
+                        Game Engine in C/C++. Features an ECS, rigidbody physics (via Bullet library), forward rendering with Ambient, Diffuse, Specular + Shadows lighting model. Currently working on hardware accelerated rig-based animation.
+                        Long term project, work in progress.
+                    </p>
+                
+                    C, C++, GLSL.
+                </div>
+                
+                <br><br>
+                
+                <div class="article">
+                    <h1 class="entry">
+                        <div class="entry__title">Cardboard Drive</div>
+                        <div class="entry__buttons"></div>
+                    </h1>
+                
+                    <center>
+                        <div class="PreviewImageRatioWrapper">
+                            <div class="PreviewImageRatioContent">
+                                <a href="Images/CardboardDrive_MainStreet/Big.png" target="_blank"><img src="Images/CardboardDrive_MainStreet/Small.jpg" target="_blank" id = "previewImage"></img></a>                        
+                            </div>            
+                        </div>
+                        
+                        <div class="PreviewImageRatioWrapper">
+                            <div class="PreviewImageRatioContent">
+                                <a href="Images/CardboardDrive_TrackShot/Big.png" target="_blank"><img src="Images/CardboardDrive_TrackShot/Small.jpg" target="_blank" id = "previewImage"></img></a>  
+                            </div>            
                         </div>
                         
                         <div class="PreviewImageRatioWrapper">
                             <div class="PreviewImageRatioContent">
                                 <a href="Images/CardboardDrive_Goggles/Big.png" target="_blank"><img src="Images/CardboardDrive_Goggles/Small.jpg" target="_blank" id = "previewImage"></img></a>
-                                    
                             </div>
-                                
                         </div>
+                    </center>
+                
+                    <br>
+                
+                    <p>
+                        Virtual reality car driving demo for Android devices. Requires the use of a Google Cardboard headset and a dual analog controller. The player races around a coastal course in an automatic car. Features an interactive car interior and engine sounds.
+                        The car has some simulated components, including an automatic transmission, e-brake, wheel slippage at high speeds. Written in C#, using Unity. Environment modelled in Blender.
+                        Texture detail and poly count kept to a minimum to keep mobile frame rates as high as possible.
+                    </p>
+                
+                    C#, Cg, Unity.
+                </div>
                     
-                </center>
-                
-                <br>
-                
-                <p>
-                    Virtual reality car driving demo for Android devices. Requires the use of a Google Cardboard headset and a dual analog controller. The player races around a coastal course in an automatic car. Features an interactive car interior and engine sounds.
-                    The car has some simulated components, including an automatic transmission, e-brake, wheel slippage at high speeds. Written in C#, using Unity. Environment modelled in Blender.
-                    Texture detail and poly count kept to a minimum to keep mobile frame rates as high as possible.
-
-                
-                </p>
-                
-                C#, Cg, Unity.
-                
                 <br><br>
                 
-                <h1 class="entry">
-                    <div class="entry__title">Cross platform 3D Renderer in C</div>
-                    
-                    <div class="entry__buttons">
-                        <a href="Articles/CRenderer/content.html" target="_blank" title="View video"><img src="Images/Icons/video.png"></a>
-                        <a href="Articles/CRenderer/content.html" target="_blank" title="View article"><img src="Images/Icons/file.png"></a>
-                        <!--<a href="" target="_blank" title="View project on GitHub"><img src="Images/Icons/github.png"></a>-->
-                    
-                    </div>
-                
-                </h1>
+                <div class="article">
+                    <h1 class="entry">
+                        <div class="entry__title">Cross platform 3D Renderer in C</div>                    
+                        <div class="entry__buttons">
+                            <a href="Articles/CRenderer/content.html" target="_blank" title="View video"><img src="Images/Icons/video.png"></a>
+                            <a href="Articles/CRenderer/content.html" target="_blank" title="View article"><img src="Images/Icons/file.png"></a>
+                            <a href="https://github.com/jfcameron/CRender" target="_blank" title="View project on GitHub"><img src="Images/Icons/github.png"></a>
+                        </div>
+                    </h1>
                                 
-                <center>
+                    <center>
                         <div class="PreviewImageRatioWrapper">
                             <div class="PreviewImageRatioContent">
                                 <a href="Images/CRenderer_Windows_And_Android/Big.png" target="_blank"><img src="Images/CRenderer_Windows_And_Android/Small.jpg" target="_blank" id = "previewImage"></img></a>
-                                
                             </div>
-                            
                         </div>
                         
                         <div class="PreviewImageRatioWrapper">
                             <div class="PreviewImageRatioContent">
                                 <a href="Images/CRenderer_Box/Big.png" target="_blank"><img src="Images/CRenderer_Box/small.png" target="_blank" id = "previewImage"></img></a>
-
                             </div>
+                        </div>                            
+                    </center>
+                
+                    <br>
+                
+                    <p>
+                        3D renderer written in C, using OpenGL. I used ANSI C and OpenGL ES 2.0 to emphasize portability. I wanted to be able to use this project as the foundation for the renderer of any sort of 3D application I might write
+                        for desktop or mobile devices for as long as the OpenGL API remains relevant. When ES 3.0 becomes ubiquitous, I may add a deferred path. I am also looking into replacing my WebGL renderer with this project because of how much faster Emscripten generated JavaScript is compared to handwritten JavaScript.
+                        Builds for Windows and Android platforms.
                         
-                        </div>
-                                
-                </center>
-                
-                <br>
-                
-                <p>
-                    3D renderer written in C, using OpenGL. I used ANSI C and OpenGL ES 2.0 to emphasize portability. I wanted to be able to use this project as the foundation for the renderer of any sort of 3D application I might write
-                    for desktop or mobile devices for as long as the OpenGL API remains relevant. When ES 3.0 becomes ubiquitous, I may add a deferred path. I am also looking into replacing my WebGL renderer with this project because of how much faster Emscripten generated JavaScript is compared to handwritten JavaScript.
-                    Builds for Windows and Android platforms.
-                    
-                    <a href ="Articles/CRenderer/content.html" class="readmore" target="_blank">Demo & full article<img src="Images/Icons/file.png"></a>
-                    
-                </p>
-                
-                C, OpenGL, Android NDK, Java, JNI, cross-platform development.
-                
+                        <a href ="Articles/CRenderer/content.html" class="readmore" target="_blank">Demo & full article<img src="Images/Icons/file.png"></a>
+                    </p>
+
+                    C, OpenGL, Android NDK, Java, JNI, cross-platform development.
+                </div>
+
                 <br><br>
                 
-                <h1 class="entry">
-                    <div class="entry__title">Cross platform 2D Game engine in Java</div>
-                    
-                    <div class="entry__buttons">
-                        <!--<a href="Articles/ConwaysGameOfLifeInAComputeShader/content.html" target="_blank" title="View video"><img src="Images/Icons/video.png"></a>-->
-                        <!--<a href="Articles/ConwaysGameOfLifeInAComputeShader/content.html" target="_blank" title="View article"><img src="Images/Icons/file.png"></a>-->
-                        <a href="https://github.com/jfcameron/G2Dj" target="_blank" title="View project on GitHub"><img src="Images/Icons/github.png"></a>
-                    
-                    </div>
-                
-                </h1>
+                <div class="article">
+                    <h1 class="entry">
+                        <div class="entry__title">Cross platform 2D Game engine in Java</div>
+                        <div class="entry__buttons">
+                            <a href="https://github.com/jfcameron/G2Dj" target="_blank" title="View project on GitHub"><img src="Images/Icons/github.png"></a>
+                        </div>
+                    </h1>
                                 
-                <center>
+                    <center>
                         <div class="PreviewImageRatioWrapper">
                             <div class="PreviewImageRatioContent">
                                 <a href="Images/G2Dj_AndroidReal/Big.jpg" target="_blank"><img src="Images/G2Dj_AndroidReal/Small.jpg" target="_blank" id = "previewImage"></img></a>
-                                
                             </div>
-                            
                         </div>
                         
                         <div class="PreviewImageRatioWrapper">
                             <div class="PreviewImageRatioContent">
                                 <a href="Images/G2Dj_Android/Big.png" target="_blank"><img src="Images/G2Dj_Android/Small.jpg" target="_blank" id = "previewImage"></img></a>
-
                             </div>
-                        
                         </div>
                         
                         <div class="PreviewImageRatioWrapper">
                             <div class="PreviewImageRatioContent">
                                 <a href="Images/G2Dj_Blocky/Big.png" target="_blank"><img src="Images/G2Dj_Blocky/Small.png" target="_blank" id = "previewImage"></img></a>
-
                             </div>
-                        
                         </div>
                         
                         <div class="PreviewImageRatioWrapper">
                             <div class="PreviewImageRatioContent">
                                 <a href="Images/GD2j_Sprites/Big.png" target="_blank"><img src="Images/GD2j_Sprites/Small.png" target="_blank" id = "previewImage"></img></a>
-
                             </div>
-                        
                         </div>
                         
                         <div class="PreviewImageRatioWrapper">
                             <div class="PreviewImageRatioContent">
                                 <a href="Images/G2Dj_Pong/Big.png" target="_blank"><img src="Images/G2Dj_Pong/Small.png" target="_blank" id = "previewImage"></img></a>
-
                             </div>
-                        
                         </div>
                         
                         <div class="PreviewImageRatioWrapper">
                             <div class="PreviewImageRatioContent">
                                 <a href="Images/G2Dj_Platformer/Big.png" target="_blank"><img src="Images/G2Dj_Platformer/Small.png" target="_blank" id = "previewImage"></img></a>
-
                             </div>
+                        </div>                    
+                    </center>
+                
+                    <br>
+                
+                    <p>
+                        Game engine written in Java with a focus on 2D and 2.5d games. Features a 3D renderer, 2D physics and an ECS. Runs on Windows/Linux/Mac and Android.
+                        Input supports Keyboard, Mouse, Gamepads, Touch events (mobile only). Renderer includes out of the box support for unicode text rendering (Standard Multilingual Plane), Sprite sheets and Tilegrids.
+                        The engine's math library exposes Mat4x4, Vector 2 - 4 types and is focused on problems of multiplication, projection, line vs plane intersection, and converting points from one coordinate space to 
+                        another (eg: Mouse pos in NDC to 3d world space at some depth from the camera).<br><br>
+
+                        The project makes extensive use of native libraries for the desktop specific code (in order to access OpenGL, OpenAL and gamepad USB devices) and a pearl-based preprocessor to deal with the 
+                        implementation differences that arise from the differences between the Desktop and Android Java environment.<br><br>
                         
-                        </div>
-                                
-                </center>
+                        More information can be found on the <a href="https://github.com/jfcameron/G2Dj" target="_blank" title="View project on GitHub">G2Dj project page</a>.
+                    </p>
                 
-                <br>
-                
-                <p>
-                    Game engine written in Java with a focus on 2D and 2.5d games. Features a 3D renderer, 2D physics and an ECS. Runs on Windows/Linux/Mac and Android.
-                    Input supports Keyboard, Mouse, Gamepads, Touch events (mobile only). Renderer includes out of the box support for unicode text rendering (Standard Multilingual Plane), Sprite sheets and Tilegrids.
-                    The engine's math library exposes Mat4x4, Vector 2 - 4 types and is focused on problems of multiplication, projection, line vs plane intersection, and converting points from one coordinate space to another (eg: Mouse pos in NDC to 3d world space at some depth from the camera).
-                    <br><br>
-                    The project makes extensive use of native libraries for the desktop specific code (in order to access OpenGL, OpenAL and gamepad USB devices) and a pearl-based preprocessor to deal with the implementation differences that arise from the differences between the Desktop and Android Java environment.
-                    <br><br>
-                    More information can be found on the <a href="https://github.com/jfcameron/G2Dj" target="_blank" title="View project on GitHub">G2Dj project page</a>.
-                    
-                </p>
-                
-                Java, JNI, GLSL, Crossplatform, OpenGL, OpenAL, Box2D, JogAmp, JInput, Android Studio, NetBeans
-                
+                    Java, JNI, GLSL, Crossplatform, OpenGL, OpenAL, Box2D, JogAmp, JInput, Android Studio, NetBeans
+                </div>
+
                 <br><br>
                 
-                <h1 class="entry">
-                    <div class="entry__title">RPG level & script editor</div>
-                    
-                    <div class="entry__buttons">
-                        <a href="Articles/RPGCreator/content.html" target="_blank" title="View video"><img src="Images/Icons/video.png"></a>
-                        <a href="Articles/RPGCreator/content.html" target="_blank" title="View article"><img src="Images/Icons/file.png"></a>
-                    
-                    </div>
+                <div class="article">
+                    <h1 class="entry">
+                        <div class="entry__title">RPG level & script editor</div>
+                        <div class="entry__buttons">
+                            <a href="Articles/RPGCreator/content.html" target="_blank" title="View video"><img src="Images/Icons/video.png"></a>
+                            <a href="Articles/RPGCreator/content.html" target="_blank" title="View article"><img src="Images/Icons/file.png"></a>
+                        </div>
+                    </h1>
                 
-                </h1>
-                
-                <center>
+                    <center>
                         <div class="PreviewImageRatioWrapper">
                             <div class="PreviewImageRatioContent">
                                 <a href="Images/RPGCreator_LevelEditor/Big.png" target="_blank" ><img src="Images/RPGCreator_LevelEditor/Small.jpg" target="_blank" id = "previewImage"></img></a>
-                                
                             </div>
-                            
                         </div>
                         
                         <div class="PreviewImageRatioWrapper">
                             <div class="PreviewImageRatioContent">
                                 <a href="Images/RPGCreator_ScriptEditor/Big.png" target="_blank"><img src="Images/RPGCreator_ScriptEditor/Small.png" target="_blank" id = "previewImage"></img></a>
-                            
                             </div>
-                        
                         </div>
                         
                         <div class="PreviewImageRatioWrapper">
                             <div class="PreviewImageRatioContent">
                                 <a href="Images/RPGCreator_CollisionLayer/Big.png" target="_blank" ><img src="Images/RPGCreator_CollisionLayer/Small.jpg" target="_blank" id = "previewImage"></img></a>
-                    
                             </div>
-                            
+                        </div>
+                    </center>
+                
+                    <br>
+                
+                    <p>
+                        Features a hardware accelerated 2D tile renderer, a level editor and a script editor for NPC behavior.
+                        The scripts are interpreted by an embedded Lua interpreter, allowing end users to reprogram NPCs without needing access to the project's source code. Users can use external text editors or use the script editor programmed
+                        into the level editor. The script editor includes a debugging feature.<br><br>
+                    
+                        After playing an old Playstation game I'm fond of, I thought it would be an interesting problem to create an equivalent renderer that offloads all forms of animation and drawing onto the GPU. Once the renderer was complete
+                        I wrote a simple level editor. I decided to add end user programmable NPCs, so I embedded a Lua interpreter for that purpose.<br>
+                        It should be noted that I do not own the graphics for this project. It started as an homage and ended up some kind of tech demo.<br><br>
+                    
+                        Builds for PC & Android.
+                    
+                        <a href ="Articles/RPGCreator/content.html" class="readmore" target="_blank">Demo & full article<img src="Images/Icons/file.png"></a>.
+                    </p>
+                
+                    C#, Cg, XML, Lua, embedded interpreter, cross-platform development.
+                </div>
+
+                <br><br>
+                
+                <div class="article">
+                    <h1 class="entry">
+                        <div class="entry__title">Tower Defense</div>
+                        <div class="entry__buttons">
+                            <a href="Articles/TowerDefense/content.html" target="_blank" title="View video"><img src="Images/Icons/video.png"></a>
+                            <a href="Articles/TowerDefense/content.html" target="_blank" title="View article"><img src="Images/Icons/file.png"></a>
+                        </div>
+                    </h1>
+                
+                    <center>
+                        <div class="PreviewImageRatioWrapper">
+                            <div class="PreviewImageRatioContent">
+                                <a href="Images/TowerDefense_Level3/Big.png" target="_blank"><img src="Images/TowerDefense_Level1/Small.png" target="_blank" id = "previewImage"></img></a>
+                            </div>
                         </div>
                     
-                </center>
+                        <div class="PreviewImageRatioWrapper">
+                            <div class="PreviewImageRatioContent">
+                                <a href="Images/TowerDefense_Level3/Big.png" target="_blank"><img src="Images/TowerDefense_Level3/Small.png" target="_blank" id = "previewImage"></img></a>
+                            </div>
+                        </div>
+                        
+                        <div class="PreviewImageRatioWrapper">
+                            <div class="PreviewImageRatioContent">
+                                <a href="Images/TowerDefense_Level1_WithGUI/Big.png" target="_blank"><img src="Images/TowerDefense_Level1_WithGUI/Small.png" target="_blank" id = "previewImage"></img></a>                            
+                            </div>
+                        </div>
+                    </center>
                 
-                <br>
+                    <br>
                 
-                <p>
-                    Features a hardware accelerated 2D tile renderer, a level editor and a script editor for NPC behavior.
-                    The scripts are interpreted by an embedded Lua interpreter, allowing end users to reprogram NPCs without needing access to the project's source code. Users can use external text editors or use the script editor programmed
-                    into the level editor. The script editor includes a debugging feature.
+                    <p>
+                        A 2D tower defense game I wrote in C++, uses Direct X9 for rendering.
+                        Features an implementation of the A* path-finding algorithm and a hardware accelerated tile renderer. 
+                        Level data is stored in XML documents and loaded from file. I never wrote a level editor, so making the game's different stages was a bit tedious.
+                        The code is split up into a number separate sub projects, divided according to purpose (Renderer, Pathfinder, etc.) to improve compile times and modularity. 
+                    
+                        <a href ="Articles/TowerDefense/content.html" class="readmore" target="_blank">Demo & full article<img src="Images/Icons/file.png"></a>
+                    </p>
+                
+                    C++, DirectX9, A* pathfinding, XML serialization.
+                    
                     <br><br>
-                    After playing an old Playstation game I'm fond of, I thought it would be an interesting problem to create an equivalent renderer that offloads all forms of animation and drawing onto the GPU. Once the renderer was complete
-                    I wrote a simple level editor. I decided to add end user programmable NPCs, so I embedded a Lua interpreter for that purpose.<br>
-                    It should be noted that I do not own the graphics for this project. It started as an homage and ended up some kind of tech demo.<br><br>
-                    
-                    
-                    Builds for PC & Android.
-                    
-                    <a href ="Articles/RPGCreator/content.html" class="readmore" target="_blank">Demo & full article<img src="Images/Icons/file.png"></a>.
-                    
-                </p>
                 
-                C#, Cg, XML, Lua, embedded interpreter, cross-platform development.
+                    <h1>Sushi Joint Rumble</h1>
                 
-                <br><br>
-                
-                <h1 class="entry">
-                    <div class="entry__title">Tower Defense</div>
-                    
-                    <div class="entry__buttons">
-                        <a href="Articles/TowerDefense/content.html" target="_blank" title="View video"><img src="Images/Icons/video.png"></a>
-                        <a href="Articles/TowerDefense/content.html" target="_blank" title="View article"><img src="Images/Icons/file.png"></a>
-                        <!--<a href="" target="_blank" title="View project on GitHub"><img src="Images/Icons/github.png"></a>-->
-                    
-                    </div>
-                
-                </h1>
-                
-                <center>
-                        <div class="PreviewImageRatioWrapper">
-                            <div class="PreviewImageRatioContent">
-                                <a href="Images/TowerDefense_Level3/Big.png"         target="_blank"><img src="Images/TowerDefense_Level1/Small.png"         target="_blank" id = "previewImage"></img></a>
-                            
-                            </div>
-                        
-                        </div>
-                    
-                        <div class="PreviewImageRatioWrapper">
-                            <div class="PreviewImageRatioContent">
-                                <a href="Images/TowerDefense_Level3/Big.png"         target="_blank"><img src="Images/TowerDefense_Level3/Small.png"         target="_blank" id = "previewImage"></img></a>
-                            
-                            </div>
-                        
-                        </div>
-                        
-                        <div class="PreviewImageRatioWrapper">
-                            <div class="PreviewImageRatioContent">
-                                <a href="Images/TowerDefense_Level1_WithGUI/Big.png" target="_blank"><img src="Images/TowerDefense_Level1_WithGUI/Small.png" target="_blank" id = "previewImage"></img></a>
-                            
-                            </div>
-                            
-                        </div>
-                    
-                </center>
-                
-                <br>
-                
-                <p>
-                    A 2D tower defense game I wrote in C++, uses Direct X9 for rendering.
-                    Features an implementation of the A* path-finding algorithm and a hardware accelerated tile renderer. 
-                    Level data is stored in XML documents and loaded from file. I never wrote a level editor, so making the game's different stages was a bit tedious.
-                    The code is split up into a number separate sub projects, divided according to purpose (Renderer, Pathfinder, etc.) to improve compile times and modularity. 
-                    
-                    
-                    <a href ="Articles/TowerDefense/content.html" class="readmore" target="_blank">Demo & full article<img src="Images/Icons/file.png"></a>
-                    
-                </p>
-                
-                C++, DirectX9, A* pathfinding, XML serialization.
-                
-                <br><br>
-                
-                <h1>Sushi Joint Rumble</h1>
-                
-                <center>
+                    <center>
                         <div class="PreviewImageRatioWrapper">
                             <div class="PreviewImageRatioContent">
                                 <a href="Images/SushiJointRumble_TitleScreen/Big.png" target="_blank"><img src="Images/SushiJointRumble_TitleScreen/Small.png" target="_blank" id = "previewImage"></img></a>
-                        
                             </div>
-                            
                         </div>
                         
                         <div class="PreviewImageRatioWrapper">
                             <div class="PreviewImageRatioContent">                            
                                 <a href="Images/SushiJointRumble_Worldmap/Big.png" target="_blank"><img src="Images/SushiJointRumble_Worldmap/Small.png" target="_blank" id = "previewImage"></img></a>
-                    
                             </div>
-                        
                         </div>
-                        
-                    
-                </center>
+                    </center>
                 
-                <br>
+                    <br>
                 
-                <p>
-                    A beat 'em up game with RPG leveling, skill unlocking, item purchasing.
-                    This was the result of my 3 semester long final school project during the Algonquin College Game Development program. I worked as the lead programmer on a 7 person team.
-                    My responsibilities included technical design, weekly builds, reviewing code commits and of course programming.
-                    The amount of subsystems and mechanics lead to a scope that well exceeded the year and a half we had to complete the project.
-                    Content ended up being spread thinly across all aspects of the game, whereas we would have been better off focusing on the core elements of the beat 'em up.
-                    Definitely learned a lesson on the importance of a focused design. Many over nights at the computer labs, a lot of hard work, a lot of fun. 
-                    
-                    <!--<a href ="Articles/SushiJointRumble/content.html" class="readmore" target="_blank">Demo & full article</a>-->
-                    
+                    <p>
+                        A beat 'em up game with RPG leveling, skill unlocking, item purchasing.
+                        This was the result of my 3 semester long final school project during the Algonquin College Game Development program. I worked as the lead programmer on a 7 person team.
+                        My responsibilities included technical design, weekly builds, reviewing code commits and of course programming.
+                        The amount of subsystems and mechanics lead to a scope that well exceeded the year and a half we had to complete the project.
+                        Content ended up being spread thinly across all aspects of the game, whereas we would have been better off focusing on the core elements of the beat 'em up.
+                        Definitely learned a lesson on the importance of a focused design. Many over nights at the computer labs, a lot of hard work, a lot of fun. 
+                    </p>
                 
-                </p>
-                
-                C#, Cg, Unity, Unity plugin programming.
+                    C#, Cg, Unity, Unity plugin programming.
+                </div>
                 
                 <br><br>
                 
-                <h1 class="entry">
-                    <div class="entry__title">Terrain map generation on the GPU</div>
-                    
-                    <div class="entry__buttons">
-                        <a href="Articles/TerrainMaps/content.html" target="_blank" title="View interactive demo"><img src="Images/Icons/game.png"></a>
-                        <a href="Articles/TerrainMaps/content.html" target="_blank" title="View article"><img src="Images/Icons/file.png"></a>
-                        <!--<a href="" target="_blank" title="View project on GitHub"><img src="Images/Icons/github.png"></a>-->
-                    
-                    </div>
+                <div class="article">
+                    <h1 class="entry">
+                        <div class="entry__title">Terrain map generation on the GPU</div>
+                        <div class="entry__buttons">
+                            <a href="Articles/TerrainMaps/content.html" target="_blank" title="View interactive demo"><img src="Images/Icons/game.png"></a>
+                            <a href="Articles/TerrainMaps/content.html" target="_blank" title="View article"><img src="Images/Icons/file.png"></a>
+                        </div>
+                    </h1>
                 
-                </h1>
-                
-                <center>
+                    <center>
                         <div class="PreviewImageRatioWrapper">
                             <div class="PreviewImageRatioContent">
                                 <a href="Images/GPU_Voxel_Forest/Big.png" target="_blank" ><img src="Images/GPU_Voxel_Forest/Small.jpg" id = "previewImage"></img></a>
-                        
                             </div>
-                            
                         </div>
                         
                         <div class="PreviewImageRatioWrapper">
                             <div class="PreviewImageRatioContent">
                                 <a href="Images/GPU_Terrain/Big.png" target="_blank" ><img src="Images/GPU_Terrain/Small.jpg" id = "previewImage"></img></a>
-                        
                             </div>
-                            
                         </div>
                         
                         <div class="PreviewImageRatioWrapper">
                             <div class="PreviewImageRatioContent">
                                 <a href="Images/GPU_Terrain_Trees/Big.png" target="_blank" ><img src="Images/GPU_Terrain_Trees/Small.jpg" id = "previewImage"></img></a>
-                        
                             </div>
-                            
                         </div>
-                        
-                </center>
+                    </center>
                 
-                <br>
+                    <br>
                 
-                <p>
-                    Hardware accelerated terrain generation. Terrain data is encoded in a texture. Various channels are used for height displacement, uv, foliage type.
-                    A highly tesselated plane supplys the vertex data for the shader. Verts are aligned with texels in the texture, new heights, coloring etc. are calculated via
-                    texture lookup. Normals are recalculated after displacement and the terrain is coloured as usual in the fragment shader. Using this method, a huge amount of terrain
-                    data can be stored in a texture, as the player moves around, the tesselated plane is used to render a subsection of the data. This also lets you take advantage of texture wrap modes
-                    to very easily create finite or infinite worlds.
+                    <p>
+                        Hardware accelerated terrain generation. Terrain data is encoded in a texture. Various channels are used for height displacement, uv, foliage type.
+                        A highly tesselated plane supplys the vertex data for the shader. Verts are aligned with texels in the texture, new heights, coloring etc. are calculated via
+                        texture lookup. Normals are recalculated after displacement and the terrain is coloured as usual in the fragment shader. Using this method, a huge amount of terrain
+                        data can be stored in a texture, as the player moves around, the tesselated plane is used to render a subsection of the data. This also lets you take advantage of texture wrap modes
+                        to very easily create finite or infinite worlds.
                     
-                    <a href ="Articles/TerrainMaps/content.html" class="readmore" target="_blank">Demo & full article<img src="Images/Icons/file.png"></a>
-                    
-                </p>
+                        <a href ="Articles/TerrainMaps/content.html" class="readmore" target="_blank">Demo & full article<img src="Images/Icons/file.png"></a>
+                    </p>
                 
-                C#, Cg, Unity.
+                    C#, Cg, Unity.
+                </div>
                 
                 <br><br>
                 
-                <h1 class="entry">
-                    <div class="entry__title">Voxel renderering on the GPU</div>
+                <div class="article">
+                    <h1 class="entry">
+                        <div class="entry__title">Voxel renderering on the GPU</div>
                     
-                    <div class="entry__buttons">
-                        <a href="Articles/VoxelRenderingOnTheGPU/content.html" target="_blank" title="View image"><img src="Images/Icons/image.png"></a>
-                        <a href="Articles/VoxelRenderingOnTheGPU/content.html" target="_blank" title="View article"><img src="Images/Icons/file.png"></a>
-                        <!--<a href="" target="_blank" title="View project on GitHub"><img src="Images/Icons/github.png"></a>-->
-                    
-                    </div>
-                
-                </h1>
+                        <div class="entry__buttons">
+                            <a href="Articles/VoxelRenderingOnTheGPU/content.html" target="_blank" title="View image"><img src="Images/Icons/image.png"></a>
+                            <a href="Articles/VoxelRenderingOnTheGPU/content.html" target="_blank" title="View article"><img src="Images/Icons/file.png"></a>
+                        </div>
+                    </h1>
 
-                <center>
+                    <center>
                         <div class="PreviewImageRatioWrapper">
                             <div class="PreviewImageRatioContent">
                                 <a href="Images/GPU_Voxel_Rendering/Big.png" target="_blank" ><img src="Images/GPU_Voxel_Rendering/Small.jpg" id = "previewImage"></img></a>
-                                
                             </div>
-                            
                         </div>
                         
                         <div class="PreviewImageRatioWrapper">
                             <div class="PreviewImageRatioContent">
                                 <a href="Images/GPU_Voxel_Edit/Big.png" target="_blank" ><img src="Images/GPU_Voxel_Edit/Small.jpg" id = "previewImage"></img></a>
-                                
                             </div>
-                            
                         </div>
                         
                         <div class="PreviewImageRatioWrapper">
                             <div class="PreviewImageRatioContent">
                                 <a href="Images/CPU_Voxel_Terrain/Big.png" target="_blank" ><img src="Images/CPU_Voxel_Terrain/Small.jpg" id = "previewImage"></img></a>
-                                
                             </div>
-                            
                         </div>
-                        <!---->
+                
                         <div class="PreviewImageRatioWrapper">
                             <div class="PreviewImageRatioContent">
                                 <a href="Images/GPU_Voxel_Planet_Render/Big.png" target="_blank" ><img src="Images/GPU_Voxel_Planet_Render/Small.jpg" id = "previewImage"></img></a>
-                                
                             </div>
-                            
                         </div>
                         
                         <div class="PreviewImageRatioWrapper">
                             <div class="PreviewImageRatioContent">
                                 <a href="Images/GPU_Voxel_Planet_EditorView/Big.png" target="_blank" ><img src="Images/GPU_Voxel_Planet_EditorView/Small.jpg" id = "previewImage"></img></a>
-                                
                             </div>
-                            
-                        </div>
-                                
-                </center>
+                        </div>            
+                    </center>
                 
-                <br>
+                    <br>
                 
-                <p>
-                    Here are a few different voxel renderers I made while reading about procedural terrain generation. 
-                    One is a minecraft style terrain generator, rendering a noise function as voxel data around the player. 
-                    It was implemented on the CPU, so I had to spend time hiding chunk loading etc. and this lead me to thinking about how to hardware accelerate the process.
-                    To move voxel generation onto the GPU, I encoded the terrain data into a texture and used the texture data to generate voxels in
-                    a geometry shader. I used this technique to build a proof of concept demo (the one with the smiling stick figure) then a voxel editor and finally I added a curve
-                    function to give it a planetary effect.
+                    <p>
+                        Here are a few different voxel renderers I made while reading about procedural terrain generation. 
+                        One is a minecraft style terrain generator, rendering a noise function as voxel data around the player. 
+                        It was implemented on the CPU, so I had to spend time hiding chunk loading etc. and this lead me to thinking about how to hardware accelerate the process.
+                        To move voxel generation onto the GPU, I encoded the terrain data into a texture and used the texture data to generate voxels in
+                        a geometry shader. I used this technique to build a proof of concept demo (the one with the smiling stick figure) then a voxel editor and finally I added a curve
+                        function to give it a planetary effect.
                     
-                    <a href ="Articles/VoxelRenderingOnTheGPU/content.html" class="readmore" target="_blank">Demo & full article<img src="Images/Icons/file.png"></a>
-                    
-                </p>
+                        <a href ="Articles/VoxelRenderingOnTheGPU/content.html" class="readmore" target="_blank">Demo & full article<img src="Images/Icons/file.png"></a>
+                    </p>
                 
-                C#, Cg, Unity.
+                    C#, Cg, Unity.
+                </div>
                 
                 <br><br>
                 
-                <h1>Speed King</h1>
+                <div class="article">
+                    <h1>Speed King</h1>
                 
-                <center>
-                    
+                    <center>
                         <div class="PreviewImageRatioWrapper">
                             <div class="PreviewImageRatioContent">
                                 <a href="Images/SpeedKing_Fight/Big.png" target="_blank"><img src="Images/SpeedKing_Fight/Small.png" target="_blank" id = "previewImage"></img></a>
-                            
                             </div>
-                            
                         </div>
                     
                         <div class="PreviewImageRatioWrapper">
                             <div class="PreviewImageRatioContent">
                                 <a href="Images/SpeedKing_SplashScreen/Big.png" target="_blank"><img src="Images/SpeedKing_SplashScreen/Small.png" target="_blank" id = "previewImage"></img></a>
-                            
                             </div>
-                            
                         </div>
                         
                         <div class="PreviewImageRatioWrapper">
                             <div class="PreviewImageRatioContent">
                                 <a href="Images/SpeedKing_MainMenu/Big.png" target="_blank"><img src="Images/SpeedKing_MainMenu/Small.jpg" target="_blank" id = "previewImage"></img></a>
-                            
                             </div>
-                            
                         </div>
-                        
-                </center>
+                    </center>
                 
-                <br>
+                    <br>
                 
-                <p>
-                    This was a short game I worked on for the global game jam 2015. Team size was 2 people. I didnt end up submitting the game unfortunately,
-                    due to an untimely 10 hour power outage on the final day. Mobile game targeting tablets. Combat was structured on simon says. Threw in a vertex shader that curves the game world
-                    for an interesting graphical effect.
-                    
-                    <!--<a href ="Articles/SpeedKing/content.html" target="_blank">Demo & full article</a>-->
-
+                    <p>
+                        This was a short game I worked on for the global game jam 2015. Team size was 2 people. I didnt end up submitting the game unfortunately,
+                        due to an untimely 10 hour power outage on the final day. Mobile game targeting tablets. Combat was structured on simon says. Threw in a vertex shader that curves the game world
+                        for an interesting graphical effect.
+                    </p>
                 
-                </p>
-                
-                C#, Cg, Unity, Android development.
+                    C#, Cg, Unity, Android development.
+                </div>
                 
                 <br><br>
 
-                <h1>Railshooter</h1>
-                                
-                <center>
+                <div class="article">
+                    <h1>Railshooter</h1>                            
+                    <center>
                         <div class="PreviewImageRatioWrapper">
                             <div class="PreviewImageRatioContent">                    
                                 <a href="Images/RailShooter_Title/Big.png" target="_blank"><img src="Images/RailShooter_Title/Small.jpg" target="_blank" id = "previewImage"></img></a>
-                                
                             </div>
-                                
                         </div>
                         
                         <div class="PreviewImageRatioWrapper">
                             <div class="PreviewImageRatioContent">                    
                                 <a href="Images/RailShooter_Flight/Big.png" target="_blank"><img src="Images/RailShooter_Flight/Small.jpg" target="_blank" id = "previewImage"></img></a>
-                                
                             </div>
-                                
                         </div>
                         
                         <div class="PreviewImageRatioWrapper">
                             <div class="PreviewImageRatioContent">                    
                                 <a href="Images/RailShooter_Editor/Big.png" target="_blank"><img src="Images/RailShooter_Editor/Small.jpg" target="_blank" id = "previewImage"></img></a>
-                                
                             </div>
-                                
                         </div>
-                            
-                </center>
-                
-                <br>
-                
-                <p>
-                    A 3D railshooter in the vein of StarFox. The player is constrained to a 2D coordinate within a plane that moves from node to node in a 3D world. 
-                    
-                    <!--<a href ="Articles/Railshooter/content.html" target="_blank">Demo & full article</a>.-->
-                
-                </p>
-                
-                C#, Cg, Unity.
-                
-                <br><br>
-                
-                <!--
-                <h1>2D game collection</h1>
-                <p>
-                    The project itself served as a context for games. Games would be compiled as .libs and then included in the application project, which
-                    linked the engine and the game together. Games ran on a separate thread from the engine to prevent bad game code from freezing the application.
-                    The project contained two games: a space shooter and a minesweeper clone.
-                    
-                    <a href ="Articles/2DGameCollection/content.html" target="_blank">Demo & full article</a>
-                    
-                    <center>
-                        <table>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                
-                            </tr>
-                        
-                        </table>
-                    
                     </center>
-                    
-                    <br><br>
-                    
-                    C#, XNA, Multithreading.
                 
-                </p>
+                    <br>
                 
-                <br>
-                -->
+                    <p>
+                        A 3D railshooter in the vein of StarFox. 
+                        The player is constrained to a 2D coordinate within a plane that moves from node to node in a 3D world. 
+                    </p>
                 
-                <h1 class="entry">
-                    <div class="entry__title">Oldschool Snake</div>
-                    
-                    <div class="entry__buttons">
-                        <a href="https://github.com/jfcameron/Snake/" target="_blank" title="View project on GitHub"><img src="Images/Icons/github.png"></a>
-                    
-                    </div>
+                    C#, Cg, Unity.
+                </div>
+
+                <br><br>
+
+                <div class="article">
+                    <h1 class="entry">
+                        <div class="entry__title">Oldschool Snake</div>
+                        <div class="entry__buttons">
+                            <a href="https://github.com/jfcameron/Snake/" target="_blank" title="View project on GitHub"><img src="Images/Icons/github.png"></a>
+                        </div>
+                    </h1>
                 
-                </h1>
-                
-                <center>
-                    
+                    <center>
                         <div class="PreviewImageRatioWrapper">
                             <div class="PreviewImageRatioContent">                    
                                 <a href="Images/Snake_Intro/Big.png" target="_blank" ><img src="Images/Snake_Intro/Small.png" id = "previewImage"></img></a>
-                                
                             </div>
-                                
                         </div>
                         
                         <div class="PreviewImageRatioWrapper">
                             <div class="PreviewImageRatioContent">                    
                                 <a href="Images/Snake_MidGame/Big.png" target="_blank"><img src="Images/Snake_MidGame/Small.png" id = "previewImage"></img></a>
-                                
                             </div>
-                                
                         </div>
                         
                         <div class="PreviewImageRatioWrapper">
                             <div class="PreviewImageRatioContent">                    
                                 <a href="Images/Snake_Died/Big.png" target="_blank"><img src="Images/Snake_Died/Small.png" id = "previewImage"></img></a>
-                                
                             </div>
-                                
                         </div>
-
-                </center>
+                    </center>
                 
-                <br>
+                    <br>
                 
-                <p>
-                    A snake clone written in ANSI C for a command-line interface. I wanted to see what kind of constraints the command-line would bring up for game programming.
-                    I found that clearing the screen after every frame lead to unacceptably low framerates, so instead I had to selectively blank the last [x,y] position of moving objects. For example, blanking where the
-                    end of the snake's tail had been a frame ago. Fun to write, but this was some ancient technology. 
-                    <br><br>
-                    The project files are available <a href = "https://github.com/jfcameron/Snake" target="_blank" class="github">here<img src="Images/Icons/github.png"></a>
-                    
-                    <!--<a href ="Articles/CSnake/content.html" target="_blank">Demo & full article</a>-->
-                    
-                </p>
+                    <p>
+                        A snake clone written in ANSI C for a command-line interface. I wanted to see what kind of constraints the command-line would bring up for game programming.
+                        I found that clearing the screen after every frame lead to unacceptably low framerates, so instead I had to selectively blank the last [x,y] position of moving objects. For example, blanking where the
+                        end of the snake's tail had been a frame ago. Fun to write, but this was some ancient technology. 
+                        <br><br>
+                        The project files are available <a href = "https://github.com/jfcameron/Snake" target="_blank" class="github">here<img src="Images/Icons/github.png"></a>
+                    </p>
                 
-                C, 1980s.
+                    C, 1980s.
+                </div>
                 
                 <br><br>
                 
-                <h1 class="entry">
-                    <div class="entry__title">WebGL 101 seminar</div>
-                    
-                    <div class="entry__buttons">
-                        <a href="Articles/WebGL101Seminar/content.html" target="_blank" title="View interactive demo"><img src="Images/Icons/game.png"></a>
-                        <a href="Articles/WebGL101Seminar/content.html" target="_blank" title="View article"><img src="Images/Icons/file.png"></a>
-                        <a href="https://github.com/jfcameron/Intro-to-WebGL/" target="_blank" title="View project on GitHub"><img src="Images/Icons/github.png"></a>
-                    
-                    </div>
+                <div class="article">
+                    <h1 class="entry">
+                        <div class="entry__title">WebGL 101 seminar</div>
+                        <div class="entry__buttons">
+                            <a href="Articles/WebGL101Seminar/content.html" target="_blank" title="View interactive demo"><img src="Images/Icons/game.png"></a>
+                            <a href="Articles/WebGL101Seminar/content.html" target="_blank" title="View article"><img src="Images/Icons/file.png"></a>
+                            <a href="https://github.com/jfcameron/Intro-to-WebGL/" target="_blank" title="View project on GitHub"><img src="Images/Icons/github.png"></a>
+                        </div>
+                    </h1>
                 
-                </h1>
-                
-                <center>
-                    
+                    <center>
                         <div class="PreviewImageRatioWrapper">
                             <div class="PreviewImageRatioContent">                    
                                 <a href="Images/WebGL101_Slide1/Big.png" target="_blank" ><img src="Images/WebGL101_Slide1/Small.png" id = "previewImage"></img></a>
-                                
                             </div>
-                                
                         </div>
                         
                         <div class="PreviewImageRatioWrapper">
                             <div class="PreviewImageRatioContent">                    
                                 <a href="Images/WebGL101_Writeup/Big.png" target="_blank"><img src="Images/WebGL101_Writeup/Small.png" id = "previewImage"></img></a>
-                                
                             </div>
-                                
                         </div>
                         
                         <div class="PreviewImageRatioWrapper">
                             <div class="PreviewImageRatioContent">                    
                                 <a href="Images/WebGL101_Demo/Big.png" target="_blank"><img src="Images/WebGL101_Demo/Small.png" id = "previewImage"></img></a>
-                                
                             </div>
-                                
                         </div>
+                    </center>
+                    
+                    <br>
+                
+                    <p>
+                        An introductory seminar on WebGL I presented for the student group "Algonquin Startup" at Algonquin College in late November 2015. Talked about some of the more interesting WebGL projects on the web,
+                        OpenGL at large and a little bit about working with the API yourself. Along with the talk, I wrote a 5 page writeup and a simple example of a textured quad.
+                        <a href="Articles/WebGL101Seminar/content.html" class="readmore" target="_blank">Demo & full article<img src="Images/Icons/file.png"></a>
+                        <br><br>
+                        The writeup and example are available for download <a href="https://github.com/jfcameron/Intro-to-WebGL" target="_blank" class="github">here<img src="Images/Icons/github.png"></a>.
+                    </p>
+                
+                    Communication, JavaScript, WebGL.
+                </div>
 
-                </center>
-                    
-                <br>
-                
-                <p>
-                    An introductory seminar on WebGL I presented for the student group "Algonquin Startup" at Algonquin College in late November 2015. Talked about some of the more interesting WebGL projects on the web,
-                    OpenGL at large and a little bit about working with the API yourself. Along with the talk, I wrote a 5 page writeup and a simple example of a textured quad.
-                    <a href="Articles/WebGL101Seminar/content.html" class="readmore" target="_blank">Demo & full article<img src="Images/Icons/file.png"></a>
-                    <br><br>
-                    The writeup and example are available for download <a href="https://github.com/jfcameron/Intro-to-WebGL" target="_blank" class="github">here<img src="Images/Icons/github.png"></a>.
-                    <!--<a href ="Articles/CSnake/content.html" target="_blank">Demo & full article</a>-->
-                    
-                </p>
-                
-                Communication, JavaScript, WebGL.
-                
                 <br><br>
                 
-                <h1 class="entry">
-                    <div class="entry__title">Dropbox Web Interface</div>
-                    
-                    <div class="entry__buttons">
-                        <!--<a href="Articles/WebGL101Seminar/content.html" target="_blank" title="View interactive demo"><img src="Images/Icons/game.png"></a>-->
-                        <!--<a href="Articles/WebGL101Seminar/content.html" target="_blank" title="View article"><img src="Images/Icons/file.png"></a>-->
-                        <a href="https://github.com/jfcameron/DropboxWebInterface/" target="_blank" title="View project on GitHub"><img src="Images/Icons/github.png"></a>
-                    
-                    </div>
+                <div class="article">
+                    <h1 class="entry">
+                        <div class="entry__title">Dropbox Web Interface</div>
+                        <div class="entry__buttons">
+                            <a href="https://github.com/jfcameron/DropboxWebInterface/" target="_blank" title="View project on GitHub"><img src="Images/Icons/github.png"></a>
+                        </div>
+                    </h1>
                 
-                </h1>
-                
-                <center>
-                    
+                    <center>
                         <div class="PreviewImageRatioWrapper">
                             <div class="PreviewImageRatioContent">                    
                                 <a href="Images/WebInterface_Mapper/Big.png" target="_blank" ><img src="Images/WebInterface_Mapper/Small.png" id = "previewImage"></img></a>
-                                
                             </div>
-                                
                         </div>
                         
                         <div class="PreviewImageRatioWrapper">
                             <div class="PreviewImageRatioContent">                    
                                 <a href="Images/WebInterface_DirectoryExplorer/Big.png" target="_blank"><img src="Images/WebInterface_DirectoryExplorer/Small.png" id = "previewImage"></img></a>
-                                
                             </div>
-                                
                         </div>
                         
                         <div class="PreviewImageRatioWrapper">
                             <div class="PreviewImageRatioContent">                    
                                 <a href="Images/WebInterface_VideoPlayer/Big.png" target="_blank"><img src="Images/WebInterface_VideoPlayer/Small.jpg" id = "previewImage"></img></a>
-                                
                             </div>
-                                
                         </div>
-
-                </center>
+                    </center>
                     
-                <br>
+                    <br>
                 
-                <p>
-                    This project generates a small website that allows vistors to browse the contents of your public dropbox, stream content (such as audio and video) and download files.<br>
-                    This is accomplished with two separate subprojects: a Java application and a separate Javascript application.<br><br>
-                    The Java application creates a JSON representation of your Dropbox's public directory (and sub dirs).
-                    This JSON data is then provided to the Javascript application, which uses it to render the directories of your dropbox and resolve download links to your files.<br><br>
-                    The project is meant to work alongside the Dropbox app <a href="https://updog.co/" target="_blank">Updog</a> which allows Dropbox users to host static webpages from their dropbox app/ directory.
-                    
-                </p>
+                    <p>
+                        This project generates a small website that allows vistors to browse the contents of your public dropbox, stream content (such as audio and video) and download files.<br>
+                        This is accomplished with two separate subprojects: a Java application and a separate Javascript application.<br><br>
+                        The Java application creates a JSON representation of your Dropbox's public directory (and sub dirs).
+                        This JSON data is then provided to the Javascript application, which uses it to render the directories of your dropbox and resolve download links to your files.<br><br>
+                        The project is meant to work alongside the Dropbox app <a href="https://updog.co/" target="_blank">Updog</a> which allows Dropbox users to host static webpages from their dropbox app/ directory.
+                    </p>
                 
-                Java, Javascript, HTML5.
+                    Java, Javascript, HTML5.
+                </div>
                 
                 <br><br>
     
             </div>
             
             <div id = "footer">
-                Joseph Cameron | <a href="">jf.cameron@gmail.com</a>
-            
+                Joseph Cameron | <a href="mailto:jf.cameron@gmail.com">jf.cameron@gmail.com</a>
             </div>
             
             <div id ="attributions">
-            Icons by <a href="http://www.flaticon.com/authors/madebyoliver" title="Madebyoliver">Madebyoliver</a> & <a href="http://www.flaticon.com/authors/pixel-buddha" title="Pixel Buddha">Pixel Buddha</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>
+                Icons by <a href="http://www.flaticon.com/authors/madebyoliver" title="Madebyoliver">Madebyoliver</a> 
+                & <a href="http://www.flaticon.com/authors/pixel-buddha" title="Pixel Buddha">Pixel Buddha</a> 
+                from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> 
+                licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>
             </div>
-            
         </div>
      
         <script type="text/javascript" src="JS/Presentation/StagingLabel.js"></script>
-        
     </body>
-    
 </html>
-
-
-
-
-
-
