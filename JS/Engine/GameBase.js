@@ -1,3 +1,7 @@
+// © 2015 Joseph Cameron - All Rights Reserved
+// Project: WebGLEngine
+// Created on 2015-06-10.
+
 //***************************************************************************
 // Filename: GameBase.js
 // Description: Behaviors and data inherited by all Game objects.
@@ -8,18 +12,6 @@
 //  code for that game. They do not also initialize the engine.
 // Author: Joseph Cameron
 //***************************************************************************
-// CHANGELOG
-//
-// Date: March 6st, 2015
-// Description: Initial implementation.
-// Author: Joseph Cameron
-//
-// Date: March 7th, 2015
-// Description: Split Game.js into GameBase.js, Game.js.
-//  
-// Author: Joseph Cameron
-//
-
 function GameBase()
 {        
     //*************
@@ -39,19 +31,16 @@ function GameBase()
         this.m_RootGameObject = new GameObject();
         this.m_RootGameObject.setName("RootGameObject");
         this.m_RootGameObject.getMesh().draw = null;
-    
     };
     
     this.start = function()
     {
         initializeRootGameObject();
-                
     };
     
     this.update = function()
     {
         this.m_RootGameObject.update();
-        
     };
     
     this.draw = function()
@@ -64,17 +53,7 @@ function GameBase()
             if (m_Cameras[i].draw != undefined)
                 m_Cameras[i].draw();
             
-            this.m_RootGameObject.draw();
-            
-        }
-        
-    };
-    
+            this.m_RootGameObject.draw();   
+        }  
+    };    
 }
-
-
-
-
-
-
-

@@ -2,17 +2,18 @@ if (typeof PREFABS == 'undefined')PREFABS = new Object();
 
 PREFABS.rotatorTest = function()
 {
-    var whatIsJavaScript3 = new GameObject();
-        {
-            whatIsJavaScript3.setName("RotatorTest");    
-            whatIsJavaScript3.getMesh().setShader(GRAPHICS.getShader("Opaque"));
-            whatIsJavaScript3.getMesh().setMainTexture(GRAPHICS.getTextures()[1]);
-            whatIsJavaScript3.getTransform().setPosition([0,-5,-10]);
-            whatIsJavaScript3.getTransform().setScale([2,1,2]);
-            whatIsJavaScript3.addBehavior(new rotator());
+    var gameObject = new GameObject();
+    {
+        gameObject.setName("RotatorTest");    
         
-        }
+        gameObject.getMesh().setShader(GRAPHICS.getShader("Opaque"));
+        gameObject.getMesh().setMainTexture(GRAPHICS.getTextures()[1]);
         
-        return whatIsJavaScript3;
-    
+        gameObject.getTransform().setPosition([0,-5,-10]);
+        gameObject.getTransform().setScale([2,1,2]);
+        
+        gameObject.addBehavior(new rotator());    
+    }
+        
+    return gameObject;
 }

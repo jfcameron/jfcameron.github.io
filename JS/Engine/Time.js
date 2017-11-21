@@ -1,19 +1,12 @@
+// © 2015 Joseph Cameron - All Rights Reserved
+// Project: WebGLEngine
+// Created on 2015-03-09.
+
 //**********************************************************
 // Filename: Time.js
 // Description: Manages time events. Stores global counters.
 // Author: Joseph Cameron
 //**********************************************************
-// CHANGELOG
-//
-// Date: March 7th, 2015
-// Description: Initial implementation.
-// Author: Joseph Cameron
-//
-// Date: March 9th, 2015
-// Description: m_TimeSinceStart refactored into Time.js.
-//  Time now stores the handler returned by setInterval.
-// Author: Joseph Cameron
-//
 function Time()
 {
     //*************
@@ -28,14 +21,12 @@ function Time()
     this.getTime = function()
     {
         return m_TimeSinceStart;
-        
     };
     
     this.setDeltaTime = function(aTimeInMiliseconds)
     {
         clearInterval(Update);
-        m_IntervalHandle = setInterval(Update,aTimeInMiliseconds);
-        
+        m_IntervalHandle = setInterval(Update,aTimeInMiliseconds);   
     }
     
     //***************
@@ -44,16 +35,10 @@ function Time()
     this.start = function()
     {
         this.setDeltaTime(16);
-        
     };
     
     this.update = function()
     {
-        m_TimeSinceStart++;
-        
-    };
-    
+        m_TimeSinceStart++;  
+    };    
 }
-
-
-

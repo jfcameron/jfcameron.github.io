@@ -1,24 +1,7 @@
-//***************************************************************************
-// Filename: GameObject.js
-// Description: Central object in ECS strategy
-//  Read http://en.wikipedia.org/wiki/Entity_component_system
-//  or better yet, go download Unity.
-// Author: Joseph Cameron
-//***************************************************************************
-// CHANGELOG
-//
-// Date: March 6th, 2015
-// Description: Initial implementation.
-// Author: Joseph Cameron
-//
-// Date: March 7th, 2015
-// Description: Added Mesh & transform.
-// Author: Joseph Cameron
-//
-// Date: March 10th, 2015
-// Description: Added rigidbody.
-// Author: Joseph Cameron
-//
+// © 2015 Joseph Cameron - All Rights Reserved
+// Project: WebGLEngine
+// Created on 2015-03-10.
+
 function GameObject()
 {
     //*************
@@ -55,21 +38,16 @@ function GameObject()
         aBehavior.setGameObject(this);
     
         m_Behaviors.push(aBehavior);
-    
     };
     
     this.addChild = function(aChild)
     {
         aChild.setParent(this);
-        m_Children.push(aChild);
-        
+        m_Children.push(aChild);   
     };
     
     this.update = function()
     {
-        //console.log(this.getName() + ": " +this.getTransform().getPosition());
-        //console.log(this.getName() + ", " + this.getMesh().getGameObject().getName());
-    
          m_Mesh.update();
          m_Rigidbody.update();
     
@@ -80,7 +58,6 @@ function GameObject()
         for(var i = 0; i < m_Children.length; i++)
             if (m_Children[i].update != undefined)
                 m_Children[i].update();
-        
     };
     
     this.draw = function()
@@ -90,11 +67,6 @@ function GameObject()
         
         for(var i = m_Children.length -1; i >= 0; i--)
             if (m_Children[i].getMesh != undefined && typeof m_Children[i].getMesh().draw == 'function')
-                m_Children[i].getMesh().draw();
-        
-    };
-    
+                m_Children[i].getMesh().draw();  
+    };    
 }
-
-
-

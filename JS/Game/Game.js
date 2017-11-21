@@ -12,9 +12,6 @@
 // Description: Added rigidbody spawner to button 1
 // Author: Joseph Cameron
 //
-
-
-
 function cameraOverlayDrawTest()
 {
     //
@@ -22,9 +19,7 @@ function cameraOverlayDrawTest()
     //
     var glContext = GRAPHICS.getContext();
     glContext.viewport  (0,0, glContext.viewportWidth/1, glContext.viewportHeight/1);
-    glContext.clear     ( glContext.DEPTH_BUFFER_BIT );
-    
-    
+    glContext.clear     ( glContext.DEPTH_BUFFER_BIT );  
 };
 
 Game.prototype = new GameBase();
@@ -55,17 +50,6 @@ function Game()
         this.m_RootGameObject.addChild(PREFABS.cloudObject([0,10,-30]));
         this.m_RootGameObject.addChild(PREFABS.cloudObject([0,10,-70]));
         this.m_RootGameObject.addChild(PREFABS.cloudObject([0,10,-110]));
-        this.m_RootGameObject.addChild(PREFABS.skyboxObject());
-        
+        this.m_RootGameObject.addChild(PREFABS.skyboxObject());  
     };
-
 }
-
-
-
-
-
-
-
-
-

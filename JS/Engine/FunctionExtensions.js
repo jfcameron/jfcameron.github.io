@@ -1,3 +1,6 @@
+// © 2015 Joseph Cameron - All Rights Reserved
+// Project: WebGLEngine
+// Created on 2015-03-06.
 //***************************************************************************
 // Filename: FunctionExtensions.js
 // Description: Contains all function extensions to base javascript types.
@@ -10,7 +13,6 @@
 // Added Array.Prototype.find, a lambda based find function.
 // Author: Joseph Cameron
 //
-
 //**************************
 // Array function extensions
 //**************************
@@ -32,12 +34,12 @@
 //
 // Usage: exampleArray.find(function(x){return x.getName() == "Lebowski" ? true : false;}
 //---------------------------------------------------------------------------------------
+
 Array.prototype.find = function(aSearchFunction)
 {    
     for(var i = 0; i < this.length; i++)        
         if (aSearchFunction(this[i]) == true)
             return this[i];
-     
 }
 
 function Include(aSource)
@@ -48,15 +50,12 @@ function Include(aSource)
         gameSource = document.createElement("script");
         gameSource.setAttribute("type","text/javascript");
         gameSource.setAttribute("src", aSource);
-        
     }
     
     document.body.appendChild(gameSource);
-    
 }
 
 function EndIncludes()
 {
     Start();
-
 }

@@ -1,3 +1,7 @@
+// © 2015 Joseph Cameron - All Rights Reserved
+// Project: WebGLEngine
+// Created on 2015-03-10.
+
 var shaderPrograms = document.getElementsByClassName("ShaderProgram");
 var shaderInitCount = 0;
 
@@ -12,15 +16,6 @@ function tryBoot()
         console.log('booting engine');
         console.log('**************');
         
-        Start();
-        
-    }
-    
+        Start();   
+    }    
 }
-
-//for(var i = 0; i < shaderPrograms.length; i++)
-//{
-//    shaderPrograms[i].addEventListener("load", tryBoot, false);
-//    console.log('callback succeded');
-//    
-//}
