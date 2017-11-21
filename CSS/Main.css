@@ -1,7 +1,6 @@
 /* 
     Filename: Main.css
     Description: defines css style for Main.html
-    
 */
 #wrapper
 {
@@ -24,7 +23,6 @@
     margin-right: auto ;
     
     padding:0px;
-
 }
 
 #main
@@ -48,9 +46,6 @@
     padding-right: 10px;
     padding-bottom: 10px;
     padding-left: 10px;
-    
-
-    
 }
 
 #header
@@ -76,8 +71,7 @@
     letter-spacing: 0px  ;
     text-align:     center ;
     font-size:      10pt ;
-    color:          #505050 ;
-    
+    color:          #505050 ;   
 }
 
 #footer
@@ -102,8 +96,7 @@
     letter-spacing: 0px  ;   
     text-align:     center ; 
     font-size:      10pt ;   
-    color:          #505050 ;
-    
+    color:          #505050 ; 
 }
 
 #attributions
@@ -129,7 +122,6 @@
     text-align:     right ; 
     font-size:      7pt ;   
     color:          #505050 ;
-
 }
 
 #tech
@@ -139,14 +131,13 @@
    
     top:-12px;
     
-    //background: #0f0f0f;
+    /*background: #0f0f0f;*/
     
     margin-left:    15px;
     letter-spacing: 0px  ;
     text-align:     left ;
     font-size:      8pt ;
     color:          #757575 ;
-
 }
 
 #canvas
@@ -159,7 +150,6 @@
     height:100%;/*280px*/
     
     background: #000000;
-    
 }
 
 #bgCanvas
@@ -176,7 +166,6 @@
     right: 0px;
     
     background: #000000;
-    
 }
 
 #stagingLabel
@@ -189,7 +178,6 @@
     position: fixed;
     top: 0px;
     right:1%;
-    
 }
 
 #video
@@ -198,7 +186,6 @@
     border:  0px solid ;
     width:   300px ;
     height:  225px ;
-
 }
 
 #caption    /* Used to contain iframe & caption or image & caption. */
@@ -221,7 +208,6 @@
     /*  Text properties */
     text-align: center ;
     font-size:  12pt   ;
-
 }
 
 #previewImage
@@ -229,7 +215,6 @@
     width: 100%;
     height: 100%;
     display: inline;
-
 }
 
 #previewVideo
@@ -239,7 +224,6 @@
     display: inline;
     border: 0px solid;
     background: #2f2f2f;
-
 }
 
 .instructions
@@ -247,7 +231,6 @@
     z-index: 1;
     position: relative;
     top: -50px;
-
 }
 
 #previewImageWide
@@ -256,8 +239,6 @@
     /*height:  175px ;*/
     /*                */
     /*width: 100%;    */
-
-
 }
 
 table
@@ -282,18 +263,13 @@ table
     font-size:  12pt   ;
     
     width: 100%;
-
 }
 
 td
 {
     width: 33.333%;
     height: 100px;
-    
-    
 }
-
-
 
 body
 {
@@ -329,9 +305,6 @@ body
     text-align:     left ;    
     
     font-weight: normal;
-    
-   
-
 }
 
 /* BG scroll animation */
@@ -339,7 +312,6 @@ body
 {
 	from { background-position: 0 0; }
 	to { background-position: 256px -256px; }
-
 }
 
 #background
@@ -360,13 +332,11 @@ body
     
     top: 0px;
     right: 0px;
-    
 }
 
 iframe 
 {
     display: none;
-
 }
 
 h1
@@ -388,7 +358,6 @@ h1
      font-family: Impact, Charcoal, sans-serif;
      letter-spacing: 1px  ;
      font-weight: normal;
-
 }
 
 h2
@@ -405,7 +374,6 @@ h2
 	 0.5px -0.5px 0 #000000,
 	-0.5px  0.5px 0 #000000,
 	 0.5px  0.5px 0 #000000;
-	
 }
 
 p
@@ -415,32 +383,27 @@ p
     padding-right: 5px;
 	margin: 0 0 30px 0; 
     /*text-indent: 10px;*/
-    
 }
 
 image
 {
     width:100%;
     height:100%;
-    
 }
 
 #contenttd
 {
     background-color: #000000;
-    
 }
 
 .entry
 {
     text-align:left;
-    
 }
 
 .entry__title
 {
     display:inline-block;
-    
 }
 
 .entry__buttons
@@ -450,14 +413,12 @@ image
     display: inline-block;
     margin-right: 10px;
     vertical-align: top;
-
 }
 
 .entry__buttons img
 {
     padding-left: 5px;
     height: 100%;
-    
 }
 
 /* Div with fixed ratio */
@@ -468,7 +429,6 @@ image
     /* whatever width you want */
     display: inline-block;
     position: relative;
-
 }
 
 .RatioWrapper:after 
@@ -477,7 +437,6 @@ image
     /* ?? ratio */
     display: block;
     content: '';
-
 }
 
 .RatioContent
@@ -488,10 +447,9 @@ image
     right: 0;
     left: 0;
     /* fill parent */
-    background-color: deepskyblue;
+    background-color: rgb(0, 0, 0);
     /* let's see it! */
     color: white;
-
 }
 /* End of Div with fixed ratio */
 
@@ -503,7 +461,6 @@ image
     /* whatever width you want */
     display: inline-block;
     position: relative;
-
 }
 
 .PreviewImageRatioWrapper:after 
@@ -512,7 +469,6 @@ image
     /* ?? ratio */
     display: block;
     content: '';
-
 }
 
 .PreviewImageRatioContent
@@ -523,15 +479,12 @@ image
     right: 0;
     left: 0;
     /* fill parent */
-    background-color: deepskyblue;
+    background-color: rgb(0, 0, 0);
     /* let's see it! */
     color: white;
-
 }
+
 /* End of fixed ratio Images */
-
-
-
 /*  Link styling    */
 a:link {text-decoration:none;}   
 a:visited {text-decoration:none;} 
@@ -542,7 +495,6 @@ a{color: #7788FF;}
 a.readmore
 {
     display: inline-block;
-
 }
 
 a.readmore img
@@ -550,7 +502,6 @@ a.readmore img
     display: inline-block;
     padding-left: 5px;
     height: 16px;
-
 }
 
 a.github img
@@ -558,5 +509,4 @@ a.github img
     display: inline-block;
     padding-left: 5px;
     height: 16px;
-
 }
