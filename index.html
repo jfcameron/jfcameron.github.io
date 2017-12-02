@@ -574,7 +574,7 @@
                 
                     <p>
                         Hardware accelerated terrain generation. Terrain data is encoded in a texture. Various channels are used for height displacement, uv, foliage type.
-                        A highly tesselated plane supplys the vertex data for the shader. Verts are aligned with texels in the texture, new heights, coloring etc. are calculated via
+                        A highly tesselated plane supplies the vertex data for the shader. Verts are aligned with texels in the texture, new heights, coloring etc. are calculated via
                         texture lookup. Normals are recalculated after displacement and the terrain is coloured as usual in the fragment shader. Using this method, a huge amount of terrain
                         data can be stored in a texture, as the player moves around, the tesselated plane is used to render a subsection of the data. This also lets you take advantage of texture wrap modes
                         to very easily create finite or infinite worlds.
