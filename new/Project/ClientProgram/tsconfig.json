@@ -1,0 +1,26 @@
+{
+  "compilerOptions": 
+  {
+    "outDir": "./dist/",
+    "noImplicitAny": true,
+    "module": "es6",
+    "target": "es5",
+    "experimentalDecorators": true,
+    "jsx": "react",
+    "allowJs": false,
+    "alwaysStrict": true,
+    "version": true,
+    "inlineSourceMap": true,
+
+    "baseUrl": ".",
+    "paths": 
+    {
+      "*": 
+      [
+        "*",
+        //"../Engine/src/*",
+        "src/ts/"
+      ]
+    }
+  }
+}

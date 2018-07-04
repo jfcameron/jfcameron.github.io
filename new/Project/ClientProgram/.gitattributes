@@ -1,0 +1,6 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+node_modules/ linguist-vendored=true
+
+pure-min.css linguist-vendored=true

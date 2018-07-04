@@ -1,0 +1,44 @@
+ext.jfc = [
+    /**
+     * @desc Run a shell script
+     * @note Executed relative to the root project dir
+     * @exception Throws if the command produces any output in standard error
+     */
+    execshell: {String aShellCommand ->
+        def proc = ["/bin/sh", "-c", "cd ${rootProject.projectDir.toString()};${aShellCommand}"].execute()
+        def sout = new StringBuilder(), serr = new StringBuilder()
+    
+        proc.consumeProcessOutput(sout, serr)
+        proc.waitForOrKill(1000)
+    
+        if ("$serr".size() != 0) throw new RuntimeException("a shell command \"$aShellCommand\" had errors: \"$serr\"")
+    
+        return sout.replaceAll("\n","")
+    }      
+]
+
+/**
+ * @desc common configuration for de.fuerstenau.buildconfig plugin
+ */
+buildConfig { 
+    appName = project.name   
+    version = project.version
+    packageName = "jfc"
+    clsName = 'BuildInfo'
+    charset = 'UTF-8' 
+    
+    buildConfigField 'String', 'Branch', "${jfc.execshell("git rev-parse --abbrev-ref HEAD")}"
+    buildConfigField 'String', 'Commit', "${jfc.execshell("git rev-parse HEAD")}"    
+    buildConfigField 'String', 'Date',   "${new java.util.Date(System.currentTimeMillis())}"
+    buildConfigField 'String', 'Author', "jfcameron.github.io"
+}
+
+/**
+ * @desc adds args to run task
+ * @example gradle run -PappArgs="['arg1', 'args2']"
+ */
+run {
+    if (project.hasProperty("appArgs")) {
+        args Eval.me(appArgs)
+    }
+}
