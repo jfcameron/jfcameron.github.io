@@ -1,6 +1,0 @@
-/*
- * The settings file is used to specify which [gradle] projects to include in your build.
- * user guide at https://docs.gradle.org/4.8/userguide/multi_project_builds.html
- */
-
-rootProject.name = "ghpages-generator"
