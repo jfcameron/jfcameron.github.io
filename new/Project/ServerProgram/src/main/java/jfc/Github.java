@@ -11,7 +11,9 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 /**
- * @desc object that does gh stuff
+ * @desc Models a github account
+ * @warn does not (yet) support all account data
+ * @warn some data is calculated not fetched
  * @warn very much WIP
  */
 public class Github
@@ -34,7 +36,7 @@ public class Github
     {
         private final String m_Name;
 
-        private final Map<String, Long> m_Languages;
+        private final Map<String, Long> m_LanguageScores;
 
         private Repository(JSONObject aRepositoryJSON) throws Exception
         {
@@ -42,7 +44,7 @@ public class Github
 
             JSONParser parser = new JSONParser();
 
-            m_Languages = new HashMap<>();
+            m_LanguageScores = new HashMap<>();
 
             JSONObject languages = (JSONObject) parser.parse(
                         Resources.Remote.synchronousFetchText(buildURL(
@@ -55,14 +57,14 @@ public class Github
                 String key = (String)iterator.next();
                 //System.out.println(languages.get(key));
                 
-                m_Languages.put(key, m_Languages.containsKey(key) ? 
-                        (long)m_Languages.get(key) + (long)languages.get(key) :
+                m_LanguageScores.put(key, m_LanguageScores.containsKey(key) ? 
+                        (long)m_LanguageScores.get(key) + (long)languages.get(key) :
                         (long)languages.get(key));
             }
             
-            for (String key : m_Languages.keySet()) 
+            for (String key : m_LanguageScores.keySet()) 
             {
-                System.out.println(key + ": " + m_Languages.get(key));
+                System.out.println(key + ": " + m_LanguageScores.get(key));
             }
             
             System.out.println();
